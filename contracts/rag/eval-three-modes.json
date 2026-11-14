@@ -1,0 +1,251 @@
+{
+  "name": "eval-three-modes",
+  "setup": {
+    "kind": "eval",
+    "documents": [
+      {
+        "id": "es-biblioteca",
+        "text": "La biblioteca municipal abre de lunes a viernes, de nueve a ocho. Los sábados abre solo por la mañana.\n\nPara sacar un libro necesitas el carné de lector. El préstamo dura tres semanas y se puede renovar una vez.\n\n¿Perdiste el carné? Pide uno nuevo en el mostrador; la primera copia es gratis."
+      },
+      {
+        "id": "en-library",
+        "text": "The town library opens Monday to Friday, from nine to eight. On Saturdays it opens only in the morning.\n\nTo borrow a book you need a library card. A loan lasts three weeks and can be renewed once.\n\nLost your card? Ask for a new one at the front desk; the first copy is free."
+      },
+      {
+        "id": "es-taller",
+        "text": "El taller de bicicletas del barrio repara pinchazos y frenos. Trae la bici antes de las seis.\n\nUna reparación sencilla cuesta cinco euros; cambiar la cadena cuesta doce."
+      },
+      {
+        "id": "en-garden",
+        "text": "The community garden lends tools for free: spades, rakes and watering cans.\n\nVolunteers meet on Sunday mornings to water the vegetables and plant new seeds.\n\nBring gloves; the garden has none to lend."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 120
+    },
+    "embedder": {
+      "type": "hash"
+    },
+    "topK": 3,
+    "questions": [
+      {
+        "query": "¿Cuánto cuesta cambiar la cadena?",
+        "relevant": [
+          "es-taller#1"
+        ]
+      },
+      {
+        "query": "lost card",
+        "relevant": [
+          "en-library#2"
+        ]
+      },
+      {
+        "query": "bicicleta",
+        "relevant": [
+          "es-taller"
+        ],
+        "level": "doc"
+      },
+      {
+        "query": "library card",
+        "relevant": [
+          "en-library#1",
+          "es-biblioteca#1"
+        ]
+      },
+      {
+        "query": "carné de lector",
+        "relevant": [
+          "es-taller"
+        ],
+        "level": "doc"
+      }
+    ]
+  },
+  "expect": {
+    "questions": [
+      {
+        "modes": {
+          "bm25": {
+            "hitIds": [
+              "es-taller#1",
+              "es-biblioteca#0",
+              "es-biblioteca#2"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.3333333333333333,
+            "reciprocalRank": 1,
+            "hit": true
+          },
+          "dense": {
+            "hitIds": [
+              "es-taller#1",
+              "en-garden#0",
+              "es-biblioteca#0"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.3333333333333333,
+            "reciprocalRank": 1,
+            "hit": true
+          },
+          "hybrid": {
+            "hitIds": [
+              "es-taller#1",
+              "es-biblioteca#0",
+              "es-biblioteca#2"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.3333333333333333,
+            "reciprocalRank": 1,
+            "hit": true
+          }
+        }
+      },
+      {
+        "modes": {
+          "bm25": {
+            "hitIds": [
+              "en-library#2",
+              "en-library#1"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.5,
+            "reciprocalRank": 1,
+            "hit": true
+          },
+          "dense": {
+            "hitIds": [
+              "en-library#2",
+              "en-library#1",
+              "es-taller#1"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.3333333333333333,
+            "reciprocalRank": 1,
+            "hit": true
+          },
+          "hybrid": {
+            "hitIds": [
+              "en-library#2",
+              "en-library#1",
+              "es-taller#1"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.3333333333333333,
+            "reciprocalRank": 1,
+            "hit": true
+          }
+        }
+      },
+      {
+        "modes": {
+          "bm25": {
+            "hitIds": [],
+            "recallAtK": 0,
+            "precisionAtK": 0,
+            "reciprocalRank": 0,
+            "hit": false
+          },
+          "dense": {
+            "hitIds": [
+              "es-taller#0",
+              "es-biblioteca#2",
+              "es-taller#1"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.5,
+            "reciprocalRank": 1,
+            "hit": true
+          },
+          "hybrid": {
+            "hitIds": [
+              "es-taller#0",
+              "es-biblioteca#2",
+              "es-taller#1"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.5,
+            "reciprocalRank": 1,
+            "hit": true
+          }
+        }
+      },
+      {
+        "modes": {
+          "bm25": {
+            "hitIds": [
+              "en-library#1",
+              "en-library#2",
+              "en-library#0"
+            ],
+            "recallAtK": 0.5,
+            "precisionAtK": 0.3333333333333333,
+            "reciprocalRank": 1,
+            "hit": true
+          },
+          "dense": {
+            "hitIds": [
+              "en-library#1",
+              "es-biblioteca#1",
+              "en-garden#2"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.6666666666666666,
+            "reciprocalRank": 1,
+            "hit": true
+          },
+          "hybrid": {
+            "hitIds": [
+              "en-library#1",
+              "en-library#2",
+              "en-library#0"
+            ],
+            "recallAtK": 0.5,
+            "precisionAtK": 0.3333333333333333,
+            "reciprocalRank": 1,
+            "hit": true
+          }
+        }
+      },
+      {
+        "modes": {
+          "bm25": {
+            "hitIds": [
+              "es-biblioteca#1",
+              "es-taller#0",
+              "es-biblioteca#2"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.5,
+            "reciprocalRank": 0.5,
+            "hit": true
+          },
+          "dense": {
+            "hitIds": [
+              "es-biblioteca#1",
+              "es-biblioteca#2",
+              "es-biblioteca#0"
+            ],
+            "recallAtK": 0,
+            "precisionAtK": 0,
+            "reciprocalRank": 0,
+            "hit": false
+          },
+          "hybrid": {
+            "hitIds": [
+              "es-biblioteca#1",
+              "es-biblioteca#2",
+              "es-taller#0"
+            ],
+            "recallAtK": 1,
+            "precisionAtK": 0.5,
+            "reciprocalRank": 0.5,
+            "hit": true
+          }
+        }
+      }
+    ]
+  }
+}

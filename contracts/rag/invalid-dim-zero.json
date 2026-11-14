@@ -1,0 +1,13 @@
+{
+  "name": "invalid-dim-zero",
+  "setup": {
+    "kind": "embed",
+    "text": "hola",
+    "dim": 0
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

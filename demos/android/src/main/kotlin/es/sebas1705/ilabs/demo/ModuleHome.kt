@@ -44,6 +44,7 @@ enum class DemoModule(@StringRes val title: Int, @StringRes val description: Int
     STRUCTURED(R.string.home_structured_title, R.string.home_structured_description),
     CONTEXT(R.string.home_context_title, R.string.home_context_description),
     EVALS(R.string.home_evals_title, R.string.home_evals_description),
+    RAG(R.string.home_rag_title, R.string.home_rag_description),
 }
 
 /** A text button for the top bar that returns to the module list; the system back gesture does the same. */

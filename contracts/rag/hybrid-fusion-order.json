@@ -1,0 +1,70 @@
+{
+  "name": "hybrid-fusion-order",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "es-biblioteca",
+        "text": "La biblioteca municipal abre de lunes a viernes, de nueve a ocho. Los sábados abre solo por la mañana.\n\nPara sacar un libro necesitas el carné de lector. El préstamo dura tres semanas y se puede renovar una vez.\n\n¿Perdiste el carné? Pide uno nuevo en el mostrador; la primera copia es gratis."
+      },
+      {
+        "id": "en-library",
+        "text": "The town library opens Monday to Friday, from nine to eight. On Saturdays it opens only in the morning.\n\nTo borrow a book you need a library card. A loan lasts three weeks and can be renewed once.\n\nLost your card? Ask for a new one at the front desk; the first copy is free."
+      },
+      {
+        "id": "es-taller",
+        "text": "El taller de bicicletas del barrio repara pinchazos y frenos. Trae la bici antes de las seis.\n\nUna reparación sencilla cuesta cinco euros; cambiar la cadena cuesta doce."
+      },
+      {
+        "id": "en-garden",
+        "text": "The community garden lends tools for free: spades, rakes and watering cans.\n\nVolunteers meet on Sunday mornings to water the vegetables and plant new seeds.\n\nBring gloves; the garden has none to lend."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 120
+    },
+    "embedder": {
+      "type": "hash"
+    },
+    "query": "carné de lector",
+    "mode": "hybrid",
+    "topK": 4
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "es-biblioteca#1",
+        "docId": "es-biblioteca",
+        "rank": 1,
+        "score": 0.03278688524590164,
+        "bm25Rank": 1,
+        "denseRank": 1
+      },
+      {
+        "chunkId": "es-biblioteca#2",
+        "docId": "es-biblioteca",
+        "rank": 2,
+        "score": 0.03200204813108039,
+        "bm25Rank": 3,
+        "denseRank": 2
+      },
+      {
+        "chunkId": "es-taller#0",
+        "docId": "es-taller",
+        "rank": 3,
+        "score": 0.031754032258064516,
+        "bm25Rank": 2,
+        "denseRank": 4
+      },
+      {
+        "chunkId": "es-biblioteca#0",
+        "docId": "es-biblioteca",
+        "rank": 4,
+        "score": 0.03149801587301587,
+        "bm25Rank": 4,
+        "denseRank": 3
+      }
+    ]
+  }
+}

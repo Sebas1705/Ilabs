@@ -1,0 +1,48 @@
+{
+  "name": "hybrid-chunk-in-one-list",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "cars",
+        "text": "Reparamos coches y motos."
+      },
+      {
+        "id": "bikes",
+        "text": "Las bicicletas nuevas."
+      },
+      {
+        "id": "one",
+        "text": "Una bicicleta roja."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "embedder": {
+      "type": "hash"
+    },
+    "query": "bicicleta",
+    "mode": "hybrid"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "one#0",
+        "docId": "one",
+        "rank": 1,
+        "score": 0.03278688524590164,
+        "bm25Rank": 1,
+        "denseRank": 1
+      },
+      {
+        "chunkId": "bikes#0",
+        "docId": "bikes",
+        "rank": 2,
+        "score": 0.016129032258064516,
+        "denseRank": 2
+      }
+    ]
+  }
+}

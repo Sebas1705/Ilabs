@@ -1,0 +1,16 @@
+{
+  "name": "tokens-sharp-s-and-ligature",
+  "setup": {
+    "kind": "tokens",
+    "text": "Straße Æsir æther Þórr ðe"
+  },
+  "expect": {
+    "tokens": [
+      "strasse",
+      "aesir",
+      "aether",
+      "thorr",
+      "de"
+    ]
+  }
+}

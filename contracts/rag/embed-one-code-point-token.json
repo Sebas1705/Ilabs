@@ -1,0 +1,15 @@
+{
+  "name": "embed-one-code-point-token",
+  "setup": {
+    "kind": "embed",
+    "text": "I"
+  },
+  "expect": {
+    "nonZero": [
+      [
+        56,
+        -1
+      ]
+    ]
+  }
+}

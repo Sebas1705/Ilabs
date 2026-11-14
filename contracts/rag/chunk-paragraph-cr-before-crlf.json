@@ -1,0 +1,36 @@
+{
+  "name": "chunk-paragraph-cr-before-crlf",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "Uno\r\r\n\r\nDos"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 4
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "Uno\r",
+        "start": 0,
+        "end": 4
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "Dos",
+        "start": 8,
+        "end": 11
+      }
+    ]
+  }
+}

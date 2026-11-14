@@ -61,6 +61,8 @@
     <string name="home_context_description">Mantén una conversación dentro de un presupuesto de tokens.</string>
     <string name="home_evals_title">Evaluaciones</string>
     <string name="home_evals_description">Compara modelos con una batería de casos calificados.</string>
+    <string name="home_rag_title">Recuperación (RAG)</string>
+    <string name="home_rag_description">Busca en documentos con BM25, vectores o ambos y cita las fuentes.</string>
     <string name="home_open_module">%1$s. %2$s Toca dos veces para abrir.</string>
     <string name="home_back">Módulos</string>
     <string name="home_back_description">Volver a la lista de módulos</string>
@@ -297,5 +299,119 @@
     <plurals name="evals_calls">
         <item quantity="one">%1$d llamada</item>
         <item quantity="other">%1$d llamadas</item>
+    </plurals>
+
+    <string name="rag_title">Recuperación</string>
+    <string name="rag_subtitle">Trocea un corpus pequeño, búscalo con BM25, vectores densos o ambos fusionados y compón un contexto con fuentes numeradas. La biblioteca real se ejecuta sobre los escenarios compartidos del contrato; nada sale de tu dispositivo.</string>
+    <string name="rag_fixture">Escenario</string>
+    <string name="rag_fixture_picker">Escenario: %1$s. Toca dos veces para elegir otro.</string>
+    <string name="rag_group_search">Búsqueda</string>
+    <string name="rag_group_context">Contexto</string>
+    <string name="rag_group_answers">Respuestas</string>
+    <string name="rag_group_evaluation">Evaluación</string>
+    <string name="rag_load_error">No se pudieron cargar los escenarios: %1$s</string>
+    <string name="rag_run_error">No se pudo ejecutar el escenario: %1$s</string>
+    <string name="rag_running">Ejecutando…</string>
+    <string name="rag_status_empty">La pregunta no tiene palabras que buscar.</string>
+    <string name="rag_status_failed">La ejecución falló: %1$s</string>
+    <string name="rag_controls">Pregunta y opciones</string>
+    <string name="rag_readonly_hint">Esta muestra usa un embedder guionizado o espera un error, así que se ve su ejecución grabada. La pregunta, el modo y el número de resultados son fijos.</string>
+    <string name="rag_question">Pregunta</string>
+    <string name="rag_mode">Modo</string>
+    <string name="rag_mode_bm25">BM25</string>
+    <string name="rag_mode_dense">Denso</string>
+    <string name="rag_mode_hybrid">Híbrido</string>
+    <string name="rag_top_k">Resultados a devolver (un número entero desde 1)</string>
+    <string name="rag_top_k_less">Menos resultados</string>
+    <string name="rag_top_k_more">Más resultados</string>
+    <string name="rag_labelled">Preguntas etiquetadas</string>
+    <string name="rag_labelled_hint">Elige una para hacerla y puntuar los tres modos con sus ids relevantes.</string>
+    <string name="rag_labelled_relevant">Relevantes (nivel %1$s): %2$s</string>
+    <string name="rag_labelled_spoken">%1$s. Relevantes a nivel de %2$s: %3$s.</string>
+    <string name="rag_level_chunk">fragmento</string>
+    <string name="rag_level_doc">documento</string>
+    <string name="rag_chunks">Fragmentos del corpus</string>
+    <string name="rag_chunk_span">Documento %1$s, puntos de código %2$d a %3$d</string>
+    <string name="rag_chunks_none">El corpus no tiene fragmentos.</string>
+    <string name="rag_chunk_hit">Resultado %1$d</string>
+    <string name="rag_chunk_spoken">Fragmento %1$s. %2$s.</string>
+    <string name="rag_chunk_spoken_hit">Fragmento %1$s. %2$s. Resultado número %3$d.</string>
+    <string name="rag_hits">Resultados</string>
+    <string name="rag_hits_empty_query">La pregunta no tiene palabras que buscar (solo signos o espacios), así que no se buscó nada.</string>
+    <string name="rag_hits_none">Ningún fragmento coincide con la pregunta.</string>
+    <string name="rag_col_fused">Fusionado</string>
+    <string name="rag_col_bm25">BM25</string>
+    <string name="rag_col_dense">Denso</string>
+    <string name="rag_col_rank_score">Posición y puntuación (%1$s)</string>
+    <string name="rag_hit_document">Documento %1$s</string>
+    <string name="rag_cell_rank">posición %1$d</string>
+    <string name="rag_list_absent">no está en su lista</string>
+    <string name="rag_hit_spoken_single">Posición %1$d, fragmento %2$s del documento %3$s, puntuación %4$s %5$s</string>
+    <string name="rag_hit_spoken_hybrid">Posición fusionada %1$d, fragmento %2$s del documento %3$s, puntuación fusionada %4$s. BM25: %5$s. Denso: %6$s.</string>
+    <string name="rag_context">Contexto compuesto</string>
+    <string name="rag_context_hint">Exactamente el mensaje de sistema que devolvió la biblioteca: la instrucción y las fuentes numeradas.</string>
+    <string name="rag_budget">Presupuesto de tokens</string>
+    <string name="rag_sources">Fuentes conservadas</string>
+    <string name="rag_source_entry">[%1$d] %2$s, documento %3$s</string>
+    <string name="rag_dropped_label">Descartados</string>
+    <string name="rag_citations">Comprobación de citas</string>
+    <string name="rag_citations_hint">Marcas de la respuesta guionizada, comprobadas con las fuentes que conservó el presupuesto.</string>
+    <string name="rag_reply">Respuesta guionizada</string>
+    <string name="rag_citations_none">La respuesta no tiene marcas de cita.</string>
+    <string name="rag_badge_cited">[%1$d] citada</string>
+    <string name="rag_badge_unknown">[%1$d] no es una fuente</string>
+    <string name="rag_metrics">Métricas de recuperación</string>
+    <string name="rag_metrics_none">Elige una pregunta etiquetada, o escríbela tal cual, para puntuar los tres modos.</string>
+    <string name="rag_metrics_question">Pregunta: %1$s</string>
+    <string name="rag_metrics_level">Puntuado a nivel de %1$s</string>
+    <string name="rag_metric_recall">Exhaustividad</string>
+    <string name="rag_metric_precision">Precisión</string>
+    <string name="rag_metric_rr">Rango recíproco</string>
+    <string name="rag_metric_hit">Acierto / fallo</string>
+    <string name="rag_hit_yes">Acierto</string>
+    <string name="rag_hit_no">Fallo</string>
+    <string name="rag_metrics_row_spoken">%1$s: exhaustividad %2$s, precisión %3$s, rango recíproco %4$s, %5$s</string>
+    <string name="rag_error_title">Error de la biblioteca</string>
+    <string name="rag_error_reason">Motivo según la biblioteca</string>
+    <string name="rag_error_invalid_options">Las opciones no son válidas.</string>
+    <string name="rag_error_no_embedder">Este índice no tiene embedder, así que la búsqueda densa e híbrida no está disponible.</string>
+    <string name="rag_error_invalid_embedding">El embedder devolvió vectores que la biblioteca no puede usar.</string>
+    <string name="rag_error_rate_limit">El proveedor está limitando las peticiones.</string>
+    <string name="rag_error_timeout">El proveedor agotó el tiempo.</string>
+    <string name="rag_error_invalid_output">El proveedor devolvió una respuesta no válida.</string>
+    <string name="rag_error_unavailable">El proveedor no está disponible.</string>
+    <string name="rag_note">El lado denso es el embedder integrado de hashing de n-gramas de caracteres, no un modelo: reconoce grafías parecidas, no el significado.</string>
+    <string name="rag_footer">Los escenarios viven en contracts/rag y se comparten con la implementación en TypeScript. Las respuestas son guionizadas: no se llama a ningún modelo real.</string>
+    <plurals name="rag_status_budget">
+        <item quantity="one">El contexto necesita al menos %1$d token (presupuesto %2$d)</item>
+        <item quantity="other">El contexto necesita al menos %1$d tokens (presupuesto %2$d)</item>
+    </plurals>
+    <plurals name="rag_status_hits">
+        <item quantity="one">%1$d resultado en modo %2$s</item>
+        <item quantity="other">%1$d resultados en modo %2$s</item>
+    </plurals>
+    <plurals name="rag_top_k_spoken">
+        <item quantity="one">Hasta %1$d resultado</item>
+        <item quantity="other">Hasta %1$d resultados</item>
+    </plurals>
+    <plurals name="rag_chunks_count">
+        <item quantity="one">%1$d fragmento</item>
+        <item quantity="other">%1$d fragmentos</item>
+    </plurals>
+    <plurals name="rag_budget_used">
+        <item quantity="one">%1$d de %2$d token usado</item>
+        <item quantity="other">%1$d de %2$d tokens usados</item>
+    </plurals>
+    <plurals name="rag_budget_needs">
+        <item quantity="one">Presupuesto demasiado pequeño: el mensaje más pequeño necesita al menos %1$d token (presupuesto %2$d)</item>
+        <item quantity="other">Presupuesto demasiado pequeño: el mensaje más pequeño necesita al menos %1$d tokens (presupuesto %2$d)</item>
+    </plurals>
+    <plurals name="rag_sources_kept">
+        <item quantity="one">%1$d fuente</item>
+        <item quantity="other">%1$d fuentes</item>
+    </plurals>
+    <plurals name="rag_dropped">
+        <item quantity="one">%1$d resultado descartado por el presupuesto</item>
+        <item quantity="other">%1$d resultados descartados por el presupuesto</item>
     </plurals>
 </resources>

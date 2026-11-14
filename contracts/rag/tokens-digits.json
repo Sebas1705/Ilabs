@@ -1,0 +1,17 @@
+{
+  "name": "tokens-digits",
+  "setup": {
+    "kind": "tokens",
+    "text": "Room 101 opens at 9am, v2"
+  },
+  "expect": {
+    "tokens": [
+      "room",
+      "101",
+      "opens",
+      "at",
+      "9am",
+      "v2"
+    ]
+  }
+}

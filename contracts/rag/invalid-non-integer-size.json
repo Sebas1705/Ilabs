@@ -1,0 +1,26 @@
+{
+  "name": "invalid-non-integer-size",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno dos"
+      },
+      {
+        "id": "b",
+        "text": "dos tres"
+      }
+    ],
+    "chunking": {
+      "type": "fixed",
+      "size": 2.5,
+      "overlap": 0
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

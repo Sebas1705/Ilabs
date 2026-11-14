@@ -1,0 +1,29 @@
+{
+  "name": "chunk-fixed-shorter-than-size",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "hola"
+      }
+    ],
+    "chunking": {
+      "type": "fixed",
+      "size": 10,
+      "overlap": 3
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "hola",
+        "start": 0,
+        "end": 4
+      }
+    ]
+  }
+}

@@ -177,6 +177,9 @@ importers:
       '@ilabs/providers':
         specifier: workspace:*
         version: link:../../modules/providers/ts
+      '@ilabs/rag':
+        specifier: workspace:*
+        version: link:../../modules/rag/ts
       '@ilabs/structured':
         specifier: workspace:*
         version: link:../../modules/structured/ts
@@ -257,6 +260,25 @@ importers:
         version: 5.1.0(@types/node@26.6.6)(jsdom@31.0.0)(vite@8.3.7(@types/node@26.6.6))
 
   modules/providers/ts:
+    devDependencies:
+      '@types/node':
+        specifier: 26.6.6
+        version: 26.6.6
+      typescript:
+        specifier: 7.0.2
+        version: 7.0.2
+      vitest:
+        specifier: 5.1.0
+        version: 5.1.0(@types/node@26.6.6)(jsdom@31.0.0)(vite@8.3.7(@types/node@26.6.6))
+
+  modules/rag/ts:
+    dependencies:
+      '@ilabs/context':
+        specifier: workspace:*
+        version: link:../../context/ts
+      '@ilabs/providers':
+        specifier: workspace:*
+        version: link:../../providers/ts
     devDependencies:
       '@types/node':
         specifier: 26.6.6

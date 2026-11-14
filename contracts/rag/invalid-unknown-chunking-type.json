@@ -1,0 +1,25 @@
+{
+  "name": "invalid-unknown-chunking-type",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno dos"
+      },
+      {
+        "id": "b",
+        "text": "dos tres"
+      }
+    ],
+    "chunking": {
+      "type": "sentence",
+      "maxSize": 10
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

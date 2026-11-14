@@ -1,0 +1,21 @@
+{
+  "name": "citations-unknown",
+  "setup": {
+    "kind": "citations",
+    "sources": [
+      1,
+      2
+    ],
+    "answer": "[1] [4] [2] [4] [7]"
+  },
+  "expect": {
+    "cited": [
+      1,
+      2
+    ],
+    "unknown": [
+      4,
+      7
+    ]
+  }
+}

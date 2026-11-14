@@ -1,0 +1,35 @@
+{
+  "name": "metrics-doc-level-dedupe",
+  "setup": {
+    "kind": "metrics",
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a"
+      },
+      {
+        "chunkId": "a#1",
+        "docId": "a"
+      },
+      {
+        "chunkId": "b#0",
+        "docId": "b"
+      },
+      {
+        "chunkId": "c#2",
+        "docId": "c"
+      }
+    ],
+    "relevant": [
+      "b",
+      "c"
+    ],
+    "level": "doc"
+  },
+  "expect": {
+    "recallAtK": 1,
+    "precisionAtK": 0.6666666666666666,
+    "reciprocalRank": 0.5,
+    "hit": true
+  }
+}

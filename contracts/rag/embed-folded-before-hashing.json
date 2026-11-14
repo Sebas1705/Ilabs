@@ -1,0 +1,27 @@
+{
+  "name": "embed-folded-before-hashing",
+  "setup": {
+    "kind": "embed",
+    "text": "HÓLA"
+  },
+  "expect": {
+    "nonZero": [
+      [
+        12,
+        -0.5
+      ],
+      [
+        114,
+        0.5
+      ],
+      [
+        160,
+        -0.5
+      ],
+      [
+        181,
+        -0.5
+      ]
+    ]
+  }
+}

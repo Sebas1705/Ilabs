@@ -1,0 +1,25 @@
+{
+  "name": "invalid-duplicate-doc-id",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno"
+      },
+      {
+        "id": "a",
+        "text": "dos"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

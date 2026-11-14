@@ -2,7 +2,7 @@
 
 iLabs ("i" as in AI) is a collection of small, reusable AI modules written in Kotlin and TypeScript, each with a visible demo.
 
-**Status:** early. Four modules are done, each with a web demo page and an Android demo screen: providers, structured, context and evals.
+**Status:** early. Five modules are done, each with a web demo page and an Android demo screen: providers, structured, context, evals and rag.
 
 ## Modules
 
@@ -12,6 +12,7 @@ iLabs ("i" as in AI) is a collection of small, reusable AI modules written in Ko
 | [structured](modules/structured/README.md) | done | Structured output: extract JSON from a reply, validate it against a schema and repair it, identical in Kotlin and TypeScript |
 | [context](modules/context/README.md) | done | Context windows and token budgeting: sliding window and summarization of long conversations, identical in Kotlin and TypeScript |
 | [evals](modules/evals/README.md) | done | Deterministic evals: run a suite of cases against several providers, grade every reply (string, length, JSON and judge graders) and summarize, identical in Kotlin and TypeScript |
+| [rag](modules/rag/README.md) | done | Retrieval-augmented generation at teaching scale: chunk documents, retrieve with BM25, dense vectors or their fusion, compose a numbered-sources context, check citations and measure retrieval, identical in Kotlin and TypeScript |
 
 ## Layout
 
@@ -41,6 +42,7 @@ corepack pnpm --filter @ilabs/demo-web dev      # web demo at http://localhost:5
 ./gradlew :modules:structured-kotlin:jvmTest    # Kotlin tests against the shared structured fixtures
 ./gradlew :modules:context-kotlin:jvmTest       # Kotlin tests against the shared context fixtures
 ./gradlew :modules:evals-kotlin:jvmTest         # Kotlin tests against the shared evals fixtures
+./gradlew :modules:rag-kotlin:jvmTest           # Kotlin tests against the shared rag fixtures
 ./gradlew jvmContractTests                      # run all Kotlin module tests
 ./gradlew :demos:android:installDebug           # Android demo on a connected device or emulator
 ```

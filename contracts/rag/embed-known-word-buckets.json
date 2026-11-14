@@ -1,0 +1,27 @@
+{
+  "name": "embed-known-word-buckets",
+  "setup": {
+    "kind": "embed",
+    "text": "hola"
+  },
+  "expect": {
+    "nonZero": [
+      [
+        12,
+        -0.5
+      ],
+      [
+        114,
+        0.5
+      ],
+      [
+        160,
+        -0.5
+      ],
+      [
+        181,
+        -0.5
+      ]
+    ]
+  }
+}

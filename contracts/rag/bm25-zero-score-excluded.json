@@ -1,0 +1,37 @@
+{
+  "name": "bm25-zero-score-excluded",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "sol y playa"
+      },
+      {
+        "id": "b",
+        "text": "nieve"
+      },
+      {
+        "id": "c",
+        "text": "lluvia"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "query": "sol",
+    "mode": "bm25",
+    "topK": 5
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a",
+        "rank": 1,
+        "score": 0.738980944049931
+      }
+    ]
+  }
+}

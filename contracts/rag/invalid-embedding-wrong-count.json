@@ -1,0 +1,44 @@
+{
+  "name": "invalid-embedding-wrong-count",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno dos"
+      },
+      {
+        "id": "b",
+        "text": "dos tres"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    },
+    "embedder": {
+      "type": "script",
+      "responses": [
+        [
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            0
+          ]
+        ]
+      ]
+    },
+    "query": "dos",
+    "mode": "dense"
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_embedding"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "metrics-no-hit",
+  "setup": {
+    "kind": "metrics",
+    "hits": [
+      {
+        "chunkId": "x#0",
+        "docId": "x"
+      },
+      {
+        "chunkId": "y#0",
+        "docId": "y"
+      }
+    ],
+    "relevant": [
+      "z#0"
+    ]
+  },
+  "expect": {
+    "recallAtK": 0,
+    "precisionAtK": 0,
+    "reciprocalRank": 0,
+    "hit": false
+  }
+}

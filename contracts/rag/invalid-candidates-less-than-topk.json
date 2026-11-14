@@ -1,0 +1,32 @@
+{
+  "name": "invalid-candidates-less-than-topk",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno dos"
+      },
+      {
+        "id": "b",
+        "text": "dos tres"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    },
+    "embedder": {
+      "type": "hash"
+    },
+    "query": "dos",
+    "mode": "hybrid",
+    "topK": 3,
+    "candidates": 2
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

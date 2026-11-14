@@ -1,0 +1,16 @@
+{
+  "name": "metrics-no-hits-precision-zero",
+  "setup": {
+    "kind": "metrics",
+    "hits": [],
+    "relevant": [
+      "a#0"
+    ]
+  },
+  "expect": {
+    "recallAtK": 0,
+    "precisionAtK": 0,
+    "reciprocalRank": 0,
+    "hit": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "citations-unknown-first-appearance-order",
+  "setup": {
+    "kind": "citations",
+    "sources": [
+      1
+    ],
+    "answer": "[7] [1] [4]"
+  },
+  "expect": {
+    "cited": [
+      1
+    ],
+    "unknown": [
+      7,
+      4
+    ]
+  }
+}

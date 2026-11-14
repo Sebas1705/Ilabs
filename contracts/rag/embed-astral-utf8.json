@@ -1,0 +1,15 @@
+{
+  "name": "embed-astral-utf8",
+  "setup": {
+    "kind": "embed",
+    "text": "😀"
+  },
+  "expect": {
+    "nonZero": [
+      [
+        148,
+        1
+      ]
+    ]
+  }
+}

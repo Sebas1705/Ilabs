@@ -1,0 +1,41 @@
+{
+  "name": "dense-exact-tie-index-order",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "zeta",
+        "text": "gato pardo"
+      },
+      {
+        "id": "alfa",
+        "text": "gato pardo"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "embedder": {
+      "type": "hash"
+    },
+    "query": "gato",
+    "mode": "dense"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "zeta#0",
+        "docId": "zeta",
+        "rank": 1,
+        "score": 0.6666666666666666
+      },
+      {
+        "chunkId": "alfa#0",
+        "docId": "alfa",
+        "rank": 2,
+        "score": 0.6666666666666666
+      }
+    ]
+  }
+}

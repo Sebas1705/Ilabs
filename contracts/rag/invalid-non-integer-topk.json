@@ -1,0 +1,28 @@
+{
+  "name": "invalid-non-integer-topk",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno dos"
+      },
+      {
+        "id": "b",
+        "text": "dos tres"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    },
+    "query": "dos",
+    "mode": "bm25",
+    "topK": 1.5
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "bm25-exact-tie-index-order",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "zeta",
+        "text": "rojo verde"
+      },
+      {
+        "id": "alfa",
+        "text": "verde rojo"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "query": "rojo",
+    "mode": "bm25"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "zeta#0",
+        "docId": "zeta",
+        "rank": 1,
+        "score": 0.1823215567939546
+      },
+      {
+        "chunkId": "alfa#0",
+        "docId": "alfa",
+        "rank": 2,
+        "score": 0.1823215567939546
+      }
+    ]
+  }
+}

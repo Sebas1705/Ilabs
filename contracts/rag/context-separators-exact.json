@@ -1,0 +1,51 @@
+{
+  "name": "context-separators-exact",
+  "setup": {
+    "kind": "context",
+    "documents": [
+      {
+        "id": "a",
+        "text": "Sol."
+      },
+      {
+        "id": "b",
+        "text": "Sol y luna."
+      },
+      {
+        "id": "c",
+        "text": "Sol, luna y mar."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "query": "sol",
+    "mode": "bm25",
+    "maxTokens": 100
+  },
+  "expect": {
+    "message": {
+      "role": "system",
+      "content": "Answer the question using only the numbered sources below. Cite the sources you use as [n]. If the sources do not contain the answer, say so.\n\n[1] Sol.\n\n[2] Sol y luna.\n\n[3] Sol, luna y mar."
+    },
+    "sources": [
+      {
+        "n": 1,
+        "chunkId": "a#0",
+        "docId": "a"
+      },
+      {
+        "n": 2,
+        "chunkId": "b#0",
+        "docId": "b"
+      },
+      {
+        "n": 3,
+        "chunkId": "c#0",
+        "docId": "c"
+      }
+    ],
+    "droppedCount": 0
+  }
+}

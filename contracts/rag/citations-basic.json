@@ -1,0 +1,19 @@
+{
+  "name": "citations-basic",
+  "setup": {
+    "kind": "citations",
+    "sources": [
+      1,
+      2,
+      3
+    ],
+    "answer": "La biblioteca abre a las nueve [1] y cierra a las ocho [2]."
+  },
+  "expect": {
+    "cited": [
+      1,
+      2
+    ],
+    "unknown": []
+  }
+}

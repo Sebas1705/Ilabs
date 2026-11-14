@@ -80,6 +80,7 @@ dependencies {
     implementation(project(":modules:structured-kotlin"))
     implementation(project(":modules:context-kotlin"))
     implementation(project(":modules:evals-kotlin"))
+    implementation(project(":modules:rag-kotlin"))
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.foundation)

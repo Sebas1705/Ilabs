@@ -1,0 +1,15 @@
+{
+  "name": "embed-lone-surrogate-fffd",
+  "setup": {
+    "kind": "embed",
+    "text": "\ud800"
+  },
+  "expect": {
+    "nonZero": [
+      [
+        182,
+        -1
+      ]
+    ]
+  }
+}

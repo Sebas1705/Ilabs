@@ -1,0 +1,64 @@
+{
+  "name": "chunk-paragraph-crlf-offsets",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "a",
+        "text": "Uno\r\n\r\nDos\r\nmás\r\n\r\nTres"
+      },
+      {
+        "id": "b",
+        "text": "abcd\r\n\r\ncd"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 9
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "a#0",
+        "docId": "a",
+        "index": 0,
+        "text": "Uno",
+        "start": 0,
+        "end": 3
+      },
+      {
+        "id": "a#1",
+        "docId": "a",
+        "index": 1,
+        "text": "Dos\r\nmás",
+        "start": 7,
+        "end": 15
+      },
+      {
+        "id": "a#2",
+        "docId": "a",
+        "index": 2,
+        "text": "Tres",
+        "start": 19,
+        "end": 23
+      },
+      {
+        "id": "b#0",
+        "docId": "b",
+        "index": 0,
+        "text": "abcd",
+        "start": 0,
+        "end": 4
+      },
+      {
+        "id": "b#1",
+        "docId": "b",
+        "index": 1,
+        "text": "cd",
+        "start": 8,
+        "end": 10
+      }
+    ]
+  }
+}

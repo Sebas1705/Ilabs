@@ -61,6 +61,8 @@
     <string name="home_context_description">Keep a conversation inside a token budget.</string>
     <string name="home_evals_title">Evals</string>
     <string name="home_evals_description">Compare models on a suite of graded cases.</string>
+    <string name="home_rag_title">Retrieval (RAG)</string>
+    <string name="home_rag_description">Search documents with BM25, vectors or both, then cite the sources.</string>
     <string name="home_open_module">%1$s. %2$s Double tap to open.</string>
     <string name="home_back">Modules</string>
     <string name="home_back_description">Back to the module list</string>
@@ -297,5 +299,119 @@
     <plurals name="evals_calls">
         <item quantity="one">%1$d call</item>
         <item quantity="other">%1$d calls</item>
+    </plurals>
+
+    <string name="rag_title">Retrieval</string>
+    <string name="rag_subtitle">Chunk a small corpus, search it with BM25, dense vectors or both fused, and compose a numbered-sources context. The real library runs over the shared contract fixtures; nothing leaves your device.</string>
+    <string name="rag_fixture">Fixture</string>
+    <string name="rag_fixture_picker">Fixture: %1$s. Double tap to choose another.</string>
+    <string name="rag_group_search">Search</string>
+    <string name="rag_group_context">Context</string>
+    <string name="rag_group_answers">Answers</string>
+    <string name="rag_group_evaluation">Evaluation</string>
+    <string name="rag_load_error">Could not load the fixtures: %1$s</string>
+    <string name="rag_run_error">Could not run the fixture: %1$s</string>
+    <string name="rag_running">Running…</string>
+    <string name="rag_status_empty">The question has no searchable words.</string>
+    <string name="rag_status_failed">The run failed: %1$s</string>
+    <string name="rag_controls">Question and options</string>
+    <string name="rag_readonly_hint">This sample uses a scripted embedder or expects an error, so it shows its recorded run. The question, mode and result count are fixed.</string>
+    <string name="rag_question">Question</string>
+    <string name="rag_mode">Mode</string>
+    <string name="rag_mode_bm25">BM25</string>
+    <string name="rag_mode_dense">Dense</string>
+    <string name="rag_mode_hybrid">Hybrid</string>
+    <string name="rag_top_k">Results to return (a whole number from 1)</string>
+    <string name="rag_top_k_less">Fewer results</string>
+    <string name="rag_top_k_more">More results</string>
+    <string name="rag_labelled">Labelled questions</string>
+    <string name="rag_labelled_hint">Pick one to ask it and score the three modes against its relevant ids.</string>
+    <string name="rag_labelled_relevant">Relevant (%1$s level): %2$s</string>
+    <string name="rag_labelled_spoken">%1$s. Relevant at %2$s level: %3$s.</string>
+    <string name="rag_level_chunk">chunk</string>
+    <string name="rag_level_doc">document</string>
+    <string name="rag_chunks">Corpus chunks</string>
+    <string name="rag_chunk_span">Document %1$s, code points %2$d to %3$d</string>
+    <string name="rag_chunks_none">The corpus has no chunks.</string>
+    <string name="rag_chunk_hit">Hit %1$d</string>
+    <string name="rag_chunk_spoken">Chunk %1$s. %2$s.</string>
+    <string name="rag_chunk_spoken_hit">Chunk %1$s. %2$s. Hit number %3$d.</string>
+    <string name="rag_hits">Hits</string>
+    <string name="rag_hits_empty_query">The question has no searchable words (only punctuation or blanks), so nothing was searched.</string>
+    <string name="rag_hits_none">No chunk matched the question.</string>
+    <string name="rag_col_fused">Fused</string>
+    <string name="rag_col_bm25">BM25</string>
+    <string name="rag_col_dense">Dense</string>
+    <string name="rag_col_rank_score">Rank and score (%1$s)</string>
+    <string name="rag_hit_document">Document %1$s</string>
+    <string name="rag_cell_rank">rank %1$d</string>
+    <string name="rag_list_absent">not in its list</string>
+    <string name="rag_hit_spoken_single">Rank %1$d, chunk %2$s of document %3$s, %4$s score %5$s</string>
+    <string name="rag_hit_spoken_hybrid">Fused rank %1$d, chunk %2$s of document %3$s, fused score %4$s. BM25: %5$s. Dense: %6$s.</string>
+    <string name="rag_context">Composed context</string>
+    <string name="rag_context_hint">Exactly the system message the library returned: the instruction and the numbered sources.</string>
+    <string name="rag_budget">Token budget</string>
+    <string name="rag_sources">Sources kept</string>
+    <string name="rag_source_entry">[%1$d] %2$s, document %3$s</string>
+    <string name="rag_dropped_label">Dropped</string>
+    <string name="rag_citations">Citation check</string>
+    <string name="rag_citations_hint">Markers in the scripted reply, checked against the sources the budget kept.</string>
+    <string name="rag_reply">Scripted reply</string>
+    <string name="rag_citations_none">The reply has no citation markers.</string>
+    <string name="rag_badge_cited">[%1$d] cited</string>
+    <string name="rag_badge_unknown">[%1$d] not a source</string>
+    <string name="rag_metrics">Retrieval metrics</string>
+    <string name="rag_metrics_none">Pick a labelled question, or type one exactly as written, to score the three modes.</string>
+    <string name="rag_metrics_question">Question: %1$s</string>
+    <string name="rag_metrics_level">Scored at %1$s level</string>
+    <string name="rag_metric_recall">Recall</string>
+    <string name="rag_metric_precision">Precision</string>
+    <string name="rag_metric_rr">Recip. rank</string>
+    <string name="rag_metric_hit">Hit / miss</string>
+    <string name="rag_hit_yes">Hit</string>
+    <string name="rag_hit_no">Miss</string>
+    <string name="rag_metrics_row_spoken">%1$s: recall %2$s, precision %3$s, reciprocal rank %4$s, %5$s</string>
+    <string name="rag_error_title">Library error</string>
+    <string name="rag_error_reason">Reason from the library</string>
+    <string name="rag_error_invalid_options">The options are not valid.</string>
+    <string name="rag_error_no_embedder">This index has no embedder, so dense and hybrid search are not available.</string>
+    <string name="rag_error_invalid_embedding">The embedder returned vectors the library cannot use.</string>
+    <string name="rag_error_rate_limit">The provider is rate limiting.</string>
+    <string name="rag_error_timeout">The provider timed out.</string>
+    <string name="rag_error_invalid_output">The provider returned an invalid reply.</string>
+    <string name="rag_error_unavailable">The provider is unavailable.</string>
+    <string name="rag_note">The dense side is the built-in character n-gram hashing embedder, not a model: it matches similar spellings, not meaning.</string>
+    <string name="rag_footer">Fixtures live in contracts/rag and are shared with the TypeScript implementation. Replies are scripted: no real model is called.</string>
+    <plurals name="rag_status_budget">
+        <item quantity="one">The context needs at least %1$d token (budget %2$d)</item>
+        <item quantity="other">The context needs at least %1$d tokens (budget %2$d)</item>
+    </plurals>
+    <plurals name="rag_status_hits">
+        <item quantity="one">%1$d hit in mode %2$s</item>
+        <item quantity="other">%1$d hits in mode %2$s</item>
+    </plurals>
+    <plurals name="rag_top_k_spoken">
+        <item quantity="one">Up to %1$d result</item>
+        <item quantity="other">Up to %1$d results</item>
+    </plurals>
+    <plurals name="rag_chunks_count">
+        <item quantity="one">%1$d chunk</item>
+        <item quantity="other">%1$d chunks</item>
+    </plurals>
+    <plurals name="rag_budget_used">
+        <item quantity="one">%1$d of %2$d token used</item>
+        <item quantity="other">%1$d of %2$d tokens used</item>
+    </plurals>
+    <plurals name="rag_budget_needs">
+        <item quantity="one">Budget too small: the smallest message needs at least %1$d token (budget %2$d)</item>
+        <item quantity="other">Budget too small: the smallest message needs at least %1$d tokens (budget %2$d)</item>
+    </plurals>
+    <plurals name="rag_sources_kept">
+        <item quantity="one">%1$d source</item>
+        <item quantity="other">%1$d sources</item>
+    </plurals>
+    <plurals name="rag_dropped">
+        <item quantity="one">%1$d hit dropped by the budget</item>
+        <item quantity="other">%1$d hits dropped by the budget</item>
     </plurals>
 </resources>

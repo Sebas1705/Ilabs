@@ -1,0 +1,10 @@
+{
+  "name": "tokens-separators-only",
+  "setup": {
+    "kind": "tokens",
+    "text": " ¿¡ — !?  "
+  },
+  "expect": {
+    "tokens": []
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "bm25-length-normalization",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "long",
+        "text": "sol luna mar cielo"
+      },
+      {
+        "id": "short",
+        "text": "sol"
+      },
+      {
+        "id": "other",
+        "text": "nube"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "query": "sol",
+    "mode": "bm25"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "short#0",
+        "docId": "short",
+        "rank": 1,
+        "score": 0.5908617053374962
+      },
+      {
+        "chunkId": "long#0",
+        "docId": "long",
+        "rank": 2,
+        "score": 0.333550962690522
+      }
+    ]
+  }
+}

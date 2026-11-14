@@ -259,3 +259,34 @@ main:focus { outline: none; }
 @media (min-width: 720px) {
   .field-pair { grid-template-columns: 1fr 1fr; }
 }
+
+/* RAG page */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+.modes { border: 1px solid var(--border); border-radius: 8px; margin: 1rem 0; padding: 0.25rem 0.75rem 0.5rem; display: flex; flex-wrap: wrap; gap: 0 1.5rem; min-width: 0; }
+.modes legend { font-weight: 600; padding: 0 0.25rem; }
+.modes:disabled { opacity: 0.6; }
+.radio { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; min-width: 44px; font-weight: 600; cursor: pointer; }
+.radio input { width: 1.5rem; height: 1.5rem; margin: 0; accent-color: var(--accent); }
+.field input[type="number"] {
+  width: 100%; min-height: 44px; font: 400 1rem/1.45 var(--mono); color: var(--text); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0.75rem;
+}
+.field input[type="number"][aria-invalid="true"] { border-color: var(--err-fg); border-width: 2px; }
+.field input:disabled { opacity: 0.7; }
+.labelled { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.labelled-btn {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.125rem; width: 100%; min-height: 44px;
+  padding: 0.5rem 0.75rem; text-align: left; border-width: 2px;
+}
+.labelled-btn[aria-pressed="true"] { border-color: var(--accent); background: var(--bg); }
+.labelled-btn:disabled { cursor: default; opacity: 0.7; }
+.labelled-meta { font-weight: 400; font-size: 0.875rem; overflow-wrap: anywhere; }
+.hits th, .hits td, .metrics th, .metrics td { white-space: normal; vertical-align: top; padding: 0.5rem; }
+.hit-chunk { min-width: 9rem; overflow-wrap: anywhere; }
+.hit-score { min-width: 6rem; }
+.hit-score .tokenbar, .metrics .tokenbar { margin-top: 0.25rem; min-width: 3rem; }
+.ctx-budget { margin-bottom: 0.25rem; }
+.ctx-row[data-hit="yes"] { border-color: var(--accent); border-width: 2px; }

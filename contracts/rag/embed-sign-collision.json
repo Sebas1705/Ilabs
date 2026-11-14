@@ -1,0 +1,16 @@
+{
+  "name": "embed-sign-collision",
+  "setup": {
+    "kind": "embed",
+    "text": "ah a",
+    "dim": 4
+  },
+  "expect": {
+    "nonZero": [
+      [
+        0,
+        -1
+      ]
+    ]
+  }
+}

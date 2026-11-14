@@ -1,0 +1,20 @@
+{
+  "name": "citations-dedupe-order",
+  "setup": {
+    "kind": "citations",
+    "sources": [
+      1,
+      2,
+      3
+    ],
+    "answer": "See [2], then [1]; again [2] and [1], finally [3]."
+  },
+  "expect": {
+    "cited": [
+      2,
+      1,
+      3
+    ],
+    "unknown": []
+  }
+}

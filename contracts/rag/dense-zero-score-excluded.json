@@ -1,0 +1,35 @@
+{
+  "name": "dense-zero-score-excluded",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "gato"
+      },
+      {
+        "id": "b",
+        "text": "¿¡?"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "embedder": {
+      "type": "hash"
+    },
+    "query": "gato",
+    "mode": "dense"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a",
+        "rank": 1,
+        "score": 1
+      }
+    ]
+  }
+}

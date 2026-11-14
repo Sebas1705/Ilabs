@@ -1,0 +1,13 @@
+{
+  "name": "tokens-combining-mark-kept",
+  "setup": {
+    "kind": "tokens",
+    "text": "café café"
+  },
+  "expect": {
+    "tokens": [
+      "café",
+      "cafe"
+    ]
+  }
+}

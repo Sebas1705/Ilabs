@@ -1,0 +1,417 @@
+{
+  "name": "hybrid-default-candidates-fifty",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "c01",
+        "text": "clave"
+      },
+      {
+        "id": "c02",
+        "text": "clave relleno"
+      },
+      {
+        "id": "c03",
+        "text": "texto 3"
+      },
+      {
+        "id": "c04",
+        "text": "texto 4"
+      },
+      {
+        "id": "c05",
+        "text": "texto 5"
+      },
+      {
+        "id": "c06",
+        "text": "texto 6"
+      },
+      {
+        "id": "c07",
+        "text": "texto 7"
+      },
+      {
+        "id": "c08",
+        "text": "texto 8"
+      },
+      {
+        "id": "c09",
+        "text": "texto 9"
+      },
+      {
+        "id": "c10",
+        "text": "texto 10"
+      },
+      {
+        "id": "c11",
+        "text": "texto 11"
+      },
+      {
+        "id": "c12",
+        "text": "texto 12"
+      },
+      {
+        "id": "c13",
+        "text": "texto 13"
+      },
+      {
+        "id": "c14",
+        "text": "texto 14"
+      },
+      {
+        "id": "c15",
+        "text": "texto 15"
+      },
+      {
+        "id": "c16",
+        "text": "texto 16"
+      },
+      {
+        "id": "c17",
+        "text": "texto 17"
+      },
+      {
+        "id": "c18",
+        "text": "texto 18"
+      },
+      {
+        "id": "c19",
+        "text": "texto 19"
+      },
+      {
+        "id": "c20",
+        "text": "texto 20"
+      },
+      {
+        "id": "c21",
+        "text": "texto 21"
+      },
+      {
+        "id": "c22",
+        "text": "texto 22"
+      },
+      {
+        "id": "c23",
+        "text": "texto 23"
+      },
+      {
+        "id": "c24",
+        "text": "texto 24"
+      },
+      {
+        "id": "c25",
+        "text": "texto 25"
+      },
+      {
+        "id": "c26",
+        "text": "texto 26"
+      },
+      {
+        "id": "c27",
+        "text": "texto 27"
+      },
+      {
+        "id": "c28",
+        "text": "texto 28"
+      },
+      {
+        "id": "c29",
+        "text": "texto 29"
+      },
+      {
+        "id": "c30",
+        "text": "texto 30"
+      },
+      {
+        "id": "c31",
+        "text": "texto 31"
+      },
+      {
+        "id": "c32",
+        "text": "texto 32"
+      },
+      {
+        "id": "c33",
+        "text": "texto 33"
+      },
+      {
+        "id": "c34",
+        "text": "texto 34"
+      },
+      {
+        "id": "c35",
+        "text": "texto 35"
+      },
+      {
+        "id": "c36",
+        "text": "texto 36"
+      },
+      {
+        "id": "c37",
+        "text": "texto 37"
+      },
+      {
+        "id": "c38",
+        "text": "texto 38"
+      },
+      {
+        "id": "c39",
+        "text": "texto 39"
+      },
+      {
+        "id": "c40",
+        "text": "texto 40"
+      },
+      {
+        "id": "c41",
+        "text": "texto 41"
+      },
+      {
+        "id": "c42",
+        "text": "texto 42"
+      },
+      {
+        "id": "c43",
+        "text": "texto 43"
+      },
+      {
+        "id": "c44",
+        "text": "texto 44"
+      },
+      {
+        "id": "c45",
+        "text": "texto 45"
+      },
+      {
+        "id": "c46",
+        "text": "texto 46"
+      },
+      {
+        "id": "c47",
+        "text": "texto 47"
+      },
+      {
+        "id": "c48",
+        "text": "texto 48"
+      },
+      {
+        "id": "c49",
+        "text": "texto 49"
+      },
+      {
+        "id": "c50",
+        "text": "texto 50"
+      },
+      {
+        "id": "c51",
+        "text": "texto 51"
+      },
+      {
+        "id": "c52",
+        "text": "texto 52"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "embedder": {
+      "type": "script",
+      "responses": [
+        [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            52
+          ],
+          [
+            51
+          ],
+          [
+            50
+          ],
+          [
+            49
+          ],
+          [
+            48
+          ],
+          [
+            47
+          ],
+          [
+            46
+          ],
+          [
+            45
+          ],
+          [
+            44
+          ],
+          [
+            43
+          ],
+          [
+            42
+          ],
+          [
+            41
+          ],
+          [
+            40
+          ],
+          [
+            39
+          ],
+          [
+            38
+          ],
+          [
+            37
+          ],
+          [
+            36
+          ],
+          [
+            35
+          ],
+          [
+            34
+          ],
+          [
+            33
+          ],
+          [
+            32
+          ],
+          [
+            31
+          ],
+          [
+            30
+          ],
+          [
+            29
+          ],
+          [
+            28
+          ],
+          [
+            27
+          ],
+          [
+            26
+          ],
+          [
+            25
+          ],
+          [
+            24
+          ],
+          [
+            23
+          ],
+          [
+            22
+          ],
+          [
+            21
+          ],
+          [
+            20
+          ],
+          [
+            19
+          ],
+          [
+            18
+          ],
+          [
+            17
+          ],
+          [
+            16
+          ],
+          [
+            15
+          ],
+          [
+            14
+          ],
+          [
+            13
+          ],
+          [
+            12
+          ],
+          [
+            11
+          ],
+          [
+            10
+          ],
+          [
+            9
+          ],
+          [
+            8
+          ],
+          [
+            7
+          ],
+          [
+            6
+          ],
+          [
+            5
+          ],
+          [
+            4
+          ],
+          [
+            1
+          ]
+        ],
+        [
+          [
+            1
+          ]
+        ]
+      ]
+    },
+    "query": "clave",
+    "mode": "hybrid",
+    "topK": 3
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "c02#0",
+        "docId": "c02",
+        "rank": 1,
+        "score": 0.025219941348973606,
+        "bm25Rank": 2,
+        "denseRank": 50
+      },
+      {
+        "chunkId": "c01#0",
+        "docId": "c01",
+        "rank": 2,
+        "score": 0.01639344262295082,
+        "bm25Rank": 1
+      },
+      {
+        "chunkId": "c03#0",
+        "docId": "c03",
+        "rank": 3,
+        "score": 0.01639344262295082,
+        "denseRank": 1
+      }
+    ]
+  }
+}

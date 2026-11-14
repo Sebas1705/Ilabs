@@ -1,0 +1,45 @@
+{
+  "name": "hybrid-symmetric-tie-index-order",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "x",
+        "text": "gato gatos"
+      },
+      {
+        "id": "y",
+        "text": "gato gato cosa mas"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "embedder": {
+      "type": "hash"
+    },
+    "query": "gato",
+    "mode": "hybrid"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "x#0",
+        "docId": "x",
+        "rank": 1,
+        "score": 0.03252247488101534,
+        "bm25Rank": 2,
+        "denseRank": 1
+      },
+      {
+        "chunkId": "y#0",
+        "docId": "y",
+        "rank": 2,
+        "score": 0.03252247488101534,
+        "bm25Rank": 1,
+        "denseRank": 2
+      }
+    ]
+  }
+}

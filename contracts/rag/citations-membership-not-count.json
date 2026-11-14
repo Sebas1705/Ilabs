@@ -1,0 +1,20 @@
+{
+  "name": "citations-membership-not-count",
+  "setup": {
+    "kind": "citations",
+    "sources": [
+      2,
+      3
+    ],
+    "answer": "[1] [2] [3]"
+  },
+  "expect": {
+    "cited": [
+      2,
+      3
+    ],
+    "unknown": [
+      1
+    ]
+  }
+}

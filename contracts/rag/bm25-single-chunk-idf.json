@@ -1,0 +1,28 @@
+{
+  "name": "bm25-single-chunk-idf",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "d",
+        "text": "gato negro"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "query": "gato",
+    "mode": "bm25"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "d#0",
+        "docId": "d",
+        "rank": 1,
+        "score": 0.28768207245178085
+      }
+    ]
+  }
+}

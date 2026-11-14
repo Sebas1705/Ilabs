@@ -1,0 +1,17 @@
+{
+  "name": "citations-not-markers",
+  "setup": {
+    "kind": "citations",
+    "sources": [
+      1,
+      2
+    ],
+    "answer": "[1,2] [ 1 ] [01] [0] [1a] [-1] [+1] [] [1 ] [2]"
+  },
+  "expect": {
+    "cited": [
+      2
+    ],
+    "unknown": []
+  }
+}

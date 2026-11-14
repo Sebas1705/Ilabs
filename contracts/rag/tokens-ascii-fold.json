@@ -1,0 +1,15 @@
+{
+  "name": "tokens-ascii-fold",
+  "setup": {
+    "kind": "tokens",
+    "text": "Hello WORLD, MiXeD case"
+  },
+  "expect": {
+    "tokens": [
+      "hello",
+      "world",
+      "mixed",
+      "case"
+    ]
+  }
+}

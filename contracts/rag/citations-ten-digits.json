@@ -1,0 +1,16 @@
+{
+  "name": "citations-ten-digits",
+  "setup": {
+    "kind": "citations",
+    "sources": [
+      1
+    ],
+    "answer": "[1234567890] [12345678901] [123456789]"
+  },
+  "expect": {
+    "cited": [],
+    "unknown": [
+      123456789
+    ]
+  }
+}

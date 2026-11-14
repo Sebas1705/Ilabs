@@ -1,0 +1,44 @@
+{
+  "name": "chunk-lone-cr-is-ordinary",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "Uno\r\rDos\n\nTres"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 7
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "Uno\r\rDo",
+        "start": 0,
+        "end": 7
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "s",
+        "start": 7,
+        "end": 8
+      },
+      {
+        "id": "d#2",
+        "docId": "d",
+        "index": 2,
+        "text": "Tres",
+        "start": 10,
+        "end": 14
+      }
+    ]
+  }
+}

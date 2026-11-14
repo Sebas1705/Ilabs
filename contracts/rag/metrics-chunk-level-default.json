@@ -1,0 +1,25 @@
+{
+  "name": "metrics-chunk-level-default",
+  "setup": {
+    "kind": "metrics",
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a"
+      },
+      {
+        "chunkId": "b#0",
+        "docId": "b"
+      }
+    ],
+    "relevant": [
+      "a"
+    ]
+  },
+  "expect": {
+    "recallAtK": 0,
+    "precisionAtK": 0,
+    "reciprocalRank": 0,
+    "hit": false
+  }
+}

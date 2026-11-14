@@ -1,0 +1,21 @@
+{
+  "name": "invalid-empty-doc-id",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "",
+        "text": "uno"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

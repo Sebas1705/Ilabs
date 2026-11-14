@@ -1,0 +1,40 @@
+{
+  "name": "chunk-paragraph-leading-trailing-breaks",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "a",
+        "text": "\nUno\n\nDos\n"
+      },
+      {
+        "id": "b",
+        "text": "\r\nTres\r\n"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 20
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "a#0",
+        "docId": "a",
+        "index": 0,
+        "text": "Uno\n\nDos",
+        "start": 1,
+        "end": 9
+      },
+      {
+        "id": "b#0",
+        "docId": "b",
+        "index": 0,
+        "text": "Tres",
+        "start": 2,
+        "end": 6
+      }
+    ]
+  }
+}

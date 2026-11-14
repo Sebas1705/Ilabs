@@ -1,0 +1,21 @@
+{
+  "name": "invalid-unknown-level",
+  "setup": {
+    "kind": "metrics",
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a"
+      }
+    ],
+    "relevant": [
+      "a#0"
+    ],
+    "level": "page"
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

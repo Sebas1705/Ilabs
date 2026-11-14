@@ -39,4 +39,7 @@ project(":modules:context-kotlin").projectDir = file("modules/context/kotlin")
 include(":modules:evals-kotlin")
 project(":modules:evals-kotlin").projectDir = file("modules/evals/kotlin")
 
+include(":modules:rag-kotlin")
+project(":modules:rag-kotlin").projectDir = file("modules/rag/kotlin")
+
 include(":demos:android")

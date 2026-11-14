@@ -1,0 +1,28 @@
+{
+  "name": "chunk-paragraph-dropped-inside-pack",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "Uno\n\n \n\nDos"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 20
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "Uno\n\n \n\nDos",
+        "start": 0,
+        "end": 11
+      }
+    ]
+  }
+}

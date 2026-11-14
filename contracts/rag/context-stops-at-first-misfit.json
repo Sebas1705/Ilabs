@@ -1,0 +1,42 @@
+{
+  "name": "context-stops-at-first-misfit",
+  "setup": {
+    "kind": "context",
+    "documents": [
+      {
+        "id": "mid",
+        "text": "Un faro rojo en la costa norte."
+      },
+      {
+        "id": "long",
+        "text": "Faro, faro, faro: el faro del puerto se enciende al anochecer y se ve desde muy lejos."
+      },
+      {
+        "id": "top",
+        "text": "Faro."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 200
+    },
+    "query": "faro",
+    "mode": "bm25",
+    "topK": 3,
+    "maxTokens": 52
+  },
+  "expect": {
+    "message": {
+      "role": "system",
+      "content": "Answer the question using only the numbered sources below. Cite the sources you use as [n]. If the sources do not contain the answer, say so.\n\n[1] Faro."
+    },
+    "sources": [
+      {
+        "n": 1,
+        "chunkId": "top#0",
+        "docId": "top"
+      }
+    ],
+    "droppedCount": 2
+  }
+}

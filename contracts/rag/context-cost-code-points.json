@@ -1,0 +1,33 @@
+{
+  "name": "context-cost-code-points",
+  "setup": {
+    "kind": "context",
+    "documents": [
+      {
+        "id": "rain",
+        "text": "Lluvia 🌧🌧🌧🌧🌧🌧🌧🌧🌧🌧🌧🌧"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "query": "lluvia",
+    "mode": "bm25",
+    "maxTokens": 46
+  },
+  "expect": {
+    "message": {
+      "role": "system",
+      "content": "Answer the question using only the numbered sources below. Cite the sources you use as [n]. If the sources do not contain the answer, say so.\n\n[1] Lluvia 🌧🌧🌧🌧🌧🌧🌧🌧🌧🌧🌧🌧"
+    },
+    "sources": [
+      {
+        "n": 1,
+        "chunkId": "rain#0",
+        "docId": "rain"
+      }
+    ],
+    "droppedCount": 0
+  }
+}

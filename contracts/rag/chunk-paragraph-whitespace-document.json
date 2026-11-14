@@ -1,0 +1,19 @@
+{
+  "name": "chunk-paragraph-whitespace-document",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "\n\n \t \n\n\r\n"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    }
+  },
+  "expect": {
+    "chunks": []
+  }
+}

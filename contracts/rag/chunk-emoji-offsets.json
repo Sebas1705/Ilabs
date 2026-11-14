@@ -1,0 +1,61 @@
+{
+  "name": "chunk-emoji-offsets",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "😀 hola 🎉 adiós"
+      }
+    ],
+    "chunking": {
+      "type": "fixed",
+      "size": 4,
+      "overlap": 1
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "😀 ho",
+        "start": 0,
+        "end": 4
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "ola ",
+        "start": 3,
+        "end": 7
+      },
+      {
+        "id": "d#2",
+        "docId": "d",
+        "index": 2,
+        "text": " 🎉 a",
+        "start": 6,
+        "end": 10
+      },
+      {
+        "id": "d#3",
+        "docId": "d",
+        "index": 3,
+        "text": "adió",
+        "start": 9,
+        "end": 13
+      },
+      {
+        "id": "d#4",
+        "docId": "d",
+        "index": 4,
+        "text": "ós",
+        "start": 12,
+        "end": 14
+      }
+    ]
+  }
+}

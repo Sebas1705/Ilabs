@@ -1,0 +1,22 @@
+{
+  "name": "tokens-punctuation-separators",
+  "setup": {
+    "kind": "tokens",
+    "text": "state-of-the-art: it's (really) snake_case/path.v1!"
+  },
+  "expect": {
+    "tokens": [
+      "state",
+      "of",
+      "the",
+      "art",
+      "it",
+      "s",
+      "really",
+      "snake",
+      "case",
+      "path",
+      "v1"
+    ]
+  }
+}

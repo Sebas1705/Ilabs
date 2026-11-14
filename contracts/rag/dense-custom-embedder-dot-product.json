@@ -1,0 +1,67 @@
+{
+  "name": "dense-custom-embedder-dot-product",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno"
+      },
+      {
+        "id": "b",
+        "text": "dos"
+      },
+      {
+        "id": "c",
+        "text": "tres"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "embedder": {
+      "type": "script",
+      "responses": [
+        [
+          [
+            2,
+            0
+          ],
+          [
+            0.5,
+            0.5
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            0.5
+          ]
+        ]
+      ]
+    },
+    "query": "hola",
+    "mode": "dense"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a",
+        "rank": 1,
+        "score": 2
+      },
+      {
+        "chunkId": "b#0",
+        "docId": "b",
+        "rank": 2,
+        "score": 0.75
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "metrics-reciprocal-rank",
+  "setup": {
+    "kind": "metrics",
+    "hits": [
+      {
+        "chunkId": "x#0",
+        "docId": "x"
+      },
+      {
+        "chunkId": "y#0",
+        "docId": "y"
+      },
+      {
+        "chunkId": "z#0",
+        "docId": "z"
+      }
+    ],
+    "relevant": [
+      "y#0"
+    ]
+  },
+  "expect": {
+    "recallAtK": 1,
+    "precisionAtK": 0.3333333333333333,
+    "reciprocalRank": 0.5,
+    "hit": true
+  }
+}

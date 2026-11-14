@@ -1,0 +1,28 @@
+{
+  "name": "chunk-paragraph-exact-max-size",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "abc\n\nde"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 7
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "abc\n\nde",
+        "start": 0,
+        "end": 7
+      }
+    ]
+  }
+}

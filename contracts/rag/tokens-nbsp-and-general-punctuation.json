@@ -1,0 +1,20 @@
+{
+  "name": "tokens-nbsp-and-general-punctuation",
+  "setup": {
+    "kind": "tokens",
+    "text": "uno dos — tres “cuatro” cinco…seis siete «ocho» ·nueve"
+  },
+  "expect": {
+    "tokens": [
+      "uno",
+      "dos",
+      "tres",
+      "cuatro",
+      "cinco",
+      "seis",
+      "siete",
+      "ocho",
+      "nueve"
+    ]
+  }
+}

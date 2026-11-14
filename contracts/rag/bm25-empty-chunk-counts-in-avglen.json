@@ -1,0 +1,36 @@
+{
+  "name": "bm25-empty-chunk-counts-in-avglen",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno dos"
+      },
+      {
+        "id": "b",
+        "text": "¿¡?"
+      },
+      {
+        "id": "c",
+        "text": "dos tres cuatro"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "query": "uno",
+    "mode": "bm25"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a",
+        "rank": 1,
+        "score": 0.9066488893385708
+      }
+    ]
+  }
+}

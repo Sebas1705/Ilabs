@@ -1,0 +1,44 @@
+{
+  "name": "chunk-paragraph-spaced-breaks-not-separator",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "Uno\n \nDos"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 4
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "Uno\n",
+        "start": 0,
+        "end": 4
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": " \nDo",
+        "start": 4,
+        "end": 8
+      },
+      {
+        "id": "d#2",
+        "docId": "d",
+        "index": 2,
+        "text": "s",
+        "start": 8,
+        "end": 9
+      }
+    ]
+  }
+}

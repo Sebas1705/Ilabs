@@ -1,0 +1,36 @@
+{
+  "name": "dense-negative-score-excluded",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "pos",
+        "text": "cielo"
+      },
+      {
+        "id": "neg",
+        "text": "luna"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "embedder": {
+      "type": "hash",
+      "dim": 2
+    },
+    "query": "sol",
+    "mode": "dense"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "pos#0",
+        "docId": "pos",
+        "rank": 1,
+        "score": 0.8944271909999159
+      }
+    ]
+  }
+}

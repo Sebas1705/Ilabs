@@ -1,0 +1,60 @@
+{
+  "name": "chunk-paragraph-oversized-flushes",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "Hi.\n\nabcdefghijkl\n\nYo."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 5
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "Hi.",
+        "start": 0,
+        "end": 3
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "abcde",
+        "start": 5,
+        "end": 10
+      },
+      {
+        "id": "d#2",
+        "docId": "d",
+        "index": 2,
+        "text": "fghij",
+        "start": 10,
+        "end": 15
+      },
+      {
+        "id": "d#3",
+        "docId": "d",
+        "index": 3,
+        "text": "kl",
+        "start": 15,
+        "end": 17
+      },
+      {
+        "id": "d#4",
+        "docId": "d",
+        "index": 4,
+        "text": "Yo.",
+        "start": 19,
+        "end": 22
+      }
+    ]
+  }
+}

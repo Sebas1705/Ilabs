@@ -1,0 +1,32 @@
+{
+  "name": "chunk-paragraph-empty-document",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "empty",
+        "text": ""
+      },
+      {
+        "id": "b",
+        "text": "Hola."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "b#0",
+        "docId": "b",
+        "index": 0,
+        "text": "Hola.",
+        "start": 0,
+        "end": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "context-budget-exact",
+  "setup": {
+    "kind": "context",
+    "documents": [
+      {
+        "id": "a",
+        "text": "El tren sale a las ocho."
+      },
+      {
+        "id": "b",
+        "text": "El tren de las ocho tiene wifi."
+      },
+      {
+        "id": "c",
+        "text": "Hay un tren cada hora y el tren nocturno sale tarde."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "query": "tren",
+    "mode": "bm25",
+    "topK": 3,
+    "maxTokens": 62
+  },
+  "expect": {
+    "message": {
+      "role": "system",
+      "content": "Answer the question using only the numbered sources below. Cite the sources you use as [n]. If the sources do not contain the answer, say so.\n\n[1] Hay un tren cada hora y el tren nocturno sale tarde.\n\n[2] El tren sale a las ocho."
+    },
+    "sources": [
+      {
+        "n": 1,
+        "chunkId": "c#0",
+        "docId": "c"
+      },
+      {
+        "n": 2,
+        "chunkId": "a#0",
+        "docId": "a"
+      }
+    ],
+    "droppedCount": 1
+  }
+}

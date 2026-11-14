@@ -1,0 +1,38 @@
+{
+  "name": "invalid-embedding-checked-at-build",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno dos"
+      },
+      {
+        "id": "b",
+        "text": "dos tres"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    },
+    "embedder": {
+      "type": "script",
+      "responses": [
+        [
+          [
+            1,
+            0
+          ]
+        ]
+      ]
+    },
+    "query": "dos",
+    "mode": "bm25"
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_embedding"
+    }
+  }
+}

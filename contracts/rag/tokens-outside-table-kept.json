@@ -1,0 +1,16 @@
+{
+  "name": "tokens-outside-table-kept",
+  "setup": {
+    "kind": "tokens",
+    "text": "Łódź ŒUVRE Ÿ 日本語 Σοφία"
+  },
+  "expect": {
+    "tokens": [
+      "Łodź",
+      "Œuvre",
+      "Ÿ",
+      "日本語",
+      "Σοφία"
+    ]
+  }
+}

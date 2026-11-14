@@ -1,0 +1,36 @@
+{
+  "name": "chunk-paragraph-whitespace-dropped-before-packing",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "Uno\n\n \n\nDos"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 6
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "Uno",
+        "start": 0,
+        "end": 3
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "Dos",
+        "start": 8,
+        "end": 11
+      }
+    ]
+  }
+}

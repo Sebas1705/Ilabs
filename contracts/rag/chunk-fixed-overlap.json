@@ -1,0 +1,53 @@
+{
+  "name": "chunk-fixed-overlap",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "abcdefghij"
+      }
+    ],
+    "chunking": {
+      "type": "fixed",
+      "size": 4,
+      "overlap": 2
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "abcd",
+        "start": 0,
+        "end": 4
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "cdef",
+        "start": 2,
+        "end": 6
+      },
+      {
+        "id": "d#2",
+        "docId": "d",
+        "index": 2,
+        "text": "efgh",
+        "start": 4,
+        "end": 8
+      },
+      {
+        "id": "d#3",
+        "docId": "d",
+        "index": 3,
+        "text": "ghij",
+        "start": 6,
+        "end": 10
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "tokens-spanish-inverted-marks",
+  "setup": {
+    "kind": "tokens",
+    "text": "¿Qué hora es? ¡Ya!"
+  },
+  "expect": {
+    "tokens": [
+      "que",
+      "hora",
+      "es",
+      "ya"
+    ]
+  }
+}

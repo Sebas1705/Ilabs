@@ -1,0 +1,16 @@
+{
+  "name": "tokens-spanish-accents-fold",
+  "setup": {
+    "kind": "tokens",
+    "text": "Canción, ÁRBOL, pingüino y Ñandú"
+  },
+  "expect": {
+    "tokens": [
+      "cancion",
+      "arbol",
+      "pinguino",
+      "y",
+      "nandu"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "tokens-lone-surrogate",
+  "setup": {
+    "kind": "tokens",
+    "text": "a\ud800b \udc00 x\ud83d \ude00\ud83d"
+  },
+  "expect": {
+    "tokens": [
+      "a\ud800b",
+      "\udc00",
+      "x\ud83d",
+      "\ude00\ud83d"
+    ]
+  }
+}

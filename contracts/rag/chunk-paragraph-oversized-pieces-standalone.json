@@ -1,0 +1,44 @@
+{
+  "name": "chunk-paragraph-oversized-pieces-standalone",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "abcdefghij\n\nYo."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 8
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "abcdefgh",
+        "start": 0,
+        "end": 8
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "ij",
+        "start": 8,
+        "end": 10
+      },
+      {
+        "id": "d#2",
+        "docId": "d",
+        "index": 2,
+        "text": "Yo.",
+        "start": 12,
+        "end": 15
+      }
+    ]
+  }
+}

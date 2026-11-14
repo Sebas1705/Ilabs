@@ -1,0 +1,25 @@
+{
+  "name": "tokens-separator-range-edges",
+  "setup": {
+    "kind": "tokens",
+    "text": "ab c¿d eÀf g×h i÷j k῿l m n o⁯p q⁰r"
+  },
+  "expect": {
+    "tokens": [
+      "ab",
+      "c",
+      "d",
+      "eaf",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k῿l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q⁰r"
+    ]
+  }
+}

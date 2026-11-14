@@ -1,0 +1,45 @@
+{
+  "name": "answer-budget-too-small-after-no-call",
+  "setup": {
+    "kind": "answer",
+    "documents": [
+      {
+        "id": "es-biblioteca",
+        "text": "La biblioteca municipal abre de lunes a viernes, de nueve a ocho. Los sábados abre solo por la mañana.\n\nPara sacar un libro necesitas el carné de lector. El préstamo dura tres semanas y se puede renovar una vez.\n\n¿Perdiste el carné? Pide uno nuevo en el mostrador; la primera copia es gratis."
+      },
+      {
+        "id": "en-library",
+        "text": "The town library opens Monday to Friday, from nine to eight. On Saturdays it opens only in the morning.\n\nTo borrow a book you need a library card. A loan lasts three weeks and can be renewed once.\n\nLost your card? Ask for a new one at the front desk; the first copy is free."
+      },
+      {
+        "id": "es-taller",
+        "text": "El taller de bicicletas del barrio repara pinchazos y frenos. Trae la bici antes de las seis.\n\nUna reparación sencilla cuesta cinco euros; cambiar la cadena cuesta doce."
+      },
+      {
+        "id": "en-garden",
+        "text": "The community garden lends tools for free: spades, rakes and watering cans.\n\nVolunteers meet on Sunday mornings to water the vegetables and plant new seeds.\n\nBring gloves; the garden has none to lend."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 120
+    },
+    "query": "library card",
+    "mode": "bm25",
+    "maxTokens": 50,
+    "provider": {
+      "script": [
+        {
+          "response": "unused"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "budget_too_small",
+      "required": 64
+    },
+    "calls": 0
+  }
+}

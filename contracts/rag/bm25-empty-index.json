@@ -1,0 +1,21 @@
+{
+  "name": "bm25-empty-index",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "e",
+        "text": ""
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    },
+    "query": "hola",
+    "mode": "bm25"
+  },
+  "expect": {
+    "hits": []
+  }
+}

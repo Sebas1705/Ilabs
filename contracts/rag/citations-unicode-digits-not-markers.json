@@ -1,0 +1,16 @@
+{
+  "name": "citations-unicode-digits-not-markers",
+  "setup": {
+    "kind": "citations",
+    "sources": [
+      1
+    ],
+    "answer": "[٢] [３] [1]"
+  },
+  "expect": {
+    "cited": [
+      1
+    ],
+    "unknown": []
+  }
+}

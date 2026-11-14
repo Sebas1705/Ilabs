@@ -1,0 +1,35 @@
+{
+  "name": "dense-similar-spelling-beats-unrelated",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "cars",
+        "text": "Reparamos coches y motos."
+      },
+      {
+        "id": "bikes",
+        "text": "Las bicicletas nuevas."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "embedder": {
+      "type": "hash"
+    },
+    "query": "bicicleta",
+    "mode": "dense"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "bikes#0",
+        "docId": "bikes",
+        "rank": 1,
+        "score": 0.5333333333333333
+      }
+    ]
+  }
+}

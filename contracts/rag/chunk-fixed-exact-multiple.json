@@ -1,0 +1,37 @@
+{
+  "name": "chunk-fixed-exact-multiple",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "abcdefgh"
+      }
+    ],
+    "chunking": {
+      "type": "fixed",
+      "size": 4,
+      "overlap": 0
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "abcd",
+        "start": 0,
+        "end": 4
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "efgh",
+        "start": 4,
+        "end": 8
+      }
+    ]
+  }
+}

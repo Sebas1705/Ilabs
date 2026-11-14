@@ -1,0 +1,31 @@
+{
+  "name": "invalid-hash-dim-zero-in-search",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno dos"
+      },
+      {
+        "id": "b",
+        "text": "dos tres"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    },
+    "embedder": {
+      "type": "hash",
+      "dim": 0
+    },
+    "query": "dos",
+    "mode": "dense"
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

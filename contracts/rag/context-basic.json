@@ -1,0 +1,51 @@
+{
+  "name": "context-basic",
+  "setup": {
+    "kind": "context",
+    "documents": [
+      {
+        "id": "es-biblioteca",
+        "text": "La biblioteca municipal abre de lunes a viernes, de nueve a ocho. Los sábados abre solo por la mañana.\n\nPara sacar un libro necesitas el carné de lector. El préstamo dura tres semanas y se puede renovar una vez.\n\n¿Perdiste el carné? Pide uno nuevo en el mostrador; la primera copia es gratis."
+      },
+      {
+        "id": "en-library",
+        "text": "The town library opens Monday to Friday, from nine to eight. On Saturdays it opens only in the morning.\n\nTo borrow a book you need a library card. A loan lasts three weeks and can be renewed once.\n\nLost your card? Ask for a new one at the front desk; the first copy is free."
+      },
+      {
+        "id": "es-taller",
+        "text": "El taller de bicicletas del barrio repara pinchazos y frenos. Trae la bici antes de las seis.\n\nUna reparación sencilla cuesta cinco euros; cambiar la cadena cuesta doce."
+      },
+      {
+        "id": "en-garden",
+        "text": "The community garden lends tools for free: spades, rakes and watering cans.\n\nVolunteers meet on Sunday mornings to water the vegetables and plant new seeds.\n\nBring gloves; the garden has none to lend."
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 120
+    },
+    "query": "¿Cuánto dura el préstamo?",
+    "mode": "bm25",
+    "topK": 2,
+    "maxTokens": 200
+  },
+  "expect": {
+    "message": {
+      "role": "system",
+      "content": "Answer the question using only the numbered sources below. Cite the sources you use as [n]. If the sources do not contain the answer, say so.\n\n[1] Para sacar un libro necesitas el carné de lector. El préstamo dura tres semanas y se puede renovar una vez.\n\n[2] ¿Perdiste el carné? Pide uno nuevo en el mostrador; la primera copia es gratis."
+    },
+    "sources": [
+      {
+        "n": 1,
+        "chunkId": "es-biblioteca#1",
+        "docId": "es-biblioteca"
+      },
+      {
+        "n": 2,
+        "chunkId": "es-biblioteca#2",
+        "docId": "es-biblioteca"
+      }
+    ],
+    "droppedCount": 0
+  }
+}

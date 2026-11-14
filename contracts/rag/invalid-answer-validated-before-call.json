@@ -1,0 +1,37 @@
+{
+  "name": "invalid-answer-validated-before-call",
+  "setup": {
+    "kind": "answer",
+    "documents": [
+      {
+        "id": "a",
+        "text": "uno dos"
+      },
+      {
+        "id": "b",
+        "text": "dos tres"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 10
+    },
+    "query": "dos",
+    "mode": "bm25",
+    "topK": 0,
+    "maxTokens": 100,
+    "provider": {
+      "script": [
+        {
+          "response": "unused"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    },
+    "calls": 0
+  }
+}

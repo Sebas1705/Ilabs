@@ -1,0 +1,20 @@
+{
+  "name": "embed-dim-small",
+  "setup": {
+    "kind": "embed",
+    "text": "hola mundo",
+    "dim": 3
+  },
+  "expect": {
+    "nonZero": [
+      [
+        0,
+        -0.8944271909999159
+      ],
+      [
+        1,
+        0.4472135954999579
+      ]
+    ]
+  }
+}

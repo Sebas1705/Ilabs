@@ -29,6 +29,7 @@ class MainActivity : ComponentActivity() {
         val structuredLoader = assets.loaderFor("structured")
         val contextLoader = assets.loaderFor("context")
         val evalsLoader = assets.loaderFor("evals")
+        val ragLoader = assets.loaderFor("rag")
         setContent {
             ILabsTheme {
                 // Saved state, so the open module survives rotation, process death and "Don't keep activities".
@@ -55,6 +56,11 @@ class MainActivity : ComponentActivity() {
                         val vm: EvalsViewModel = viewModel(factory = EvalsViewModel.factory(evalsLoader))
                         val state by vm.uiState.collectAsStateWithLifecycle()
                         EvalsScreen(state, EvalsActions.of(vm), onBack = { module = null })
+                    }
+                    DemoModule.RAG -> {
+                        val vm: RagViewModel = viewModel(factory = RagViewModel.factory(ragLoader))
+                        val state by vm.uiState.collectAsStateWithLifecycle()
+                        RagScreen(state, RagActions.of(vm), onBack = { module = null })
                     }
                 }
             }

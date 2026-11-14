@@ -1,0 +1,22 @@
+{
+  "name": "tokens-latin1-letterlike-separators",
+  "setup": {
+    "kind": "tokens",
+    "text": "1º 2ª nº 5µm x² a¹b³c ¼d½e¾"
+  },
+  "expect": {
+    "tokens": [
+      "1",
+      "2",
+      "n",
+      "5",
+      "m",
+      "x",
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+    ]
+  }
+}

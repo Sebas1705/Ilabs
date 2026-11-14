@@ -1,0 +1,23 @@
+{
+  "name": "metrics-relevant-duplicates-collapsed",
+  "setup": {
+    "kind": "metrics",
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a"
+      }
+    ],
+    "relevant": [
+      "a#0",
+      "a#0",
+      "b#0"
+    ]
+  },
+  "expect": {
+    "recallAtK": 0.5,
+    "precisionAtK": 1,
+    "reciprocalRank": 1,
+    "hit": true
+  }
+}

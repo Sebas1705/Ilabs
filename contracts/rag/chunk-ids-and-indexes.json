@@ -1,0 +1,57 @@
+{
+  "name": "chunk-ids-and-indexes",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "doc-a",
+        "text": "uno dos tres"
+      },
+      {
+        "id": "notes#2024",
+        "text": "xyz"
+      }
+    ],
+    "chunking": {
+      "type": "fixed",
+      "size": 5,
+      "overlap": 0
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "doc-a#0",
+        "docId": "doc-a",
+        "index": 0,
+        "text": "uno d",
+        "start": 0,
+        "end": 5
+      },
+      {
+        "id": "doc-a#1",
+        "docId": "doc-a",
+        "index": 1,
+        "text": "os tr",
+        "start": 5,
+        "end": 10
+      },
+      {
+        "id": "doc-a#2",
+        "docId": "doc-a",
+        "index": 2,
+        "text": "es",
+        "start": 10,
+        "end": 12
+      },
+      {
+        "id": "notes#2024#0",
+        "docId": "notes#2024",
+        "index": 0,
+        "text": "xyz",
+        "start": 0,
+        "end": 3
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "chunk-fixed-no-contained-window",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "abcdefghij"
+      }
+    ],
+    "chunking": {
+      "type": "fixed",
+      "size": 6,
+      "overlap": 4
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "abcdef",
+        "start": 0,
+        "end": 6
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "cdefgh",
+        "start": 2,
+        "end": 8
+      },
+      {
+        "id": "d#2",
+        "docId": "d",
+        "index": 2,
+        "text": "efghij",
+        "start": 4,
+        "end": 10
+      }
+    ]
+  }
+}

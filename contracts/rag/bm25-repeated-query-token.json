@@ -1,0 +1,36 @@
+{
+  "name": "bm25-repeated-query-token",
+  "setup": {
+    "kind": "search",
+    "documents": [
+      {
+        "id": "a",
+        "text": "gato perro"
+      },
+      {
+        "id": "b",
+        "text": "perro raton"
+      },
+      {
+        "id": "c",
+        "text": "pez"
+      }
+    ],
+    "chunking": {
+      "type": "paragraph",
+      "maxSize": 100
+    },
+    "query": "gato gato GATO",
+    "mode": "bm25"
+  },
+  "expect": {
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a",
+        "rank": 1,
+        "score": 0.9066488893385708
+      }
+    ]
+  }
+}

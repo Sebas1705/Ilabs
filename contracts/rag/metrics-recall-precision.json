@@ -1,0 +1,35 @@
+{
+  "name": "metrics-recall-precision",
+  "setup": {
+    "kind": "metrics",
+    "hits": [
+      {
+        "chunkId": "a#0",
+        "docId": "a"
+      },
+      {
+        "chunkId": "b#0",
+        "docId": "b"
+      },
+      {
+        "chunkId": "a#1",
+        "docId": "a"
+      },
+      {
+        "chunkId": "c#0",
+        "docId": "c"
+      }
+    ],
+    "relevant": [
+      "a#1",
+      "c#0",
+      "d#0"
+    ]
+  },
+  "expect": {
+    "recallAtK": 0.6666666666666666,
+    "precisionAtK": 0.5,
+    "reciprocalRank": 0.3333333333333333,
+    "hit": true
+  }
+}

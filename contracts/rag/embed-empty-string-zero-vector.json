@@ -1,0 +1,10 @@
+{
+  "name": "embed-empty-string-zero-vector",
+  "setup": {
+    "kind": "embed",
+    "text": ""
+  },
+  "expect": {
+    "nonZero": []
+  }
+}

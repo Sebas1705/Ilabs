@@ -1,0 +1,53 @@
+{
+  "name": "chunk-lone-surrogate",
+  "setup": {
+    "kind": "chunk",
+    "documents": [
+      {
+        "id": "d",
+        "text": "a\ud800bc\udc00d😀"
+      }
+    ],
+    "chunking": {
+      "type": "fixed",
+      "size": 2,
+      "overlap": 0
+    }
+  },
+  "expect": {
+    "chunks": [
+      {
+        "id": "d#0",
+        "docId": "d",
+        "index": 0,
+        "text": "a\ud800",
+        "start": 0,
+        "end": 2
+      },
+      {
+        "id": "d#1",
+        "docId": "d",
+        "index": 1,
+        "text": "bc",
+        "start": 2,
+        "end": 4
+      },
+      {
+        "id": "d#2",
+        "docId": "d",
+        "index": 2,
+        "text": "\udc00d",
+        "start": 4,
+        "end": 6
+      },
+      {
+        "id": "d#3",
+        "docId": "d",
+        "index": 3,
+        "text": "😀",
+        "start": 6,
+        "end": 7
+      }
+    ]
+  }
+}
