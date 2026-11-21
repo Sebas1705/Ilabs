@@ -1,0 +1,13 @@
+{
+  "name": "invalid-nms-threshold-out-of-range",
+  "setup": {
+    "kind": "nms",
+    "detections": [],
+    "iouThreshold": 2
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

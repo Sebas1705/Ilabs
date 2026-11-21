@@ -1,0 +1,53 @@
+{
+  "name": "resize-bilinear-half-pixel-centers",
+  "setup": {
+    "kind": "resize",
+    "image": {
+      "width": 2,
+      "height": 1,
+      "data": [
+        8,
+        248,
+        88,
+        248,
+        8,
+        168
+      ]
+    },
+    "width": 8,
+    "height": 1,
+    "method": "bilinear"
+  },
+  "expect": {
+    "image": {
+      "width": 8,
+      "height": 1,
+      "data": [
+        8,
+        248,
+        88,
+        8,
+        248,
+        88,
+        38,
+        218,
+        98,
+        98,
+        158,
+        118,
+        158,
+        98,
+        138,
+        218,
+        38,
+        158,
+        248,
+        8,
+        168,
+        248,
+        8,
+        168
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "spec-invalid-padvalue-null",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float",
+        "padValue": null
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: input.padValue must be an integer from 0 to 255"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "classify-minscore-drops",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      0.5,
+      0.3,
+      0.15,
+      0.05
+    ],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "probabilities"
+      }
+    },
+    "options": {
+      "minScore": 0.2
+    }
+  },
+  "expect": {
+    "entries": [
+      {
+        "index": 0,
+        "label": "#0",
+        "score": 0.5
+      },
+      {
+        "index": 1,
+        "label": "#1",
+        "score": 0.3
+      }
+    ]
+  }
+}

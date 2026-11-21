@@ -1,0 +1,32 @@
+{
+  "name": "geometry-centercrop-downscale",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 5,
+    "srcHeight": 4,
+    "spec": {
+      "input": {
+        "width": 3,
+        "height": 3,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "centerCrop",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 0.8,
+      "scaleY": 0.75,
+      "offsetX": 0,
+      "offsetY": 0,
+      "newWidth": 4,
+      "newHeight": 3
+    }
+  }
+}

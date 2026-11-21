@@ -1,0 +1,23 @@
+{
+  "name": "invalid-resize-method",
+  "setup": {
+    "kind": "resize",
+    "image": {
+      "width": 1,
+      "height": 1,
+      "data": [
+        1,
+        2,
+        3
+      ]
+    },
+    "width": 1,
+    "height": 1,
+    "method": "cubic"
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

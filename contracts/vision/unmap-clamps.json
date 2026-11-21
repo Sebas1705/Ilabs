@@ -1,0 +1,60 @@
+{
+  "name": "unmap-clamps",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 640,
+    "srcHeight": 360,
+    "spec": {
+      "input": {
+        "width": 320,
+        "height": 320,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "boxes": [
+      {
+        "x1": -10,
+        "y1": 60,
+        "x2": 330,
+        "y2": 260
+      },
+      {
+        "x1": 300,
+        "y1": 200,
+        "x2": 400,
+        "y2": 300
+      }
+    ]
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "offsetX": 0,
+      "offsetY": 70,
+      "newWidth": 320,
+      "newHeight": 180
+    },
+    "unmapped": [
+      {
+        "x1": 0,
+        "y1": 0,
+        "x2": 640,
+        "y2": 360
+      },
+      {
+        "x1": 600,
+        "y1": 260,
+        "x2": 640,
+        "y2": 360
+      }
+    ]
+  }
+}

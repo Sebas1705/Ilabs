@@ -11,3 +11,6 @@ dist/
 *.iml
 .vscode/
 .claude/
+
+# Vision demo model files are downloaded on demand and never committed
+demos/vision-assets/models/

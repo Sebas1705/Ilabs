@@ -1,0 +1,29 @@
+{
+  "name": "invalid-classify-negative-probability",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      0.5,
+      -0.1
+    ],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "probabilities"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_output"
+    }
+  }
+}

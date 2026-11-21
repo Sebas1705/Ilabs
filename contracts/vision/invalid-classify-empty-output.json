@@ -1,0 +1,26 @@
+{
+  "name": "invalid-classify-empty-output",
+  "setup": {
+    "kind": "classify",
+    "output": [],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_output"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "invalid-ap-iou-threshold-null",
+  "setup": {
+    "kind": "metrics",
+    "op": "ap",
+    "detections": [],
+    "truths": [],
+    "iouThreshold": null
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

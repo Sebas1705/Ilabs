@@ -1,0 +1,44 @@
+{
+  "name": "classify-topk-ties-by-index",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      1,
+      5,
+      5,
+      5,
+      0
+    ],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "options": {
+      "topK": 2
+    }
+  },
+  "expect": {
+    "entries": [
+      {
+        "index": 1,
+        "label": "#1",
+        "score": 0.33057265651924345
+      },
+      {
+        "index": 2,
+        "label": "#2",
+        "score": 0.33057265651924345
+      }
+    ]
+  }
+}

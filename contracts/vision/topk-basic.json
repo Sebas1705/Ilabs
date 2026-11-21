@@ -1,0 +1,39 @@
+{
+  "name": "topk-basic",
+  "setup": {
+    "kind": "metrics",
+    "op": "topk",
+    "predictions": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        2,
+        1,
+        0
+      ],
+      [
+        3,
+        2,
+        1
+      ]
+    ],
+    "truths": [
+      0,
+      0,
+      0,
+      3
+    ],
+    "k": 2
+  },
+  "expect": {
+    "value": 0.75
+  }
+}

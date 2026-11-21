@@ -1,0 +1,49 @@
+{
+  "name": "classify-logits-softmax",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      2,
+      1,
+      0.1
+    ],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      },
+      "labels": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
+  },
+  "expect": {
+    "entries": [
+      {
+        "index": 0,
+        "label": "a",
+        "score": 0.6590011388859679
+      },
+      {
+        "index": 1,
+        "label": "b",
+        "score": 0.24243297070471392
+      },
+      {
+        "index": 2,
+        "label": "c",
+        "score": 0.09856589040931818
+      }
+    ]
+  }
+}

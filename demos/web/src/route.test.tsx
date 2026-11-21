@@ -14,7 +14,7 @@ const fake: RouteDef[] = [
 
 describe("route registry", () => {
   it("lists providers first (the default), then structured, context, evals, rag and guardrails", () => {
-    expect(ROUTES.map((r) => r.hash)).toEqual(["#/providers", "#/structured", "#/context", "#/evals", "#/rag", "#/guardrails"]);
+    expect(ROUTES.map((r) => r.hash)).toEqual(["#/providers", "#/structured", "#/context", "#/evals", "#/rag", "#/guardrails", "#/vision"]);
     expect(new Set(ROUTES.map((r) => r.id)).size).toBe(ROUTES.length);
   });
 

@@ -1,0 +1,22 @@
+{
+  "name": "iou-swapped-boxes",
+  "setup": {
+    "kind": "metrics",
+    "op": "iou",
+    "a": {
+      "x1": 10,
+      "y1": 10,
+      "x2": 0,
+      "y2": 0
+    },
+    "b": {
+      "x1": 10,
+      "y1": 10,
+      "x2": 0,
+      "y2": 0
+    }
+  },
+  "expect": {
+    "value": 0
+  }
+}

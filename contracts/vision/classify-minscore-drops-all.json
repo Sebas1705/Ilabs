@@ -1,0 +1,30 @@
+{
+  "name": "classify-minscore-drops-all",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      0.1,
+      0.2
+    ],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "probabilities"
+      }
+    },
+    "options": {
+      "minScore": 0.5
+    }
+  },
+  "expect": {
+    "entries": []
+  }
+}

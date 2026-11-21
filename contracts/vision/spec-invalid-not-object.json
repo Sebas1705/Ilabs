@@ -1,0 +1,13 @@
+{
+  "name": "spec-invalid-not-object",
+  "setup": {
+    "kind": "spec",
+    "spec": []
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: spec must be an object"
+    }
+  }
+}

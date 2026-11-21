@@ -1,0 +1,23 @@
+{
+  "name": "spec-invalid-missing-output",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: missing key: output"
+    }
+  }
+}

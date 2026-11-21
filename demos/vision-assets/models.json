@@ -1,0 +1,155 @@
+{
+  "$comment": "Pinned model cards of the vision demos. The model files are never committed: scripts/vision-models.mjs downloads them into demos/vision-assets/models/ (git-ignored) and verifies size and SHA-256. `spec` is a ModelSpec (contracts/vision/README.md) WITHOUT labels: `labels` names the labels file (one label per line); load it, set it as spec.labels and call parseModelSpec. `io.input` is the input tensor name and `io.outputs` maps each tensor name the @ilabs/vision decoders read (scores for a classifier; boxes, classes, scores, count for the `ssd` format) to the model's output tensor name; for TFLite `io.outputIndex` gives the output tensor index of the same names.",
+  "models": [
+    {
+      "id": "mobilenet-v2-onnx",
+      "name": "MobileNetV2 1.0 (ImageNet-1k), ONNX",
+      "task": "classification",
+      "runtime": "onnx",
+      "platform": "web",
+      "file": "mobilenetv2-12.onnx",
+      "url": "https://media.githubusercontent.com/media/onnx/models/c5cae0f1942c8d7727372c7b1f6b485aa39e4421/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx",
+      "sha256": "c0c3f76d93fa3fd6580652a45618618a220fced18babf65774ed169de0432ad5",
+      "size": 13964571,
+      "license": {
+        "spdx": "Apache-2.0",
+        "page": "https://github.com/onnx/models/blob/c5cae0f1942c8d7727372c7b1f6b485aa39e4421/validated/vision/classification/mobilenet/README.md",
+        "note": "The model page ends with 'License: Apache 2.0'; the repository LICENSE is Apache-2.0 too. The URL is pinned to the commit c5cae0f (the file is stored with Git LFS; the SHA-256 equals the LFS object id of that commit)."
+      },
+      "upstream": "https://github.com/onnx/models/tree/c5cae0f1942c8d7727372c7b1f6b485aa39e4421/validated/vision/classification/mobilenet",
+      "labels": "labels/imagenet-1k.txt",
+      "io": { "input": "input", "outputs": { "scores": "output" } },
+      "spec": {
+        "input": {
+          "width": 224,
+          "height": 224,
+          "layout": "nchw",
+          "channels": "rgb",
+          "mode": "centerCrop",
+          "resample": "bilinear",
+          "dtype": "float",
+          "scale": 0.00392156862745098,
+          "mean": [0.485, 0.456, 0.406],
+          "std": [0.229, 0.224, 0.225]
+        },
+        "output": { "type": "logits" },
+        "labelOffset": 0
+      },
+      "notes": "Input [1,3,224,224] float32, values (byte / 255 - mean) / std. The model page asks for resize to 256 then centre crop 224; the centerCrop mode resizes the short side straight to 224, a slightly tighter crop. Output [1,1000] logits. Checked by running the model (onnxruntime-node)."
+    },
+    {
+      "id": "ssd-mobilenet-v1-onnx",
+      "name": "SSD-MobileNet v1 (COCO), ONNX",
+      "task": "detection",
+      "runtime": "onnx",
+      "platform": "web",
+      "file": "ssd_mobilenet_v1_12.onnx",
+      "url": "https://media.githubusercontent.com/media/onnx/models/c5cae0f1942c8d7727372c7b1f6b485aa39e4421/validated/vision/object_detection_segmentation/ssd-mobilenetv1/model/ssd_mobilenet_v1_12.onnx",
+      "sha256": "b8fba5e404077d4048d27fcd1667e85e27e192eb9bf51e696c46a3acd7d21058",
+      "size": 29461455,
+      "license": {
+        "spdx": "MIT",
+        "page": "https://github.com/onnx/models/blob/c5cae0f1942c8d7727372c7b1f6b485aa39e4421/validated/vision/object_detection_segmentation/ssd-mobilenetv1/README.md",
+        "note": "The model page ends with 'MIT License' (the onnx/models repository itself is Apache-2.0; the original TensorFlow Object Detection API model is Apache-2.0). Both are Apache-2.0 compatible. Same commit pin and LFS note as the classifier."
+      },
+      "upstream": "https://github.com/onnx/models/tree/c5cae0f1942c8d7727372c7b1f6b485aa39e4421/validated/vision/object_detection_segmentation/ssd-mobilenetv1",
+      "labels": "labels/coco-90.txt",
+      "io": {
+        "input": "inputs",
+        "outputs": { "boxes": "detection_boxes", "classes": "detection_classes", "scores": "detection_scores", "count": "num_detections" }
+      },
+      "spec": {
+        "input": {
+          "width": 300,
+          "height": 300,
+          "layout": "nhwc",
+          "channels": "rgb",
+          "mode": "stretch",
+          "resample": "bilinear",
+          "dtype": "uint8"
+        },
+        "output": { "format": "ssd", "boxOrder": "yxyx", "coordinates": "normalized" },
+        "labelOffset": 1
+      },
+      "notes": "Input [1,H,W,3] uint8 (any size; 300x300 is the training size and is used here). Outputs: detection_boxes [1,100,4] as [ymin,xmin,ymax,xmax] normalized to 0..1, detection_classes [1,100] float class ids, detection_scores [1,100], num_detections [1]. The class ids are the COCO category ids 1..90 (person = 1; ids 12, 26, 29, 30, 45, 66, 68, 69, 71 and 83 are unused): coco-90.txt holds one line per id starting at id 1, hence labelOffset 1. The model applies its own non-maximum suppression, so the ssd decoder default (nms false) is right. Checked by running the model (onnxruntime-node)."
+    },
+    {
+      "id": "efficientnet-lite0-tflite",
+      "name": "EfficientNet-Lite0 (ImageNet-1k), TFLite",
+      "task": "classification",
+      "runtime": "tflite",
+      "platform": "android",
+      "file": "efficientnet_lite0.tflite",
+      "url": "https://storage.googleapis.com/mediapipe-models/image_classifier/efficientnet_lite0/float32/1/efficientnet_lite0.tflite",
+      "sha256": "6c7ab0a6e5dcbf38a8c33b960996a55a3b4300b36a018c4545801de3a3c8bde0",
+      "size": 18582189,
+      "license": {
+        "spdx": "Apache-2.0",
+        "page": "https://huggingface.co/litert-community/MediaPipe-ImageClassifier-EfficientNet-Lite0",
+        "note": "The model card of the litert-community repository declares apache-2.0 and the TFLite metadata embedded in the file states 'Apache License. Version 2.0' (author MediaPipe). The URL is Google's versioned MediaPipe model bucket path (float32/1)."
+      },
+      "upstream": "https://developers.google.com/edge/mediapipe/solutions/vision/image_classifier#efficientnet-lite0_model_recommended",
+      "labels": "labels/imagenet-1k.txt",
+      "io": { "input": "images", "outputs": { "scores": "Softmax" }, "outputIndex": { "scores": 0 } },
+      "spec": {
+        "input": {
+          "width": 224,
+          "height": 224,
+          "layout": "nhwc",
+          "channels": "rgb",
+          "mode": "centerCrop",
+          "resample": "bilinear",
+          "dtype": "float",
+          "scale": 1,
+          "mean": [127, 127, 127],
+          "std": [128, 128, 128]
+        },
+        "output": { "type": "probabilities" },
+        "labelOffset": 0
+      },
+      "notes": "Input [1,224,224,3] float32, values (byte - 127) / 128 (the normalization of the embedded metadata). Output [1,1000] probabilities (the graph ends in a softmax). The labels are the same 1000 ImageNet-1k names, in the same order, as the model's own labels_without_background.txt (checked byte for byte). Read from the file's tensors and metadata; not run in this repository (no TFLite runtime was available on the capture machine)."
+    },
+    {
+      "id": "ssd-mobilenet-v1-tflite",
+      "name": "SSD-MobileNet v1 (COCO, quantized), TFLite",
+      "task": "detection",
+      "runtime": "tflite",
+      "platform": "android",
+      "file": "lite-model_ssd_mobilenet_v1_1_metadata_2.tflite",
+      "url": "https://storage.googleapis.com/download.tensorflow.org/models/tflite/task_library/object_detection/android/lite-model_ssd_mobilenet_v1_1_metadata_2.tflite",
+      "sha256": "cbdecd08b44c5dea3821f77c5468e2936ecfbf43cde0795a2729fdb43401e58b",
+      "size": 4185175,
+      "license": {
+        "spdx": "Apache-2.0",
+        "page": "https://www.kaggle.com/models/tensorflow/ssd-mobilenet-v1/tfLite/metadata/2",
+        "note": "The TFLite metadata embedded in the file states 'Apache License. Version 2.0' (author TensorFlow); the file is the model of the TensorFlow Lite Task Library object detection example."
+      },
+      "upstream": "https://www.kaggle.com/models/tensorflow/ssd-mobilenet-v1/tfLite/metadata/2",
+      "labels": "labels/coco-90.txt",
+      "io": {
+        "input": "normalized_input_image_tensor",
+        "outputs": {
+          "boxes": "TFLite_Detection_PostProcess",
+          "classes": "TFLite_Detection_PostProcess:1",
+          "scores": "TFLite_Detection_PostProcess:2",
+          "count": "TFLite_Detection_PostProcess:3"
+        },
+        "outputIndex": { "boxes": 0, "classes": 1, "scores": 2, "count": 3 }
+      },
+      "spec": {
+        "input": {
+          "width": 300,
+          "height": 300,
+          "layout": "nhwc",
+          "channels": "rgb",
+          "mode": "stretch",
+          "resample": "bilinear",
+          "dtype": "uint8"
+        },
+        "output": { "format": "ssd", "boxOrder": "yxyx", "coordinates": "normalized" },
+        "labelOffset": 0
+      },
+      "notes": "Input [1,300,300,3] uint8 (raw bytes). Outputs (up to 10 detections): boxes [1,10,4] as [ymin,xmin,ymax,xmax] normalized, classes [1,10] float, scores [1,10], count [1]. Following the TensorFlow Lite object detection example, the classes are 0-based indices into the 90 lines of coco-90.txt (person = 0): labelOffset 0, unlike the ONNX build whose ids are the COCO category ids (labelOffset 1). Input and output tensors were read from the file; the class convention comes from the TFLite example and was not run in this repository (no TFLite runtime was available on the capture machine): confirm it on a device."
+    }
+  ]
+}

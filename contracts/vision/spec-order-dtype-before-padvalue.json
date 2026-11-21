@@ -1,0 +1,27 @@
+{
+  "name": "spec-order-dtype-before-padvalue",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float16",
+        "padValue": 1.5
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: input.dtype must be \"float\" or \"uint8\""
+    }
+  }
+}

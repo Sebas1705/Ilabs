@@ -1,0 +1,56 @@
+{
+  "name": "map-class-without-detections-counts-zero",
+  "setup": {
+    "kind": "metrics",
+    "op": "map",
+    "detections": [
+      {
+        "image": "a",
+        "classIndex": 0,
+        "score": 0.9,
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        }
+      }
+    ],
+    "truths": [
+      {
+        "image": "a",
+        "classIndex": 0,
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        }
+      },
+      {
+        "image": "a",
+        "classIndex": 1,
+        "box": {
+          "x1": 20,
+          "y1": 20,
+          "x2": 30,
+          "y2": 30
+        }
+      }
+    ],
+    "iouThreshold": 0.5
+  },
+  "expect": {
+    "map": 0.5,
+    "byClass": [
+      {
+        "classIndex": 0,
+        "ap": 1
+      },
+      {
+        "classIndex": 1,
+        "ap": 0
+      }
+    ]
+  }
+}

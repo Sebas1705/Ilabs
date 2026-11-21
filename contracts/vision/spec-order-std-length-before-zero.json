@@ -1,0 +1,30 @@
+{
+  "name": "spec-order-std-length-before-zero",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float",
+        "std": [
+          0,
+          0
+        ]
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: input.std must be an array of 3 finite numbers"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "unmap-centercrop",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 8,
+    "srcHeight": 4,
+    "spec": {
+      "input": {
+        "width": 5,
+        "height": 5,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "centerCrop",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "boxes": [
+      {
+        "x1": 2,
+        "y1": 1,
+        "x2": 4,
+        "y2": 3
+      },
+      {
+        "x1": 0,
+        "y1": 0,
+        "x2": 5,
+        "y2": 5
+      }
+    ]
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 1.25,
+      "scaleY": 1.25,
+      "offsetX": -2,
+      "offsetY": 0,
+      "newWidth": 10,
+      "newHeight": 5
+    },
+    "unmapped": [
+      {
+        "x1": 3.2,
+        "y1": 0.8,
+        "x2": 4.8,
+        "y2": 2.4
+      },
+      {
+        "x1": 1.6,
+        "y1": 0,
+        "x2": 5.6,
+        "y2": 4
+      }
+    ]
+  }
+}

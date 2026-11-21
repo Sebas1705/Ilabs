@@ -1,0 +1,68 @@
+{
+  "name": "nms-suppressed-box-does-not-suppress",
+  "setup": {
+    "kind": "nms",
+    "detections": [
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.9
+      },
+      {
+        "box": {
+          "x1": 4,
+          "y1": 0,
+          "x2": 14,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.8
+      },
+      {
+        "box": {
+          "x1": 8,
+          "y1": 0,
+          "x2": 18,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.7
+      }
+    ],
+    "iouThreshold": 0.4
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.9
+      },
+      {
+        "box": {
+          "x1": 8,
+          "y1": 0,
+          "x2": 18,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.7
+      }
+    ]
+  }
+}

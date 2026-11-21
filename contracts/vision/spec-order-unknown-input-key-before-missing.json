@@ -1,0 +1,26 @@
+{
+  "name": "spec-order-unknown-input-key-before-missing",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float",
+        "extra": 1
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: unknown key: input.extra"
+    }
+  }
+}

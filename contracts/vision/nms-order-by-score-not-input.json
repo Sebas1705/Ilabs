@@ -1,0 +1,46 @@
+{
+  "name": "nms-order-by-score-not-input",
+  "setup": {
+    "kind": "nms",
+    "detections": [
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.5
+      },
+      {
+        "box": {
+          "x1": 1,
+          "y1": 1,
+          "x2": 11,
+          "y2": 11
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.9
+      }
+    ],
+    "iouThreshold": 0.5
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 1,
+          "y1": 1,
+          "x2": 11,
+          "y2": 11
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.9
+      }
+    ]
+  }
+}

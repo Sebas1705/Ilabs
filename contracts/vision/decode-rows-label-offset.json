@@ -1,0 +1,78 @@
+{
+  "name": "decode-rows-label-offset",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "rows": {
+        "shape": [
+          2,
+          7
+        ],
+        "data": [
+          0,
+          0,
+          20,
+          20,
+          0.1,
+          0.9,
+          0.2,
+          30,
+          0,
+          50,
+          20,
+          0.1,
+          0.2,
+          0.8
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "rows",
+        "boxFormat": "xyxy"
+      },
+      "labels": [
+        "x",
+        "y"
+      ],
+      "labelOffset": 1
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 20,
+          "y2": 20
+        },
+        "classIndex": 1,
+        "label": "x",
+        "score": 0.9
+      },
+      {
+        "box": {
+          "x1": 30,
+          "y1": 0,
+          "x2": 50,
+          "y2": 20
+        },
+        "classIndex": 2,
+        "label": "y",
+        "score": 0.8
+      }
+    ]
+  }
+}

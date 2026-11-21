@@ -1,0 +1,32 @@
+{
+  "name": "geometry-centercrop-double-tie",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 6,
+    "srcHeight": 27,
+    "spec": {
+      "input": {
+        "width": 13,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "centerCrop",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 2.1666666666666665,
+      "scaleY": 2.148148148148148,
+      "offsetX": 0,
+      "offsetY": -28,
+      "newWidth": 13,
+      "newHeight": 58
+    }
+  }
+}

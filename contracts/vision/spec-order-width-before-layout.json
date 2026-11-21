@@ -1,0 +1,26 @@
+{
+  "name": "spec-order-width-before-layout",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 0,
+        "height": 224,
+        "layout": "chw",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: input.width must be an integer from 1 to 16384"
+    }
+  }
+}

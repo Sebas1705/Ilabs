@@ -1,0 +1,50 @@
+{
+  "name": "resize-1x1-target",
+  "setup": {
+    "kind": "resize",
+    "image": {
+      "width": 4,
+      "height": 2,
+      "data": [
+        0,
+        10,
+        255,
+        40,
+        30,
+        200,
+        80,
+        50,
+        100,
+        120,
+        70,
+        0,
+        4,
+        20,
+        255,
+        44,
+        60,
+        208,
+        84,
+        100,
+        104,
+        124,
+        140,
+        0
+      ]
+    },
+    "width": 1,
+    "height": 1,
+    "method": "bilinear"
+  },
+  "expect": {
+    "image": {
+      "width": 1,
+      "height": 1,
+      "data": [
+        62,
+        60,
+        153
+      ]
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "name": "decode-unmap-letterbox",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "boxes": {
+        "shape": [
+          3,
+          4
+        ],
+        "data": [
+          20,
+          35,
+          60,
+          75,
+          10,
+          0,
+          50,
+          20,
+          10,
+          10,
+          50,
+          45
+        ]
+      },
+      "classes": {
+        "shape": [
+          3
+        ],
+        "data": [
+          0,
+          0,
+          0
+        ]
+      },
+      "scores": {
+        "shape": [
+          3
+        ],
+        "data": [
+          0.9,
+          0.8,
+          0.7
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 100,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd",
+        "boxOrder": "xyxy",
+        "coordinates": "pixels"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 40,
+          "y1": 20,
+          "x2": 120,
+          "y2": 100
+        },
+        "classIndex": 0,
+        "label": "#0",
+        "score": 0.9
+      },
+      {
+        "box": {
+          "x1": 20,
+          "y1": 0,
+          "x2": 100,
+          "y2": 40
+        },
+        "classIndex": 0,
+        "label": "#0",
+        "score": 0.7
+      }
+    ]
+  }
+}

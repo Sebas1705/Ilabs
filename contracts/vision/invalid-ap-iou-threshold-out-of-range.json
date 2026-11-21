@@ -1,0 +1,15 @@
+{
+  "name": "invalid-ap-iou-threshold-out-of-range",
+  "setup": {
+    "kind": "metrics",
+    "op": "ap",
+    "detections": [],
+    "truths": [],
+    "iouThreshold": 1.5
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

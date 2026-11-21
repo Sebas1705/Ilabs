@@ -1,0 +1,165 @@
+{
+  "samples": [
+    {
+      "id": "cat",
+      "file": "cat.png",
+      "title": {
+        "es": "Gato atigrado en primer plano",
+        "en": "Close-up of a tabby cat"
+      },
+      "width": 640,
+      "height": 427,
+      "bytes": 157275,
+      "sha256": "563602e486cf69780dcbf0a0e3055e94ca75eb6b207cd2d4b14edef1de82c542",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": {
+        "page": "https://commons.wikimedia.org/wiki/File:Tabby_cat-3337027.jpg",
+        "author": "pasja1000",
+        "original": {
+          "width": 6000,
+          "height": 4000
+        }
+      },
+      "covers": "A clear single subject."
+    },
+    {
+      "id": "dog",
+      "file": "dog.png",
+      "title": {
+        "es": "Perro golden retriever",
+        "en": "Golden retriever"
+      },
+      "width": 640,
+      "height": 480,
+      "bytes": 184653,
+      "sha256": "5de4708e0163d45a45559d4bf2eb141e92a134fcdf5c5e5ca4f0baba740c2c34",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": {
+        "page": "https://commons.wikimedia.org/wiki/File:Golden-retriever-dog.jpg",
+        "author": "Karen Arnold",
+        "original": {
+          "width": 1920,
+          "height": 1440
+        }
+      },
+      "covers": "A second clear single subject (a dog breed that exists in ImageNet)."
+    },
+    {
+      "id": "crowd",
+      "file": "crowd.png",
+      "title": {
+        "es": "Multitud en un mercado",
+        "en": "Crowd at a street market"
+      },
+      "width": 640,
+      "height": 480,
+      "bytes": 161848,
+      "sha256": "10a2ac87ce6c08f6bd9b6dd9234fc94bd52c2f03c061fffca0118e1949e40477",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": {
+        "page": "https://commons.wikimedia.org/wiki/File:Street_Crowd.jpg",
+        "author": "Yann Kemper",
+        "original": {
+          "width": 1132,
+          "height": 849
+        }
+      },
+      "covers": "A crowded scene: many people and a car."
+    },
+    {
+      "id": "giraffe-tall",
+      "file": "giraffe-tall.png",
+      "title": {
+        "es": "Jirafa (retrato vertical 1:2)",
+        "en": "Giraffe (tall 1:2 portrait)"
+      },
+      "width": 320,
+      "height": 640,
+      "bytes": 176428,
+      "sha256": "cf84cc1d3d751fc70e1e0d61f8952f44dce87af404d8b1e18c75a41b45bbcbb5",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": {
+        "page": "https://commons.wikimedia.org/wiki/File:Giraffe_posing_in_the_grass.jpg",
+        "author": "Joselodos",
+        "original": {
+          "width": 6000,
+          "height": 9000
+        }
+      },
+      "covers": "An odd, tall aspect ratio (1:2), cropped from the centre of the original 2:3 photo."
+    },
+    {
+      "id": "city-panorama",
+      "file": "city-panorama.png",
+      "title": {
+        "es": "Panorama urbano de Bergen",
+        "en": "City panorama of Bergen"
+      },
+      "width": 1024,
+      "height": 199,
+      "bytes": 131766,
+      "sha256": "3b9c115cf6ae28da335e560fca3763f2fea6369476e4c881b0dfec59f55828d5",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": {
+        "page": "https://commons.wikimedia.org/wiki/File:Panorama_of_Bergen_from_Fl%C3%B8yen,_2006.jpg",
+        "author": "DimiTalen",
+        "original": {
+          "width": 6644,
+          "height": 1291
+        }
+      },
+      "covers": "An odd, wide aspect ratio (about 5:1) with small objects."
+    },
+    {
+      "id": "fog-rocks",
+      "file": "fog-rocks.png",
+      "title": {
+        "es": "Rocas entre la niebla",
+        "en": "Rocks in the fog"
+      },
+      "width": 640,
+      "height": 360,
+      "bytes": 80227,
+      "sha256": "619e92c9640740d255c203e607f8e783200e6f51c92f555bcfb5bbbe588c9be8",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": {
+        "page": "https://commons.wikimedia.org/wiki/File:Fog%26Rocks.jpg",
+        "author": "Kelli Doorne",
+        "original": {
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "covers": "A low-contrast image with no COCO object."
+    },
+    {
+      "id": "mountains-wide",
+      "file": "mountains-wide.png",
+      "title": {
+        "es": "Panorama de montaña",
+        "en": "Mountain panorama"
+      },
+      "width": 800,
+      "height": 228,
+      "bytes": 85805,
+      "sha256": "9379b412cb9e9cd4de7fc41031c93561f47c5f22a34d2ad07cbd6ebae3690783",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": {
+        "page": "https://commons.wikimedia.org/wiki/File:Panorama_Vercors-Chartreuse.jpg",
+        "author": "Wisi eu",
+        "original": {
+          "width": 3040,
+          "height": 864
+        }
+      },
+      "covers": "A wide image (about 3.5:1) with no COCO object."
+    }
+  ]
+}

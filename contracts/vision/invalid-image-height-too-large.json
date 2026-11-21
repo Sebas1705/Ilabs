@@ -1,0 +1,22 @@
+{
+  "name": "invalid-image-height-too-large",
+  "setup": {
+    "kind": "resize",
+    "image": {
+      "width": 1,
+      "height": 16385,
+      "data": {
+        "fill": 0,
+        "length": 49155
+      }
+    },
+    "width": 1,
+    "height": 1,
+    "method": "nearest"
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

@@ -6,6 +6,7 @@ import { GuardrailsPage } from "./pages/GuardrailsPage";
 import { ProvidersPage } from "./pages/ProvidersPage";
 import { RagPage } from "./pages/RagPage";
 import { StructuredPage } from "./pages/StructuredPage";
+import { VisionPage } from "./pages/VisionPage";
 
 export interface RouteDef {
   /** Stable identifier. */
@@ -27,4 +28,5 @@ export const ROUTES: readonly RouteDef[] = [
   { id: "evals", hash: "#/evals", titleKey: "navEvals", navKey: "navEvals", component: EvalsPage },
   { id: "rag", hash: "#/rag", titleKey: "ragTitle", navKey: "navRag", component: RagPage },
   { id: "guardrails", hash: "#/guardrails", titleKey: "guardTitle", navKey: "navGuard", component: GuardrailsPage },
+  { id: "vision", hash: "#/vision", titleKey: "visionTitle", navKey: "navVision", component: VisionPage },
 ];

@@ -12,6 +12,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /** Reads every fixture of one module from the assets, where the copyContracts task puts the contracts folder. */
 private fun AssetManager.loaderFor(module: String) = FixtureLoader {
@@ -31,6 +33,12 @@ class MainActivity : ComponentActivity() {
         val evalsLoader = assets.loaderFor("evals")
         val ragLoader = assets.loaderFor("rag")
         val guardrailsLoader = assets.loaderFor("guardrails")
+        val visionAssets = AssetVisionAssets(applicationContext)
+        val visionPlatform = AndroidVisionPlatform(applicationContext)
+        val visionImages = VisionImages(
+            bitmap = { ref -> withContext(Dispatchers.IO) { visionPlatform.displayBitmap(ref) } },
+            import = { uri -> withContext(Dispatchers.IO) { visionPlatform.importPicked(uri) } },
+        )
         setContent {
             ILabsTheme {
                 // Saved state, so the open module survives rotation, process death and "Don't keep activities".
@@ -67,6 +75,11 @@ class MainActivity : ComponentActivity() {
                         val vm: GuardrailsViewModel = viewModel(factory = GuardrailsViewModel.factory(guardrailsLoader))
                         val state by vm.uiState.collectAsStateWithLifecycle()
                         GuardrailsScreen(state, GuardrailsActions.of(vm), onBack = { module = null })
+                    }
+                    DemoModule.VISION -> {
+                        val vm: VisionViewModel = viewModel(factory = VisionViewModel.factory(visionAssets, visionPlatform))
+                        val state by vm.uiState.collectAsStateWithLifecycle()
+                        VisionScreen(state, VisionActions.of(vm, visionImages), onBack = { module = null })
                     }
                 }
             }

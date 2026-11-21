@@ -1,0 +1,83 @@
+{
+  "name": "pipeline-timing-negative-difference",
+  "setup": {
+    "kind": "pipeline",
+    "image": {
+      "width": 1,
+      "height": 1,
+      "data": [
+        7,
+        8,
+        9
+      ]
+    },
+    "spec": {
+      "input": {
+        "width": 1,
+        "height": 1,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "task": "classify",
+    "scripted": {
+      "outputs": {
+        "output": {
+          "shape": [
+            2
+          ],
+          "data": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "clock": [
+      10,
+      8,
+      20,
+      21
+    ]
+  },
+  "expect": {
+    "results": [
+      {
+        "index": 0,
+        "label": "#0",
+        "score": 0.5
+      },
+      {
+        "index": 1,
+        "label": "#1",
+        "score": 0.5
+      }
+    ],
+    "timing": {
+      "preprocessMs": -2,
+      "inferenceMs": 12,
+      "postprocessMs": 1
+    },
+    "modelCalls": 1,
+    "input": {
+      "shape": [
+        1,
+        1,
+        1,
+        3
+      ],
+      "data": [
+        7,
+        8,
+        9
+      ]
+    },
+    "clockReads": 4
+  }
+}

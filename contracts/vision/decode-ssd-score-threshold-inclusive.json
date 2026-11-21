@@ -1,0 +1,95 @@
+{
+  "name": "decode-ssd-score-threshold-inclusive",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "boxes": {
+        "shape": [
+          3,
+          4
+        ],
+        "data": [
+          0,
+          0,
+          20,
+          20,
+          30,
+          0,
+          50,
+          20,
+          60,
+          0,
+          80,
+          20
+        ]
+      },
+      "classes": {
+        "shape": [
+          3
+        ],
+        "data": [
+          0,
+          0,
+          0
+        ]
+      },
+      "scores": {
+        "shape": [
+          3
+        ],
+        "data": [
+          0.5,
+          0.49,
+          0.75
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd",
+        "boxOrder": "xyxy",
+        "coordinates": "pixels"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100,
+    "options": {
+      "scoreThreshold": 0.5
+    }
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 60,
+          "y1": 0,
+          "x2": 80,
+          "y2": 20
+        },
+        "classIndex": 0,
+        "label": "#0",
+        "score": 0.75
+      },
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 20,
+          "y2": 20
+        },
+        "classIndex": 0,
+        "label": "#0",
+        "score": 0.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "decode-rows-empty",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "rows": {
+        "shape": [
+          0,
+          6
+        ],
+        "data": []
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "rows",
+        "boxFormat": "xyxy"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "detections": []
+  }
+}

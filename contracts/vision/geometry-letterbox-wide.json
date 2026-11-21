@@ -1,0 +1,32 @@
+{
+  "name": "geometry-letterbox-wide",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 640,
+    "srcHeight": 360,
+    "spec": {
+      "input": {
+        "width": 320,
+        "height": 320,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "offsetX": 0,
+      "offsetY": 70,
+      "newWidth": 320,
+      "newHeight": 180
+    }
+  }
+}

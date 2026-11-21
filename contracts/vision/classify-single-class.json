@@ -1,0 +1,32 @@
+{
+  "name": "classify-single-class",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      3
+    ],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "entries": [
+      {
+        "index": 0,
+        "label": "#0",
+        "score": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "geometry-letterbox-double-tie",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 11,
+    "srcHeight": 22,
+    "spec": {
+      "input": {
+        "width": 8,
+        "height": 15,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 0.6363636363636364,
+      "scaleY": 0.6818181818181818,
+      "offsetX": 0,
+      "offsetY": 0,
+      "newWidth": 7,
+      "newHeight": 15
+    }
+  }
+}

@@ -13,3 +13,7 @@ afterEach(() => {
     /* storage unavailable */
   }
 });
+
+// jsdom has no canvas: without a stub every getContext call prints a "not implemented" error. Tests that
+// need pixels replace this with their own fake context.
+HTMLCanvasElement.prototype.getContext = (() => null) as unknown as typeof HTMLCanvasElement.prototype.getContext;

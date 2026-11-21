@@ -1,0 +1,47 @@
+{
+  "name": "decode-rows-nonbest-overflow-ignored",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "rows": {
+        "shape": [
+          1,
+          7
+        ],
+        "data": [
+          0,
+          0,
+          10,
+          10,
+          -1e+308,
+          0.5,
+          1e+308
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 10,
+        "height": 10,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "rows",
+        "boxFormat": "xyxy",
+        "objectness": true
+      }
+    },
+    "srcWidth": 10,
+    "srcHeight": 10,
+    "options": {
+      "scoreThreshold": 0
+    }
+  },
+  "expect": {
+    "detections": []
+  }
+}

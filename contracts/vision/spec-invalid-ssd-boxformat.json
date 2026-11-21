@@ -1,0 +1,27 @@
+{
+  "name": "spec-invalid-ssd-boxformat",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd",
+        "boxFormat": "xyxy"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: unknown key: output.boxFormat"
+    }
+  }
+}

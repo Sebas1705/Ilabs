@@ -1,0 +1,13 @@
+{
+  "name": "spec-invalid-null",
+  "setup": {
+    "kind": "spec",
+    "spec": null
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: spec must be an object"
+    }
+  }
+}

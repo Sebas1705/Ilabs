@@ -1,0 +1,21 @@
+{
+  "name": "invalid-topk-k-null",
+  "setup": {
+    "kind": "metrics",
+    "op": "topk",
+    "predictions": [
+      [
+        0
+      ]
+    ],
+    "truths": [
+      0
+    ],
+    "k": null
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

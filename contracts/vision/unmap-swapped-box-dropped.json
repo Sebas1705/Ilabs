@@ -1,0 +1,55 @@
+{
+  "name": "unmap-swapped-box-dropped",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 640,
+    "srcHeight": 360,
+    "spec": {
+      "input": {
+        "width": 320,
+        "height": 320,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "boxes": [
+      {
+        "x1": 100,
+        "y1": 200,
+        "x2": 50,
+        "y2": 100
+      },
+      {
+        "x1": 50,
+        "y1": 100,
+        "x2": 100,
+        "y2": 200
+      }
+    ]
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 0.5,
+      "scaleY": 0.5,
+      "offsetX": 0,
+      "offsetY": 70,
+      "newWidth": 320,
+      "newHeight": 180
+    },
+    "unmapped": [
+      null,
+      {
+        "x1": 100,
+        "y1": 60,
+        "x2": 200,
+        "y2": 260
+      }
+    ]
+  }
+}

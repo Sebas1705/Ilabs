@@ -1,0 +1,27 @@
+{
+  "name": "spec-invalid-labeloffset-range",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      },
+      "labelOffset": 1000001
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: labelOffset must be an integer from -1000000 to 1000000"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "name": "tensor-uint8-letterbox-padvalue",
+  "setup": {
+    "kind": "tensor",
+    "image": {
+      "width": 1,
+      "height": 2,
+      "data": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "spec": {
+      "input": {
+        "width": 4,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "uint8",
+        "padValue": 7
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "shape": [
+      1,
+      2,
+      4,
+      3
+    ],
+    "data": [
+      7,
+      7,
+      7,
+      1,
+      2,
+      3,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      4,
+      5,
+      6,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7
+    ]
+  }
+}

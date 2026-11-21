@@ -1,0 +1,75 @@
+{
+  "name": "decode-default-score-threshold",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "boxes": {
+        "shape": [
+          2,
+          4
+        ],
+        "data": [
+          0,
+          0,
+          20,
+          20,
+          30,
+          0,
+          50,
+          20
+        ]
+      },
+      "classes": {
+        "shape": [
+          2
+        ],
+        "data": [
+          0,
+          0
+        ]
+      },
+      "scores": {
+        "shape": [
+          2
+        ],
+        "data": [
+          0.28,
+          0.34
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd",
+        "boxOrder": "xyxy",
+        "coordinates": "pixels"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 30,
+          "y1": 0,
+          "x2": 50,
+          "y2": 20
+        },
+        "classIndex": 0,
+        "label": "#0",
+        "score": 0.34
+      }
+    ]
+  }
+}

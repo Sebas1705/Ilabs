@@ -1,0 +1,52 @@
+{
+  "name": "pipeline-invalid-image-no-clock",
+  "setup": {
+    "kind": "pipeline",
+    "clock": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "image": {
+      "width": 0,
+      "height": 1,
+      "data": []
+    },
+    "spec": {
+      "input": {
+        "width": 1,
+        "height": 1,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "task": "classify",
+    "scripted": {
+      "outputs": {
+        "output": {
+          "shape": [
+            2
+          ],
+          "data": [
+            1,
+            2
+          ]
+        }
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    },
+    "modelCalls": 0,
+    "clockReads": 0
+  }
+}

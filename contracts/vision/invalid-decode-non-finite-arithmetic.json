@@ -1,0 +1,57 @@
+{
+  "name": "invalid-decode-non-finite-arithmetic",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "boxes": {
+        "shape": [
+          1,
+          4
+        ],
+        "data": [
+          0,
+          0,
+          1,
+          1e+308
+        ]
+      },
+      "classes": {
+        "shape": [
+          1
+        ],
+        "data": [
+          0
+        ]
+      },
+      "scores": {
+        "shape": [
+          1
+        ],
+        "data": [
+          0.9
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_output"
+    }
+  }
+}

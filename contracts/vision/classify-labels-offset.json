@@ -1,0 +1,52 @@
+{
+  "name": "classify-labels-offset",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      0.05,
+      0.6,
+      0.35
+    ],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "probabilities"
+      },
+      "labels": [
+        "cat",
+        "dog"
+      ],
+      "labelOffset": 1
+    },
+    "options": {
+      "topK": 3
+    }
+  },
+  "expect": {
+    "entries": [
+      {
+        "index": 1,
+        "label": "cat",
+        "score": 0.6
+      },
+      {
+        "index": 2,
+        "label": "dog",
+        "score": 0.35
+      },
+      {
+        "index": 0,
+        "label": "#0",
+        "score": 0.05
+      }
+    ]
+  }
+}

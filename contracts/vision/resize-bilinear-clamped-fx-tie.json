@@ -1,0 +1,38 @@
+{
+  "name": "resize-bilinear-clamped-fx-tie",
+  "setup": {
+    "kind": "resize",
+    "image": {
+      "width": 2,
+      "height": 1,
+      "data": [
+        25,
+        236,
+        113,
+        67,
+        233,
+        78
+      ]
+    },
+    "width": 1,
+    "height": 3,
+    "method": "bilinear"
+  },
+  "expect": {
+    "image": {
+      "width": 1,
+      "height": 3,
+      "data": [
+        46,
+        234,
+        96,
+        46,
+        235,
+        96,
+        46,
+        235,
+        96
+      ]
+    }
+  }
+}

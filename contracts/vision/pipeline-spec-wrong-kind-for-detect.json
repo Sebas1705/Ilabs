@@ -1,0 +1,84 @@
+{
+  "name": "pipeline-spec-wrong-kind-for-detect",
+  "setup": {
+    "kind": "pipeline",
+    "clock": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "image": {
+      "width": 1,
+      "height": 1,
+      "data": [
+        7,
+        8,
+        9
+      ]
+    },
+    "spec": {
+      "input": {
+        "width": 1,
+        "height": 1,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "task": "detect",
+    "scripted": {
+      "outputs": {
+        "boxes": {
+          "shape": [
+            1,
+            2,
+            4
+          ],
+          "data": [
+            0,
+            0,
+            1,
+            0.5,
+            0.5,
+            0.5,
+            1,
+            1
+          ]
+        },
+        "classes": {
+          "shape": [
+            1,
+            2
+          ],
+          "data": [
+            1,
+            2
+          ]
+        },
+        "scores": {
+          "shape": [
+            1,
+            2
+          ],
+          "data": [
+            0.9,
+            0.6
+          ]
+        }
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    },
+    "modelCalls": 0,
+    "clockReads": 0
+  }
+}

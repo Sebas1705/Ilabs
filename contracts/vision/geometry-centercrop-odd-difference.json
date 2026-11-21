@@ -1,0 +1,32 @@
+{
+  "name": "geometry-centercrop-odd-difference",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 8,
+    "srcHeight": 4,
+    "spec": {
+      "input": {
+        "width": 5,
+        "height": 5,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "centerCrop",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 1.25,
+      "scaleY": 1.25,
+      "offsetX": -2,
+      "offsetY": 0,
+      "newWidth": 10,
+      "newHeight": 5
+    }
+  }
+}

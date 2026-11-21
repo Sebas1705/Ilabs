@@ -1,0 +1,38 @@
+{
+  "name": "resize-bilinear-double-tie-border",
+  "setup": {
+    "kind": "resize",
+    "image": {
+      "width": 2,
+      "height": 1,
+      "data": [
+        232,
+        159,
+        242,
+        233,
+        48,
+        162
+      ]
+    },
+    "width": 1,
+    "height": 3,
+    "method": "bilinear"
+  },
+  "expect": {
+    "image": {
+      "width": 1,
+      "height": 3,
+      "data": [
+        232,
+        104,
+        202,
+        233,
+        104,
+        202,
+        233,
+        104,
+        202
+      ]
+    }
+  }
+}

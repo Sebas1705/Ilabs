@@ -1,0 +1,30 @@
+{
+  "name": "spec-invalid-labels-entry-null",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      },
+      "labels": [
+        "a",
+        null
+      ]
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: labels must be an array of strings"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "topk-empty-set-zero",
+  "setup": {
+    "kind": "metrics",
+    "op": "topk",
+    "predictions": [],
+    "truths": [],
+    "k": 1
+  },
+  "expect": {
+    "value": 0
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "spec-valid-rows",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "centerCrop",
+        "resample": "bilinear",
+        "dtype": "uint8"
+      },
+      "output": {
+        "format": "rows",
+        "boxFormat": "xywh",
+        "transposed": true,
+        "objectness": true,
+        "scoreActivation": "sigmoid"
+      },
+      "labels": []
+    }
+  },
+  "expect": {
+    "valid": true
+  }
+}

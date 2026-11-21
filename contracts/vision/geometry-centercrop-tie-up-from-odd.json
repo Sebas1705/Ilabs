@@ -1,0 +1,32 @@
+{
+  "name": "geometry-centercrop-tie-up-from-odd",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 3,
+    "srcHeight": 4,
+    "spec": {
+      "input": {
+        "width": 4,
+        "height": 6,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "centerCrop",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 1.6666666666666667,
+      "scaleY": 1.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "newWidth": 5,
+      "newHeight": 6
+    }
+  }
+}

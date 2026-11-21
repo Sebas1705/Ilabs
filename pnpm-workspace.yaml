@@ -1,3 +1,5 @@
 packages:
   - "modules/*/ts"
   - "demos/web"
+allowBuilds:
+  protobufjs: false

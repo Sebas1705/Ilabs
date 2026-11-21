@@ -1,0 +1,17 @@
+{
+  "name": "spec-invalid-missing-input",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: missing key: input"
+    }
+  }
+}

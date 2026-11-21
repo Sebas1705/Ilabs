@@ -1,0 +1,32 @@
+{
+  "name": "geometry-letterbox-rounds-down",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 10,
+    "srcHeight": 3,
+    "spec": {
+      "input": {
+        "width": 4,
+        "height": 4,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 0.4,
+      "scaleY": 0.3333333333333333,
+      "offsetX": 0,
+      "offsetY": 1,
+      "newWidth": 4,
+      "newHeight": 1
+    }
+  }
+}

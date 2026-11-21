@@ -1,0 +1,28 @@
+{
+  "name": "spec-order-labels-before-labeloffset",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      },
+      "labels": "x",
+      "labelOffset": 0.5
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: labels must be an array of strings"
+    }
+  }
+}

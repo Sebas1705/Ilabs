@@ -1,0 +1,99 @@
+{
+  "name": "pipeline-classify-basic",
+  "setup": {
+    "kind": "pipeline",
+    "image": {
+      "width": 2,
+      "height": 1,
+      "data": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60
+      ]
+    },
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 1,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float",
+        "scale": 0.5
+      },
+      "output": {
+        "type": "logits"
+      },
+      "labels": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "task": "classify",
+    "scripted": {
+      "outputs": {
+        "output": {
+          "shape": [
+            3
+          ],
+          "data": [
+            0,
+            2,
+            1
+          ]
+        }
+      }
+    },
+    "options": {
+      "topK": 2
+    },
+    "clock": [
+      100,
+      102.5,
+      130,
+      131.25
+    ]
+  },
+  "expect": {
+    "results": [
+      {
+        "index": 1,
+        "label": "b",
+        "score": 0.6652409557748218
+      },
+      {
+        "index": 2,
+        "label": "c",
+        "score": 0.24472847105479764
+      }
+    ],
+    "timing": {
+      "preprocessMs": 2.5,
+      "inferenceMs": 27.5,
+      "postprocessMs": 1.25
+    },
+    "modelCalls": 1,
+    "input": {
+      "shape": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "data": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30
+      ]
+    },
+    "clockReads": 4
+  }
+}

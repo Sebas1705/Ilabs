@@ -1,0 +1,11 @@
+{
+  "name": "nms-empty",
+  "setup": {
+    "kind": "nms",
+    "detections": [],
+    "iouThreshold": 0.5
+  },
+  "expect": {
+    "detections": []
+  }
+}

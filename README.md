@@ -2,7 +2,7 @@
 
 iLabs ("i" as in AI) is a collection of small, reusable AI modules written in Kotlin and TypeScript, each with a visible demo.
 
-**Status:** early. Six modules are done, each with a web demo page and an Android demo screen: providers, structured, context, evals, rag and guardrails.
+**Status:** early. Seven modules are done, each with a web demo page and an Android demo screen: providers, structured, context, evals, rag, guardrails and vision.
 
 ## Modules
 
@@ -14,6 +14,7 @@ iLabs ("i" as in AI) is a collection of small, reusable AI modules written in Ko
 | [evals](modules/evals/README.md) | done | Deterministic evals: run a suite of cases against several providers, grade every reply (string, length, JSON and judge graders) and summarize, identical in Kotlin and TypeScript |
 | [rag](modules/rag/README.md) | done | Retrieval-augmented generation at teaching scale: chunk documents, retrieve with BM25, dense vectors or their fusion, compose a numbered-sources context, check citations and measure retrieval, identical in Kotlin and TypeScript |
 | [guardrails](modules/guardrails/README.md) | done | Guardrails around a model call: find personal data and secrets, redact them reversibly, score prompt-injection signals, apply a block/redact/flag policy on input and output, detect a leaked canary and measure the detectors, identical in Kotlin and TypeScript |
+| [vision](modules/vision/README.md) | done | Vision plumbing around a model: preprocess an image (resize, centre crop or letterbox, normalization), read classifier and detector outputs (softmax, top-k, box decoding, NMS), map boxes back to the original image and measure the result (IoU, average precision), with the model behind a one-method interface and small real models in the demos, identical in Kotlin and TypeScript |
 
 ## Layout
 
@@ -21,12 +22,25 @@ iLabs ("i" as in AI) is a collection of small, reusable AI modules written in Ko
 modules/<name>/{kotlin,ts}   one module, one implementation per language
 demos/{android,web}          visible demos that use the modules
 contracts/<name>/            shared JSON contracts and fixtures
+demos/vision-assets/         samples, labels, model cards and recorded outputs of the vision demos
 docs/                        design spec, plans and ADRs
 ```
 
 ## No API keys needed
 
-The demos run with a mock provider, so you can try everything without any API key.
+The demos run with a mock provider, so you can try everything without any API key. The `vision` demos need no key and no model file either: their default backend replays raw model outputs recorded once and committed.
+
+## Models for the vision demos (optional)
+
+The `vision` demos also have a **Real model** mode that runs small open models (a classifier and a detector, ONNX for the web demo and TFLite for the Android demo, about 4 to 28 MB each, as `--check` prints them in MiB). The model files are never committed: download them into the git-ignored `demos/vision-assets/models/` and every file is verified against a pinned SHA-256. Run it from the repository root with a current Node LTS:
+
+```sh
+node scripts/vision-models.mjs                  # download every missing model (resumable)
+node scripts/vision-models.mjs --runtime onnx   # only the web models (or --runtime tflite)
+node scripts/vision-models.mjs --check          # list what is present and whether it matches
+```
+
+In dev the web demo serves them at `/vision-models/`; for a deployed page set `VITE_VISION_MODELS_BASE` to the URL that serves them (CORS required for another origin). Then restart the web dev server or rebuild the Android app. Without the files the demos stay on the recorded backend and say so; your own image has no recording, so it always needs the real model. Sources, licenses and checksums are in [`demos/vision-assets/README.md`](demos/vision-assets/README.md). The models are small and make mistakes: see the [honest limits](modules/vision/README.md#honest-limits-first).
 
 ## Prerequisites
 
@@ -45,6 +59,7 @@ corepack pnpm --filter @ilabs/demo-web dev      # web demo at http://localhost:5
 ./gradlew :modules:evals-kotlin:jvmTest         # Kotlin tests against the shared evals fixtures
 ./gradlew :modules:rag-kotlin:jvmTest           # Kotlin tests against the shared rag fixtures
 ./gradlew :modules:guardrails-kotlin:jvmTest    # Kotlin tests against the shared guardrails fixtures
+./gradlew :modules:vision-kotlin:jvmTest        # Kotlin tests against the shared vision fixtures
 ./gradlew jvmContractTests                      # run all Kotlin module tests
 ./gradlew :demos:android:installDebug           # Android demo on a connected device or emulator
 ```

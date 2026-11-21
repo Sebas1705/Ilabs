@@ -1,0 +1,32 @@
+{
+  "name": "geometry-letterbox-new-size-at-least-one",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 1000,
+    "srcHeight": 1,
+    "spec": {
+      "input": {
+        "width": 4,
+        "height": 4,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 0.004,
+      "scaleY": 1,
+      "offsetX": 0,
+      "offsetY": 1,
+      "newWidth": 4,
+      "newHeight": 1
+    }
+  }
+}

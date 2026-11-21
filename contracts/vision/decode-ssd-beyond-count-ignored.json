@@ -1,0 +1,92 @@
+{
+  "name": "decode-ssd-beyond-count-ignored",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "boxes": {
+        "shape": [
+          3,
+          4
+        ],
+        "data": [
+          0,
+          0,
+          20,
+          20,
+          "NaN",
+          0,
+          1,
+          1,
+          0,
+          0,
+          5,
+          5
+        ]
+      },
+      "classes": {
+        "shape": [
+          3
+        ],
+        "data": [
+          0,
+          99,
+          7
+        ]
+      },
+      "scores": {
+        "shape": [
+          3
+        ],
+        "data": [
+          0.9,
+          "NaN",
+          0.8
+        ]
+      },
+      "count": {
+        "shape": [
+          1
+        ],
+        "data": [
+          1
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd",
+        "boxOrder": "xyxy",
+        "coordinates": "pixels"
+      },
+      "labels": [
+        "a"
+      ]
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 20,
+          "y2": 20
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.9
+      }
+    ]
+  }
+}

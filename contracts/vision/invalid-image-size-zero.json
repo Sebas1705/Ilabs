@@ -1,0 +1,19 @@
+{
+  "name": "invalid-image-size-zero",
+  "setup": {
+    "kind": "resize",
+    "image": {
+      "width": 0,
+      "height": 2,
+      "data": []
+    },
+    "width": 2,
+    "height": 2,
+    "method": "nearest"
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "invalid-classify-topk-zero",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      0.5,
+      0.5
+    ],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "probabilities"
+      }
+    },
+    "options": {
+      "topK": 0
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

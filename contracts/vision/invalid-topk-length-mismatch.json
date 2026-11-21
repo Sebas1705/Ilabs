@@ -1,0 +1,24 @@
+{
+  "name": "invalid-topk-length-mismatch",
+  "setup": {
+    "kind": "metrics",
+    "op": "topk",
+    "predictions": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "truths": [
+      0
+    ],
+    "k": 1
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

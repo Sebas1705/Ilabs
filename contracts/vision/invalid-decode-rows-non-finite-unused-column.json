@@ -1,0 +1,44 @@
+{
+  "name": "invalid-decode-rows-non-finite-unused-column",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "rows": {
+        "shape": [
+          1,
+          6
+        ],
+        "data": [
+          0,
+          0,
+          20,
+          20,
+          0.9,
+          "-Infinity"
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "rows",
+        "boxFormat": "xyxy"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_output"
+    }
+  }
+}

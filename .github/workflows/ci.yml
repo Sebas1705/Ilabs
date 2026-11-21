@@ -6,6 +6,7 @@ on:
       - "contracts/**"
       - "modules/**"
       - "demos/**"
+      - "scripts/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
@@ -20,6 +21,7 @@ on:
       - "contracts/**"
       - "modules/**"
       - "demos/**"
+      - "scripts/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
@@ -52,6 +54,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm -r typecheck
       - run: pnpm -r test
+      - run: pnpm run test:scripts
       - run: pnpm --filter @ilabs/demo-web build
 
   kotlin:

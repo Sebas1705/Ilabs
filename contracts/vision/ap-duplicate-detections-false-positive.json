@@ -1,0 +1,73 @@
+{
+  "name": "ap-duplicate-detections-false-positive",
+  "setup": {
+    "kind": "metrics",
+    "op": "ap",
+    "detections": [
+      {
+        "image": "b",
+        "classIndex": 0,
+        "score": 0.7,
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        }
+      },
+      {
+        "image": "a",
+        "classIndex": 0,
+        "score": 0.9,
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        }
+      },
+      {
+        "image": "a",
+        "classIndex": 0,
+        "score": 0.8,
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        }
+      }
+    ],
+    "truths": [
+      {
+        "image": "a",
+        "classIndex": 0,
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        }
+      },
+      {
+        "image": "b",
+        "classIndex": 0,
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        }
+      }
+    ],
+    "iouThreshold": 0.5
+  },
+  "expect": {
+    "byClass": [
+      {
+        "classIndex": 0,
+        "ap": 0.8333333333333333
+      }
+    ]
+  }
+}

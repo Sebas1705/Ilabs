@@ -1,0 +1,36 @@
+{
+  "name": "spec-valid-boundaries",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "width": 16384,
+        "height": 16384,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float",
+        "padValue": 255,
+        "scale": 0,
+        "mean": [
+          -1,
+          -2,
+          -3
+        ],
+        "std": [
+          -1,
+          0.5,
+          -4
+        ]
+      },
+      "output": {
+        "type": "logits"
+      },
+      "labelOffset": 1000000
+    }
+  },
+  "expect": {
+    "valid": true
+  }
+}

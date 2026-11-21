@@ -1,0 +1,60 @@
+{
+  "name": "unmap-stretch",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 200,
+    "srcHeight": 100,
+    "spec": {
+      "input": {
+        "width": 100,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "boxes": [
+      {
+        "x1": 10,
+        "y1": 20,
+        "x2": 50,
+        "y2": 80
+      },
+      {
+        "x1": 0,
+        "y1": 0,
+        "x2": 100,
+        "y2": 100
+      }
+    ]
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 0.5,
+      "scaleY": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "newWidth": 100,
+      "newHeight": 100
+    },
+    "unmapped": [
+      {
+        "x1": 20,
+        "y1": 20,
+        "x2": 100,
+        "y2": 80
+      },
+      {
+        "x1": 0,
+        "y1": 0,
+        "x2": 200,
+        "y2": 100
+      }
+    ]
+  }
+}

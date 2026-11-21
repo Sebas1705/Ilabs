@@ -318,3 +318,49 @@ main:focus { outline: none; }
 .policy .modes { margin: 0.5rem 0 0; }
 .field textarea { min-height: 7rem; }
 .mapping td, .mapping th { white-space: normal; overflow-wrap: anywhere; }
+
+/* Vision page */
+.field input[type="file"] {
+  min-height: 44px; width: 100%; font: 400 1rem/1.45 var(--font); color: var(--text); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px; padding: 0.375rem 0.5rem;
+}
+.field input[type="file"]::file-selector-button {
+  min-height: 44px; margin-right: 0.75rem; padding: 0 0.75rem; font: 600 1rem var(--font); color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;
+}
+.vis-note-row { flex-basis: 100%; margin: 0.25rem 0 0.25rem; }
+.note-row { margin: 0.5rem 0; padding: 0.5rem 0.75rem; border: 1px dashed var(--border); border-radius: 8px; overflow-wrap: anywhere; }
+.vis-honest { margin: 0.5rem 0; }
+.vis-error { margin: 0.25rem 0 0.75rem; padding: 0.5rem 0.75rem; border: 2px solid var(--err-fg); border-radius: 8px; background: var(--err-bg); color: var(--err-fg); overflow-wrap: anywhere; }
+.vis-error-text { margin: 0; font-weight: 600; }
+.vis-error .hint { color: inherit; margin: 0.25rem 0 0; }
+.vis-canvas { display: block; width: 100%; height: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
+.vis-preview { margin: 0.5rem 0; image-rendering: auto; }
+.vis-stage { position: relative; width: 100%; margin: 0.5rem 0; }
+.vis-stage .vis-canvas { border-radius: 0; }
+.vis-boxes { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.vis-box { position: absolute; border-width: 2px; border-style: solid; box-sizing: border-box; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9), inset 0 0 0 1px rgba(0, 0, 0, 0.55); }
+.vis-chip {
+  position: absolute; left: -2px; bottom: 100%; max-width: 14rem; padding: 0 0.375rem; font: 600 0.75rem/1.5 var(--font);
+  color: var(--text); background: var(--surface); border: 2px solid; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.vis-box-top .vis-chip { bottom: auto; top: 0; }
+.vis-classes, .vis-detections, .vis-legend { list-style: none; margin: 0.5rem 0; padding: 0; display: grid; gap: 0.375rem; }
+.vis-classes { list-style: decimal inside; }
+.vis-class { min-width: 0; padding: 0.375rem 0.75rem; border: 1px solid var(--border); border-radius: 8px; }
+.vis-class-head { display: inline-flex; width: calc(100% - 2rem); justify-content: space-between; gap: 0.5rem 1rem; flex-wrap: wrap; vertical-align: top; }
+.vis-pct { font-weight: 700; }
+.classbar { display: block; height: 6px; border-radius: 3px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; margin-top: 0.25rem; }
+.classbar > span { display: block; height: 100%; background: var(--accent); }
+.vis-detection {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; min-height: 44px; padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border); border-radius: 8px; overflow-wrap: anywhere;
+}
+.vis-detection .state { font-weight: 600; }
+.vis-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+.vis-swatch { display: inline-block; width: 1.5rem; height: 0.875rem; border-width: 3px; vertical-align: middle; }
+.vis-geometry dt { min-width: 11rem; }
+.vis-timings dt { min-width: 7rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .classbar > span { transition: width 0.15s; }
+}

@@ -5,6 +5,7 @@ import org.gradle.api.file.FileTree
 import org.gradle.api.tasks.CacheableTask
 import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.Internal
+import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.PathSensitive
 import org.gradle.api.tasks.PathSensitivity
@@ -47,6 +48,51 @@ val copyContracts = tasks.register<CopyContractsTask>("copyContracts") {
     contractsDir.set(rootProject.layout.projectDirectory.dir("contracts"))
 }
 
+/**
+ * Copies the shared vision demo assets (`demos/vision-assets`) into the app assets as `vision/`: the samples, the
+ * recorded outputs, the labels and the two JSON indexes always, and the `.tflite` model files when they have been
+ * downloaded (`node scripts/vision-models.mjs`). The models are git-ignored and optional: the build passes without them.
+ */
+abstract class CopyVisionAssetsTask : DefaultTask() {
+    /** Root of the shared vision assets. */
+    @get:Internal
+    abstract val assetsDir: DirectoryProperty
+
+    @get:InputFiles
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    val sharedFiles: FileTree
+        get() = assetsDir.asFileTree.matching {
+            include("samples/*.png", "recorded/*.json", "labels/*.txt", "samples.json", "models.json")
+        }
+
+    /** The downloaded models, if any (an absent folder is an empty tree). */
+    @get:InputFiles
+    @get:Optional
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    val modelFiles: FileTree
+        get() = assetsDir.asFileTree.matching { include("models/*.tflite") }
+
+    @get:OutputDirectory
+    abstract val output: DirectoryProperty
+
+    @get:Inject
+    abstract val fs: FileSystemOperations
+
+    @TaskAction
+    fun copy() {
+        fs.sync {
+            from(assetsDir) {
+                include("samples/*.png", "recorded/*.json", "labels/*.txt", "samples.json", "models.json", "models/*.tflite")
+            }
+            into(output.dir("vision"))
+        }
+    }
+}
+
+val copyVisionAssets = tasks.register<CopyVisionAssetsTask>("copyVisionAssets") {
+    assetsDir.set(rootProject.layout.projectDirectory.dir("demos/vision-assets"))
+}
+
 android {
     namespace = "es.sebas1705.ilabs.demo"
     compileSdk = 37
@@ -72,6 +118,7 @@ android {
 androidComponents {
     onVariants { variant ->
         variant.sources.assets?.addGeneratedSourceDirectory(copyContracts, CopyContractsTask::output)
+        variant.sources.assets?.addGeneratedSourceDirectory(copyVisionAssets, CopyVisionAssetsTask::output)
     }
 }
 
@@ -82,6 +129,8 @@ dependencies {
     implementation(project(":modules:evals-kotlin"))
     implementation(project(":modules:rag-kotlin"))
     implementation(project(":modules:guardrails-kotlin"))
+    implementation(project(":modules:vision-kotlin"))
+    implementation(libs.litert)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.foundation)

@@ -1,0 +1,109 @@
+{
+  "name": "pipeline-class-index-out-of-labels",
+  "setup": {
+    "kind": "pipeline",
+    "image": {
+      "width": 4,
+      "height": 2,
+      "data": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd"
+      },
+      "labels": [
+        "bg",
+        "cat"
+      ]
+    },
+    "task": "detect",
+    "scripted": {
+      "outputs": {
+        "boxes": {
+          "shape": [
+            1,
+            2,
+            4
+          ],
+          "data": [
+            0,
+            0,
+            1,
+            0.5,
+            0.5,
+            0.5,
+            1,
+            1
+          ]
+        },
+        "classes": {
+          "shape": [
+            1,
+            2
+          ],
+          "data": [
+            1,
+            2
+          ]
+        },
+        "scores": {
+          "shape": [
+            1,
+            2
+          ],
+          "data": [
+            0.9,
+            0.6
+          ]
+        }
+      }
+    },
+    "clock": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_output"
+    },
+    "modelCalls": 1,
+    "clockReads": 3
+  }
+}

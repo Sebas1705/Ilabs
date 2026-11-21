@@ -1,0 +1,29 @@
+{
+  "name": "invalid-classify-wrong-spec-kind",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      0.5,
+      0.5
+    ],
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

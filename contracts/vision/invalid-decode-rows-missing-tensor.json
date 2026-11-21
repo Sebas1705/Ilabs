@@ -1,0 +1,29 @@
+{
+  "name": "invalid-decode-rows-missing-tensor",
+  "setup": {
+    "kind": "decode",
+    "outputs": {},
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "rows",
+        "boxFormat": "xyxy"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_output"
+    }
+  }
+}

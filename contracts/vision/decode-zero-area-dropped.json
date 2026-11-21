@@ -1,0 +1,87 @@
+{
+  "name": "decode-zero-area-dropped",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "boxes": {
+        "shape": [
+          4,
+          4
+        ],
+        "data": [
+          50,
+          10,
+          50,
+          50,
+          250,
+          10,
+          300,
+          50,
+          60,
+          10,
+          100,
+          40,
+          60,
+          40,
+          100,
+          40
+        ]
+      },
+      "classes": {
+        "shape": [
+          4
+        ],
+        "data": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "scores": {
+        "shape": [
+          4
+        ],
+        "data": [
+          0.9,
+          0.8,
+          0.7,
+          0.6
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd",
+        "boxOrder": "xyxy",
+        "coordinates": "pixels"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 60,
+          "y1": 10,
+          "x2": 100,
+          "y2": 40
+        },
+        "classIndex": 0,
+        "label": "#0",
+        "score": 0.7
+      }
+    ]
+  }
+}

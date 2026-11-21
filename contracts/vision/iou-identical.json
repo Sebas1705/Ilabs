@@ -1,0 +1,22 @@
+{
+  "name": "iou-identical",
+  "setup": {
+    "kind": "metrics",
+    "op": "iou",
+    "a": {
+      "x1": 2,
+      "y1": 3,
+      "x2": 8,
+      "y2": 9
+    },
+    "b": {
+      "x1": 2,
+      "y1": 3,
+      "x2": 8,
+      "y2": 9
+    }
+  },
+  "expect": {
+    "value": 1
+  }
+}

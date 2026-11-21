@@ -1,0 +1,120 @@
+{
+  "name": "decode-equal-scores-keep-row-order",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "boxes": {
+        "shape": [
+          4,
+          4
+        ],
+        "data": [
+          0,
+          0,
+          10,
+          10,
+          20,
+          0,
+          30,
+          10,
+          40,
+          0,
+          50,
+          10,
+          60,
+          0,
+          70,
+          10
+        ]
+      },
+      "classes": {
+        "shape": [
+          4
+        ],
+        "data": [
+          3,
+          1,
+          2,
+          0
+        ]
+      },
+      "scores": {
+        "shape": [
+          4
+        ],
+        "data": [
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd",
+        "boxOrder": "xyxy",
+        "coordinates": "pixels"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 3,
+        "label": "#3",
+        "score": 0.8
+      },
+      {
+        "box": {
+          "x1": 20,
+          "y1": 0,
+          "x2": 30,
+          "y2": 10
+        },
+        "classIndex": 1,
+        "label": "#1",
+        "score": 0.8
+      },
+      {
+        "box": {
+          "x1": 40,
+          "y1": 0,
+          "x2": 50,
+          "y2": 10
+        },
+        "classIndex": 2,
+        "label": "#2",
+        "score": 0.8
+      },
+      {
+        "box": {
+          "x1": 60,
+          "y1": 0,
+          "x2": 70,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "#0",
+        "score": 0.8
+      }
+    ]
+  }
+}

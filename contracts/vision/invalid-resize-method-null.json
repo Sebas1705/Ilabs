@@ -1,0 +1,23 @@
+{
+  "name": "invalid-resize-method-null",
+  "setup": {
+    "kind": "resize",
+    "image": {
+      "width": 1,
+      "height": 1,
+      "data": [
+        1,
+        2,
+        3
+      ]
+    },
+    "width": 1,
+    "height": 1,
+    "method": null
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

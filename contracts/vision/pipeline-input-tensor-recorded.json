@@ -1,0 +1,112 @@
+{
+  "name": "pipeline-input-tensor-recorded",
+  "setup": {
+    "kind": "pipeline",
+    "image": {
+      "width": 1,
+      "height": 2,
+      "data": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60
+      ]
+    },
+    "spec": {
+      "input": {
+        "width": 3,
+        "height": 2,
+        "layout": "nchw",
+        "channels": "bgr",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float",
+        "padValue": 50,
+        "mean": [
+          10,
+          20,
+          30
+        ],
+        "std": [
+          2,
+          2,
+          2
+        ]
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "task": "classify",
+    "scripted": {
+      "outputs": {
+        "output": {
+          "shape": [
+            2
+          ],
+          "data": [
+            1,
+            3
+          ]
+        }
+      }
+    },
+    "clock": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "expect": {
+    "results": [
+      {
+        "index": 1,
+        "label": "#1",
+        "score": 0.8807970779778823
+      },
+      {
+        "index": 0,
+        "label": "#0",
+        "score": 0.11920292202211755
+      }
+    ],
+    "timing": {
+      "preprocessMs": 1,
+      "inferenceMs": 1,
+      "postprocessMs": 1
+    },
+    "modelCalls": 1,
+    "input": {
+      "shape": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "data": [
+        20,
+        10,
+        20,
+        20,
+        25,
+        20,
+        15,
+        0,
+        15,
+        15,
+        15,
+        15,
+        10,
+        -10,
+        10,
+        10,
+        5,
+        10
+      ]
+    },
+    "clockReads": 4
+  }
+}

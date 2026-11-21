@@ -1,0 +1,32 @@
+{
+  "name": "geometry-stretch",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 640,
+    "srcHeight": 480,
+    "spec": {
+      "input": {
+        "width": 224,
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 0.35,
+      "scaleY": 0.4666666666666667,
+      "offsetX": 0,
+      "offsetY": 0,
+      "newWidth": 224,
+      "newHeight": 224
+    }
+  }
+}

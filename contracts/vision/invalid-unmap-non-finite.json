@@ -1,0 +1,35 @@
+{
+  "name": "invalid-unmap-non-finite",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 640,
+    "srcHeight": 360,
+    "spec": {
+      "input": {
+        "width": 320,
+        "height": 320,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "boxes": [
+      {
+        "x1": 10,
+        "y1": 10,
+        "x2": "NaN",
+        "y2": 50
+      }
+    ]
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

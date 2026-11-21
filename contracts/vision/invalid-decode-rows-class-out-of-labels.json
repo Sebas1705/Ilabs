@@ -1,0 +1,56 @@
+{
+  "name": "invalid-decode-rows-class-out-of-labels",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "rows": {
+        "shape": [
+          2,
+          7
+        ],
+        "data": [
+          0,
+          0,
+          20,
+          20,
+          0.9,
+          0.1,
+          0.05,
+          30,
+          0,
+          50,
+          20,
+          0.05,
+          0.05,
+          0.1
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "rows",
+        "boxFormat": "xyxy"
+      },
+      "labels": [
+        "a",
+        "b"
+      ]
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_output"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "nms-keeps-lower-class-overlap",
+  "setup": {
+    "kind": "nms",
+    "detections": [
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.9
+      },
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 1,
+        "label": "b",
+        "score": 0.6
+      },
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 1,
+        "label": "b",
+        "score": 0.5
+      }
+    ],
+    "iouThreshold": 0.5
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "a",
+        "score": 0.9
+      },
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 1,
+        "label": "b",
+        "score": 0.6
+      }
+    ]
+  }
+}

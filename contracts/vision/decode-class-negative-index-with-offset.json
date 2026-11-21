@@ -1,0 +1,63 @@
+{
+  "name": "decode-class-negative-index-with-offset",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "boxes": {
+        "shape": [
+          1,
+          4
+        ],
+        "data": [
+          0,
+          0,
+          20,
+          20
+        ]
+      },
+      "classes": {
+        "shape": [
+          1
+        ],
+        "data": [
+          0
+        ]
+      },
+      "scores": {
+        "shape": [
+          1
+        ],
+        "data": [
+          0.9
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd",
+        "boxOrder": "xyxy",
+        "coordinates": "pixels"
+      },
+      "labels": [
+        "a"
+      ],
+      "labelOffset": 1
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_output"
+    }
+  }
+}

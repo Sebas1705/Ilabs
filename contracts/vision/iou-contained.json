@@ -1,0 +1,22 @@
+{
+  "name": "iou-contained",
+  "setup": {
+    "kind": "metrics",
+    "op": "iou",
+    "a": {
+      "x1": 0,
+      "y1": 0,
+      "x2": 10,
+      "y2": 10
+    },
+    "b": {
+      "x1": 2,
+      "y1": 2,
+      "x2": 6,
+      "y2": 6
+    }
+  },
+  "expect": {
+    "value": 0.16
+  }
+}

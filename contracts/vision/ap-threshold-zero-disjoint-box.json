@@ -1,0 +1,41 @@
+{
+  "name": "ap-threshold-zero-disjoint-box",
+  "setup": {
+    "kind": "metrics",
+    "op": "ap",
+    "detections": [
+      {
+        "image": "a",
+        "classIndex": 0,
+        "score": 0.9,
+        "box": {
+          "x1": 50,
+          "y1": 50,
+          "x2": 60,
+          "y2": 60
+        }
+      }
+    ],
+    "truths": [
+      {
+        "image": "a",
+        "classIndex": 0,
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        }
+      }
+    ],
+    "iouThreshold": 0
+  },
+  "expect": {
+    "byClass": [
+      {
+        "classIndex": 0,
+        "ap": 1
+      }
+    ]
+  }
+}

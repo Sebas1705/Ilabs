@@ -1,0 +1,32 @@
+{
+  "name": "geometry-letterbox-rounds-half-up",
+  "setup": {
+    "kind": "geometry",
+    "srcWidth": 2,
+    "srcHeight": 1,
+    "spec": {
+      "input": {
+        "width": 5,
+        "height": 9,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "letterbox",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "geometry": {
+      "scaleX": 2.5,
+      "scaleY": 3,
+      "offsetX": 0,
+      "offsetY": 3,
+      "newWidth": 5,
+      "newHeight": 3
+    }
+  }
+}

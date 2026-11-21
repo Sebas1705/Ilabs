@@ -1,0 +1,25 @@
+{
+  "name": "spec-invalid-missing-input-width",
+  "setup": {
+    "kind": "spec",
+    "spec": {
+      "input": {
+        "height": 224,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: missing key: input.width"
+    }
+  }
+}

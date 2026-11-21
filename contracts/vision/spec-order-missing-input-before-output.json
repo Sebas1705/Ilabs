@@ -1,0 +1,13 @@
+{
+  "name": "spec-order-missing-input-before-output",
+  "setup": {
+    "kind": "spec",
+    "spec": {}
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_spec",
+      "message": "invalid model spec: missing key: input"
+    }
+  }
+}

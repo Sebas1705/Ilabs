@@ -1,0 +1,13 @@
+{
+  "name": "invalid-nms-threshold-null",
+  "setup": {
+    "kind": "nms",
+    "detections": [],
+    "iouThreshold": null
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

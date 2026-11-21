@@ -1,0 +1,86 @@
+{
+  "name": "decode-maxdetections-after-sort",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "rows": {
+        "shape": [
+          4,
+          6
+        ],
+        "data": [
+          0,
+          0,
+          10,
+          10,
+          0.9,
+          0.1,
+          0,
+          0,
+          10,
+          8,
+          0.85,
+          0.05,
+          20,
+          0,
+          30,
+          10,
+          0.1,
+          0.8,
+          40,
+          0,
+          50,
+          10,
+          0.7,
+          0.1
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "rows",
+        "boxFormat": "xyxy"
+      }
+    },
+    "srcWidth": 200,
+    "srcHeight": 100,
+    "options": {
+      "maxDetections": 2
+    }
+  },
+  "expect": {
+    "detections": [
+      {
+        "box": {
+          "x1": 0,
+          "y1": 0,
+          "x2": 10,
+          "y2": 10
+        },
+        "classIndex": 0,
+        "label": "#0",
+        "score": 0.9
+      },
+      {
+        "box": {
+          "x1": 20,
+          "y1": 0,
+          "x2": 30,
+          "y2": 10
+        },
+        "classIndex": 1,
+        "label": "#1",
+        "score": 0.8
+      }
+    ]
+  }
+}

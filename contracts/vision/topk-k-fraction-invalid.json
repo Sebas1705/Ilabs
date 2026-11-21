@@ -1,0 +1,22 @@
+{
+  "name": "topk-k-fraction-invalid",
+  "setup": {
+    "kind": "metrics",
+    "op": "topk",
+    "predictions": [
+      [
+        0,
+        1
+      ]
+    ],
+    "truths": [
+      0
+    ],
+    "k": 1.5
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

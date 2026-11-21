@@ -1,0 +1,68 @@
+{
+  "name": "decode-class-check-before-threshold",
+  "setup": {
+    "kind": "decode",
+    "outputs": {
+      "boxes": {
+        "shape": [
+          2,
+          4
+        ],
+        "data": [
+          0,
+          0,
+          20,
+          20,
+          30,
+          0,
+          50,
+          20
+        ]
+      },
+      "classes": {
+        "shape": [
+          2
+        ],
+        "data": [
+          0,
+          5
+        ]
+      },
+      "scores": {
+        "shape": [
+          2
+        ],
+        "data": [
+          0.9,
+          0.1
+        ]
+      }
+    },
+    "spec": {
+      "input": {
+        "width": 200,
+        "height": 100,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "format": "ssd",
+        "boxOrder": "xyxy",
+        "coordinates": "pixels"
+      },
+      "labels": [
+        "a"
+      ]
+    },
+    "srcWidth": 200,
+    "srcHeight": 100
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_output"
+    }
+  }
+}

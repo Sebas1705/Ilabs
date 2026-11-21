@@ -1,0 +1,50 @@
+{
+  "name": "resize-border-clamping",
+  "setup": {
+    "kind": "resize",
+    "image": {
+      "width": 3,
+      "height": 1,
+      "data": [
+        0,
+        240,
+        80,
+        96,
+        144,
+        160,
+        240,
+        0,
+        32
+      ]
+    },
+    "width": 6,
+    "height": 1,
+    "method": "bilinear"
+  },
+  "expect": {
+    "image": {
+      "width": 6,
+      "height": 1,
+      "data": [
+        0,
+        240,
+        80,
+        24,
+        216,
+        100,
+        72,
+        168,
+        140,
+        132,
+        108,
+        128,
+        204,
+        36,
+        64,
+        240,
+        0,
+        32
+      ]
+    }
+  }
+}

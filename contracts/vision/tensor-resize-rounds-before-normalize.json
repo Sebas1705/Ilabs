@@ -1,0 +1,55 @@
+{
+  "name": "tensor-resize-rounds-before-normalize",
+  "setup": {
+    "kind": "tensor",
+    "image": {
+      "width": 2,
+      "height": 1,
+      "data": [
+        0,
+        0,
+        0,
+        10,
+        20,
+        30
+      ]
+    },
+    "spec": {
+      "input": {
+        "width": 4,
+        "height": 1,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "bilinear",
+        "dtype": "float",
+        "scale": 0.1
+      },
+      "output": {
+        "type": "logits"
+      }
+    }
+  },
+  "expect": {
+    "shape": [
+      1,
+      1,
+      4,
+      3
+    ],
+    "data": [
+      0,
+      0,
+      0,
+      0.3,
+      0.5,
+      0.8,
+      0.8,
+      1.5,
+      2.3,
+      1,
+      2,
+      3
+    ]
+  }
+}

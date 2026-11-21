@@ -1,0 +1,56 @@
+{
+  "name": "classify-softmax-stable-large-logits",
+  "setup": {
+    "kind": "classify",
+    "output": [
+      1000,
+      999,
+      998,
+      -1000
+    ],
+    "spec": {
+      "input": {
+        "width": 2,
+        "height": 2,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      },
+      "labels": [
+        "w",
+        "x",
+        "y",
+        "z"
+      ]
+    }
+  },
+  "expect": {
+    "entries": [
+      {
+        "index": 0,
+        "label": "w",
+        "score": 0.6652409557748218
+      },
+      {
+        "index": 1,
+        "label": "x",
+        "score": 0.24472847105479764
+      },
+      {
+        "index": 2,
+        "label": "y",
+        "score": 0.09003057317038046
+      },
+      {
+        "index": 3,
+        "label": "z",
+        "score": 0
+      }
+    ]
+  }
+}

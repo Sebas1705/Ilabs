@@ -1,0 +1,59 @@
+{
+  "name": "pipeline-invalid-options-no-model-call",
+  "setup": {
+    "kind": "pipeline",
+    "image": {
+      "width": 1,
+      "height": 1,
+      "data": [
+        7,
+        8,
+        9
+      ]
+    },
+    "spec": {
+      "input": {
+        "width": 1,
+        "height": 1,
+        "layout": "nhwc",
+        "channels": "rgb",
+        "mode": "stretch",
+        "resample": "nearest",
+        "dtype": "float"
+      },
+      "output": {
+        "type": "logits"
+      }
+    },
+    "task": "classify",
+    "scripted": {
+      "outputs": {
+        "output": {
+          "shape": [
+            2
+          ],
+          "data": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    "options": {
+      "topK": 0
+    },
+    "clock": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    },
+    "modelCalls": 0,
+    "clockReads": 0
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "topk-k-larger-than-lists",
+  "setup": {
+    "kind": "metrics",
+    "op": "topk",
+    "predictions": [
+      [
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "truths": [
+      2,
+      5
+    ],
+    "k": 5
+  },
+  "expect": {
+    "value": 0.5
+  }
+}

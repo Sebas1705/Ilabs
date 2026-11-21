@@ -2,3 +2,8 @@ gradlew text eol=lf
 *.bat text eol=crlf
 *.jar binary
 contracts/** text eol=lf
+demos/vision-assets/**/*.json text eol=lf
+demos/vision-assets/**/*.txt text eol=lf
+demos/vision-assets/**/*.mjs text eol=lf
+demos/vision-assets/**/*.md text eol=lf
+demos/vision-assets/samples/*.png binary
