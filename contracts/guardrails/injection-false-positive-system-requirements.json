@@ -1,0 +1,18 @@
+{
+  "name": "injection-false-positive-system-requirements",
+  "setup": {
+    "kind": "injection",
+    "text": "### system requirements"
+  },
+  "expect": {
+    "score": 25,
+    "signals": [
+      {
+        "id": "delim-hash-system",
+        "category": "delimiter",
+        "start": 0,
+        "end": 10
+      }
+    ]
+  }
+}

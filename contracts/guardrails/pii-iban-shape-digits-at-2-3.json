@@ -1,0 +1,10 @@
+{
+  "name": "pii-iban-shape-digits-at-2-3",
+  "setup": {
+    "kind": "pii",
+    "text": "Ref EST0470000000000000 fin"
+  },
+  "expect": {
+    "findings": []
+  }
+}

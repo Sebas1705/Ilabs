@@ -1,0 +1,10 @@
+{
+  "name": "pii-phone-starts-with-five-not-matched",
+  "setup": {
+    "kind": "pii",
+    "text": "Llama al 512 345 678."
+  },
+  "expect": {
+    "findings": []
+  }
+}

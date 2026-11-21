@@ -1,5 +1,8 @@
+import { readdirSync, readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { tokenize } from "./tokenize.js";
+import { tokenize, tokenizeSpans } from "./tokenize.js";
 
 const cp = (n: number): string => String.fromCodePoint(n);
 
@@ -73,5 +76,84 @@ describe("tokenize", () => {
   it("returns no tokens for an empty or separator-only text", () => {
     expect(tokenize("")).toEqual([]);
     expect(tokenize(" ,.-¿¡«»— ")).toEqual([]);
+  });
+});
+
+describe("tokenizeSpans", () => {
+  it("returns the folded token with the code-point span of the SOURCE run", () => {
+    expect(tokenizeSpans("Hello, WORLD")).toEqual([
+      { token: "hello", start: 0, end: 5 },
+      { token: "world", start: 7, end: 12 },
+    ]);
+  });
+
+  it("measures end - start on the source run when folding lengthens a code point", () => {
+    expect(tokenizeSpans("Straße")).toEqual([{ token: "strasse", start: 0, end: 6 }]);
+    expect(tokenizeSpans("ß x")).toEqual([
+      { token: "ss", start: 0, end: 1 },
+      { token: "x", start: 2, end: 3 },
+    ]);
+    expect(tokenizeSpans("Æ Þ")).toEqual([
+      { token: "ae", start: 0, end: 1 },
+      { token: "th", start: 2, end: 3 },
+    ]);
+  });
+
+  it("keeps offsets right after a lengthening fold", () => {
+    expect(tokenizeSpans("ßß, ab")).toEqual([
+      { token: "ssss", start: 0, end: 2 },
+      { token: "ab", start: 4, end: 6 },
+    ]);
+    expect(tokenizeSpans("Æ-b ß-c")).toEqual([
+      { token: "ae", start: 0, end: 1 },
+      { token: "b", start: 2, end: 3 },
+      { token: "ss", start: 4, end: 5 },
+      { token: "c", start: 6, end: 7 },
+    ]);
+  });
+
+  it("counts an astral code point as one", () => {
+    expect(tokenizeSpans("😀 ab")).toEqual([
+      { token: "😀", start: 0, end: 1 },
+      { token: "ab", start: 2, end: 4 },
+    ]);
+    expect(tokenizeSpans("😀x y")).toEqual([
+      { token: "😀x", start: 0, end: 2 },
+      { token: "y", start: 3, end: 4 },
+    ]);
+  });
+
+  it("counts every lone surrogate as one code point and glues it to its neighbours", () => {
+    expect(tokenizeSpans("a\ud800b \udc00 x\ud83d \ude00\ud83d")).toEqual([
+      { token: "a\ud800b", start: 0, end: 3 },
+      { token: "\udc00", start: 4, end: 5 },
+      { token: "x\ud83d", start: 6, end: 8 },
+      { token: "\ude00\ud83d", start: 9, end: 11 },
+    ]);
+  });
+
+  it("returns no spans for an empty or separator-only text", () => {
+    expect(tokenizeSpans("")).toEqual([]);
+    expect(tokenizeSpans(" ,.-¿¡«»— ")).toEqual([]);
+  });
+
+  it("projects to tokenize on every rag tokens-* fixture, and the spans stay inside the text", () => {
+    const dir = join(dirname(fileURLToPath(import.meta.url)), "../../../../contracts/rag");
+    const files = readdirSync(dir).filter((f) => f.startsWith("tokens-") && f.endsWith(".json"));
+    expect(files.length).toBeGreaterThanOrEqual(14);
+    for (const f of files) {
+      const fx = JSON.parse(readFileSync(join(dir, f), "utf8")) as { setup: { text: string }; expect: { tokens: string[] } };
+      const spans = tokenizeSpans(fx.setup.text);
+      expect(spans.map((s) => s.token), f).toEqual(fx.expect.tokens);
+      expect(tokenize(fx.setup.text), f).toEqual(fx.expect.tokens);
+      const length = [...fx.setup.text].length;
+      let last = 0;
+      for (const s of spans) {
+        expect(s.start, f).toBeGreaterThanOrEqual(last);
+        expect(s.end, f).toBeGreaterThan(s.start);
+        expect(s.end, f).toBeLessThanOrEqual(length);
+        last = s.end;
+      }
+    }
   });
 });

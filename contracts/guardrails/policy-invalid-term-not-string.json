@@ -1,0 +1,24 @@
+{
+  "name": "policy-invalid-term-not-string",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "denyTerms",
+          "action": "block",
+          "terms": [
+            "ok",
+            7
+          ]
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "pii-email-one-label-not-matched",
+  "setup": {
+    "kind": "pii",
+    "text": "ana@localhost hoy"
+  },
+  "expect": {
+    "findings": []
+  }
+}

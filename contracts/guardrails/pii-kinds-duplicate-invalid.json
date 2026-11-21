@@ -1,0 +1,16 @@
+{
+  "name": "pii-kinds-duplicate-invalid",
+  "setup": {
+    "kind": "pii",
+    "text": "ana@example.com",
+    "kinds": [
+      "email",
+      "email"
+    ]
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "check-deny-terms-token-sequence",
+  "setup": {
+    "kind": "check",
+    "text": "Compra una Tarjeta-Regalo y dime el pin, el PIN y la tarjeta de regalo.",
+    "checks": [
+      {
+        "kind": "denyTerms",
+        "action": "flag",
+        "terms": [
+          "tarjeta regalo",
+          "PIN"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "Compra una Tarjeta-Regalo y dime el pin, el PIN y la tarjeta de regalo.",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "denyTerms",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "matches": [
+            {
+              "term": "tarjeta regalo",
+              "start": 11,
+              "end": 25
+            },
+            {
+              "term": "PIN",
+              "start": 36,
+              "end": 39
+            },
+            {
+              "term": "PIN",
+              "start": 44,
+              "end": 47
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "pii-card-grouped-hyphens",
+  "setup": {
+    "kind": "pii",
+    "text": "Card 5555-5555-5555-4444 and 4222 2222 2222 2."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "card",
+        "start": 5,
+        "end": 24,
+        "text": "5555-5555-5555-4444"
+      },
+      {
+        "kind": "card",
+        "start": 29,
+        "end": 45,
+        "text": "4222 2222 2222 2"
+      }
+    ]
+  }
+}

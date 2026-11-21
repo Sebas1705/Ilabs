@@ -1,0 +1,14 @@
+{
+  "name": "check-empty-checks",
+  "setup": {
+    "kind": "check",
+    "text": "Hola",
+    "checks": []
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "Hola",
+    "mapping": [],
+    "findings": []
+  }
+}

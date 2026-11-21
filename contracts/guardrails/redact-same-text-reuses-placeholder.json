@@ -1,0 +1,16 @@
+{
+  "name": "redact-same-text-reuses-placeholder",
+  "setup": {
+    "kind": "redact",
+    "text": "ana@example.com y otra vez ana@example.com"
+  },
+  "expect": {
+    "text": "<EMAIL_1> y otra vez <EMAIL_1>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  }
+}

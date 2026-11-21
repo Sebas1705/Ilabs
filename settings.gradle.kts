@@ -42,4 +42,7 @@ project(":modules:evals-kotlin").projectDir = file("modules/evals/kotlin")
 include(":modules:rag-kotlin")
 project(":modules:rag-kotlin").projectDir = file("modules/rag/kotlin")
 
+include(":modules:guardrails-kotlin")
+project(":modules:guardrails-kotlin").projectDir = file("modules/guardrails/kotlin")
+
 include(":demos:android")

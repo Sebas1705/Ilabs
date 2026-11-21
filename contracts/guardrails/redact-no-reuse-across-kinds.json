@@ -1,0 +1,26 @@
+{
+  "name": "redact-no-reuse-across-kinds",
+  "setup": {
+    "kind": "redact",
+    "text": "ana@example.com",
+    "mapping": [
+      [
+        "<PHONE_1>",
+        "ana@example.com"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "<EMAIL_1>",
+    "mapping": [
+      [
+        "<PHONE_1>",
+        "ana@example.com"
+      ],
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  }
+}

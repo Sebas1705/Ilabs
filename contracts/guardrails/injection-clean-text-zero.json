@@ -1,0 +1,11 @@
+{
+  "name": "injection-clean-text-zero",
+  "setup": {
+    "kind": "injection",
+    "text": "La biblioteca abre a las nueve y cierra a las ocho."
+  },
+  "expect": {
+    "score": 0,
+    "signals": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pii-email-trailing-dot-excluded",
+  "setup": {
+    "kind": "pii",
+    "text": "Mi correo es luis.garcia@example.org."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "email",
+        "start": 13,
+        "end": 36,
+        "text": "luis.garcia@example.org"
+      }
+    ]
+  }
+}

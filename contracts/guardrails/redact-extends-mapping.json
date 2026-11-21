@@ -1,0 +1,34 @@
+{
+  "name": "redact-extends-mapping",
+  "setup": {
+    "kind": "redact",
+    "text": "Soy luis@example.org, amigo de ana@example.com.",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ],
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "Soy <EMAIL_2>, amigo de <EMAIL_1>.",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ],
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ],
+      [
+        "<EMAIL_2>",
+        "luis@example.org"
+      ]
+    ]
+  }
+}

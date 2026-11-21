@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 import type { Key } from "./i18n";
 import { ContextPage } from "./pages/ContextPage";
 import { EvalsPage } from "./pages/EvalsPage";
+import { GuardrailsPage } from "./pages/GuardrailsPage";
 import { ProvidersPage } from "./pages/ProvidersPage";
 import { RagPage } from "./pages/RagPage";
 import { StructuredPage } from "./pages/StructuredPage";
@@ -25,4 +26,5 @@ export const ROUTES: readonly RouteDef[] = [
   { id: "context", hash: "#/context", titleKey: "navContext", navKey: "navContext", component: ContextPage },
   { id: "evals", hash: "#/evals", titleKey: "navEvals", navKey: "navEvals", component: EvalsPage },
   { id: "rag", hash: "#/rag", titleKey: "ragTitle", navKey: "navRag", component: RagPage },
+  { id: "guardrails", hash: "#/guardrails", titleKey: "guardTitle", navKey: "navGuard", component: GuardrailsPage },
 ];

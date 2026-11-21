@@ -1,0 +1,55 @@
+{
+  "name": "check-redact-not-fired-keeps-text",
+  "setup": {
+    "kind": "check",
+    "text": "Llama al 612 345 678",
+    "checks": [
+      {
+        "kind": "pii",
+        "action": "redact",
+        "kinds": [
+          "email"
+        ]
+      },
+      {
+        "kind": "pii",
+        "action": "flag",
+        "kinds": [
+          "phone"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "Llama al 612 345 678",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": false,
+        "details": {
+          "findings": []
+        }
+      },
+      {
+        "check": 1,
+        "kind": "pii",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "phone",
+              "start": 9,
+              "end": 20,
+              "text": "612 345 678"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

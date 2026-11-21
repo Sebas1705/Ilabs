@@ -1,0 +1,10 @@
+{
+  "name": "pii-dni-wrong-letter",
+  "setup": {
+    "kind": "pii",
+    "text": "DNI 12345678A."
+  },
+  "expect": {
+    "findings": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "restore-longest-placeholder-wins",
+  "setup": {
+    "kind": "restore",
+    "text": "<AB> <A",
+    "mapping": [
+      [
+        "<A",
+        "x"
+      ],
+      [
+        "<AB>",
+        "y"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "y x"
+  }
+}

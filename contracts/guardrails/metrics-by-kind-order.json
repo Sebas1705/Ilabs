@@ -1,0 +1,101 @@
+{
+  "name": "metrics-by-kind-order",
+  "setup": {
+    "kind": "metrics",
+    "expected": [
+      {
+        "kind": "secret",
+        "start": 0,
+        "end": 10
+      },
+      {
+        "kind": "override",
+        "start": 20,
+        "end": 30
+      }
+    ],
+    "found": [
+      {
+        "kind": "delimiter",
+        "start": 40,
+        "end": 52
+      },
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      },
+      {
+        "kind": "role_hijack",
+        "start": 60,
+        "end": 70
+      },
+      {
+        "kind": "card",
+        "start": 80,
+        "end": 99
+      }
+    ]
+  },
+  "expect": {
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "byKind": [
+      {
+        "kind": "email",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      },
+      {
+        "kind": "card",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      },
+      {
+        "kind": "secret",
+        "precision": 1,
+        "recall": 0,
+        "f1": 0,
+        "expected": 1,
+        "found": 0,
+        "correct": 0
+      },
+      {
+        "kind": "override",
+        "precision": 1,
+        "recall": 0,
+        "f1": 0,
+        "expected": 1,
+        "found": 0,
+        "correct": 0
+      },
+      {
+        "kind": "role_hijack",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      },
+      {
+        "kind": "delimiter",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      }
+    ]
+  }
+}

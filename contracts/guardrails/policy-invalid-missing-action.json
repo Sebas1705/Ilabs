@@ -1,0 +1,19 @@
+{
+  "name": "policy-invalid-missing-action",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "pii"
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

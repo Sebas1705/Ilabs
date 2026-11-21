@@ -1,0 +1,23 @@
+{
+  "name": "eval-unknown-kind-invalid",
+  "setup": {
+    "kind": "eval",
+    "samples": [
+      {
+        "text": "Calle Mayor 1",
+        "expected": [
+          {
+            "kind": "address",
+            "start": 0,
+            "end": 13
+          }
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

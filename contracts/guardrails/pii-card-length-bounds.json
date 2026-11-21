@@ -1,0 +1,29 @@
+{
+  "name": "pii-card-length-bounds",
+  "setup": {
+    "kind": "pii",
+    "text": "Tests: 4222222222222, 378282246310005 y 4000 0000 0000 0000 006."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "card",
+        "start": 7,
+        "end": 20,
+        "text": "4222222222222"
+      },
+      {
+        "kind": "card",
+        "start": 22,
+        "end": 37,
+        "text": "378282246310005"
+      },
+      {
+        "kind": "card",
+        "start": 40,
+        "end": 63,
+        "text": "4000 0000 0000 0000 006"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "check-deny-terms-same-term-no-overlap",
+  "setup": {
+    "kind": "check",
+    "text": "pin pin pin",
+    "checks": [
+      {
+        "kind": "denyTerms",
+        "action": "flag",
+        "terms": [
+          "pin pin"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "pin pin pin",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "denyTerms",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "matches": [
+            {
+              "term": "pin pin",
+              "start": 0,
+              "end": 7
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pii-lone-surrogates-offsets",
+  "setup": {
+    "kind": "pii",
+    "text": "\ude00\ud83d ana@example.com"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "email",
+        "start": 3,
+        "end": 18,
+        "text": "ana@example.com"
+      }
+    ]
+  }
+}

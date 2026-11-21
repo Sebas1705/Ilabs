@@ -1,0 +1,10 @@
+{
+  "name": "pii-limit-phone-extra-digit",
+  "setup": {
+    "kind": "pii",
+    "text": "Llama al 612 345 678 9 h"
+  },
+  "expect": {
+    "findings": []
+  }
+}

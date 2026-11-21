@@ -1,0 +1,26 @@
+{
+  "name": "redact-numbering-after-largest",
+  "setup": {
+    "kind": "redact",
+    "text": "Escribe a soporte@example.net.",
+    "mapping": [
+      [
+        "<EMAIL_3>",
+        "ana@example.com"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "Escribe a <EMAIL_4>.",
+    "mapping": [
+      [
+        "<EMAIL_3>",
+        "ana@example.com"
+      ],
+      [
+        "<EMAIL_4>",
+        "soporte@example.net"
+      ]
+    ]
+  }
+}

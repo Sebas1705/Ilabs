@@ -1,0 +1,17 @@
+{
+  "name": "pii-overlap-longest-at-same-start",
+  "setup": {
+    "kind": "pii",
+    "text": "sk-aaaaaaaaaaaaaaaaaaaa@example.com"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 35,
+        "text": "sk-aaaaaaaaaaaaaaaaaaaa@example.com"
+      }
+    ]
+  }
+}

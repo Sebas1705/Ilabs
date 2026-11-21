@@ -1,0 +1,52 @@
+{
+  "name": "eval-shift-length-plus-one",
+  "setup": {
+    "kind": "eval",
+    "samples": [
+      {
+        "text": "ab",
+        "expected": [
+          {
+            "kind": "email",
+            "start": 2,
+            "end": 2
+          }
+        ]
+      },
+      {
+        "text": "cd",
+        "expected": [
+          {
+            "kind": "email",
+            "start": 0,
+            "end": 0
+          }
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "pii": {
+      "precision": 1,
+      "recall": 0,
+      "f1": 0,
+      "byKind": [
+        {
+          "kind": "email",
+          "precision": 1,
+          "recall": 0,
+          "f1": 0,
+          "expected": 2,
+          "found": 0,
+          "correct": 0
+        }
+      ]
+    },
+    "injection": {
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "byKind": []
+    }
+  }
+}

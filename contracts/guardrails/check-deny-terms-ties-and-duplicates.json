@@ -1,0 +1,56 @@
+{
+  "name": "check-deny-terms-ties-and-duplicates",
+  "setup": {
+    "kind": "check",
+    "text": "ja ja ja, Tarjeta-Regalo",
+    "checks": [
+      {
+        "kind": "denyTerms",
+        "action": "flag",
+        "terms": [
+          "ja ja",
+          "tarjeta",
+          "tarjeta regalo",
+          "tarjeta"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "ja ja ja, Tarjeta-Regalo",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "denyTerms",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "matches": [
+            {
+              "term": "ja ja",
+              "start": 0,
+              "end": 5
+            },
+            {
+              "term": "tarjeta",
+              "start": 10,
+              "end": 17
+            },
+            {
+              "term": "tarjeta regalo",
+              "start": 10,
+              "end": 24
+            },
+            {
+              "term": "tarjeta",
+              "start": 10,
+              "end": 17
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

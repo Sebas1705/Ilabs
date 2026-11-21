@@ -1,0 +1,27 @@
+{
+  "name": "pii-kinds-only-listed",
+  "setup": {
+    "kind": "pii",
+    "text": "Escribe a ana@example.com o llama al 612 345 678; DNI 12345678Z.",
+    "kinds": [
+      "phone",
+      "email"
+    ]
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "email",
+        "start": 10,
+        "end": 25,
+        "text": "ana@example.com"
+      },
+      {
+        "kind": "phone",
+        "start": 37,
+        "end": 48,
+        "text": "612 345 678"
+      }
+    ]
+  }
+}

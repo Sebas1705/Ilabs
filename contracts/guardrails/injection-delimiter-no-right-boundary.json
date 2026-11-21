@@ -1,0 +1,18 @@
+{
+  "name": "injection-delimiter-no-right-boundary",
+  "setup": {
+    "kind": "injection",
+    "text": "### systematic review"
+  },
+  "expect": {
+    "score": 25,
+    "signals": [
+      {
+        "id": "delim-hash-system",
+        "category": "delimiter",
+        "start": 0,
+        "end": 10
+      }
+    ]
+  }
+}

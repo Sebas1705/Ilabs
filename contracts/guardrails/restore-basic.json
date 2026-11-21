@@ -1,0 +1,20 @@
+{
+  "name": "restore-basic",
+  "setup": {
+    "kind": "restore",
+    "text": "Hola <EMAIL_1>, te llamo al <PHONE_1>.",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ],
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "Hola ana@example.com, te llamo al 612 345 678."
+  }
+}

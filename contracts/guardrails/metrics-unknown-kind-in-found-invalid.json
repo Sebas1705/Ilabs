@@ -1,0 +1,24 @@
+{
+  "name": "metrics-unknown-kind-in-found-invalid",
+  "setup": {
+    "kind": "metrics",
+    "expected": [],
+    "found": [
+      {
+        "kind": "phone",
+        "start": 0,
+        "end": 11
+      },
+      {
+        "kind": "address",
+        "start": 20,
+        "end": 40
+      }
+    ]
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

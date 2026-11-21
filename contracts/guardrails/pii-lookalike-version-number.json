@@ -1,0 +1,10 @@
+{
+  "name": "pii-lookalike-version-number",
+  "setup": {
+    "kind": "pii",
+    "text": "Actualiza a la versión 2.10.4 o 10.4.1234.5678 y 1.0.0-beta.15."
+  },
+  "expect": {
+    "findings": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pii-email-basic",
+  "setup": {
+    "kind": "pii",
+    "text": "Escríbeme a ana@example.com mañana."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "email",
+        "start": 12,
+        "end": 27,
+        "text": "ana@example.com"
+      }
+    ]
+  }
+}

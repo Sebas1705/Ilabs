@@ -1,0 +1,19 @@
+{
+  "name": "redact-kinds-restricted",
+  "setup": {
+    "kind": "redact",
+    "text": "ana@example.com, 612 345 678",
+    "kinds": [
+      "email"
+    ]
+  },
+  "expect": {
+    "text": "<EMAIL_1>, 612 345 678",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  }
+}

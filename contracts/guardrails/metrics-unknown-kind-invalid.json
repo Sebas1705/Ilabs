@@ -1,0 +1,19 @@
+{
+  "name": "metrics-unknown-kind-invalid",
+  "setup": {
+    "kind": "metrics",
+    "expected": [
+      {
+        "kind": "name",
+        "start": 0,
+        "end": 4
+      }
+    ],
+    "found": []
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_options"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "name": "guarded-empty-policy-passthrough",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "S."
+        },
+        {
+          "role": "user",
+          "content": "Hola"
+        },
+        {
+          "role": "assistant",
+          "content": "Hola, ¿qué tal?"
+        },
+        {
+          "role": "user",
+          "content": "Bien"
+        }
+      ]
+    },
+    "policy": {
+      "input": [],
+      "output": []
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Me alegro."
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Me alegro.",
+    "sent": [
+      {
+        "role": "system",
+        "content": "S."
+      },
+      {
+        "role": "user",
+        "content": "Hola"
+      },
+      {
+        "role": "assistant",
+        "content": "Hola, ¿qué tal?"
+      },
+      {
+        "role": "user",
+        "content": "Bien"
+      }
+    ],
+    "input": [
+      [],
+      [],
+      []
+    ],
+    "output": [],
+    "calls": 1,
+    "mapping": [],
+    "outputMapping": [],
+    "reply": "Me alegro."
+  }
+}

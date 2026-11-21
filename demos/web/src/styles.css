@@ -290,3 +290,31 @@ main:focus { outline: none; }
 .hit-score .tokenbar, .metrics .tokenbar { margin-top: 0.25rem; min-width: 3rem; }
 .ctx-budget { margin-bottom: 0.25rem; }
 .ctx-row[data-hit="yes"] { border-color: var(--accent); border-width: 2px; }
+
+/* Guardrails page */
+.hl-text { margin: 0.25rem 0 0.75rem; line-height: 2.1; }
+.hl {
+  background: var(--warn-bg); color: var(--warn-fg); border-radius: 4px; padding: 0.0625rem 0.25rem;
+  text-decoration-line: underline; text-decoration-thickness: 2px; text-underline-offset: 3px;
+}
+.hl[data-family="pii"] { text-decoration-style: solid; }
+.hl[data-family="injection"] { background: var(--err-bg); color: var(--err-fg); text-decoration-style: dashed; }
+.hl-tag {
+  display: inline-block; margin-left: 0.25rem; padding: 0 0.375rem; font: 600 0.75rem/1.4 var(--font);
+  border: 1px solid currentColor; border-radius: 999px; vertical-align: baseline; text-decoration: none;
+}
+.findings, .checks-list, .detail-list { list-style: none; margin: 0.25rem 0 0.75rem; padding: 0; display: grid; gap: 0.375rem; }
+.findings li {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; min-height: 44px;
+  padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 8px; overflow-wrap: anywhere;
+}
+.badge[data-family="injection"] { background: var(--err-bg); color: var(--err-fg); }
+.detail-list { margin: 0.25rem 0 0; }
+.detail-list li { overflow-wrap: anywhere; }
+.checks-list > li p { margin: 0.25rem 0; }
+.policy, .policy-check { border: 1px solid var(--border); border-radius: 8px; margin: 1rem 0; padding: 0.25rem 0.75rem 0.5rem; min-width: 0; }
+.policy legend, .policy-check legend { font-weight: 600; padding: 0 0.25rem; }
+.policy-check { margin: 0.75rem 0; }
+.policy .modes { margin: 0.5rem 0 0; }
+.field textarea { min-height: 7rem; }
+.mapping td, .mapping th { white-space: normal; overflow-wrap: anywhere; }

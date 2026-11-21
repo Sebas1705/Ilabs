@@ -1,0 +1,10 @@
+{
+  "name": "pii-phone-slash-not-separator",
+  "setup": {
+    "kind": "pii",
+    "text": "Tel 612/345/678."
+  },
+  "expect": {
+    "findings": []
+  }
+}

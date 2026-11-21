@@ -1,0 +1,83 @@
+{
+  "name": "metrics-partial",
+  "setup": {
+    "kind": "metrics",
+    "expected": [
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      },
+      {
+        "kind": "phone",
+        "start": 20,
+        "end": 31
+      },
+      {
+        "kind": "card",
+        "start": 40,
+        "end": 59
+      }
+    ],
+    "found": [
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      },
+      {
+        "kind": "phone",
+        "start": 21,
+        "end": 31
+      },
+      {
+        "kind": "iban",
+        "start": 60,
+        "end": 80
+      }
+    ]
+  },
+  "expect": {
+    "precision": 0.3333333333333333,
+    "recall": 0.3333333333333333,
+    "f1": 0.3333333333333333,
+    "byKind": [
+      {
+        "kind": "email",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "expected": 1,
+        "found": 1,
+        "correct": 1
+      },
+      {
+        "kind": "phone",
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "expected": 1,
+        "found": 1,
+        "correct": 0
+      },
+      {
+        "kind": "iban",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      },
+      {
+        "kind": "card",
+        "precision": 1,
+        "recall": 0,
+        "f1": 0,
+        "expected": 1,
+        "found": 0,
+        "correct": 0
+      }
+    ]
+  }
+}

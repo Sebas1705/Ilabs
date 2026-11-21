@@ -1,0 +1,17 @@
+{
+  "name": "policy-invalid-not-object",
+  "setup": {
+    "kind": "policy",
+    "policy": [
+      {
+        "kind": "pii",
+        "action": "flag"
+      }
+    ]
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

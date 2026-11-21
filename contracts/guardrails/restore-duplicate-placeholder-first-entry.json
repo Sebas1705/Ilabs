@@ -1,0 +1,20 @@
+{
+  "name": "restore-duplicate-placeholder-first-entry",
+  "setup": {
+    "kind": "restore",
+    "text": "<EMAIL_1>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "primero"
+      ],
+      [
+        "<EMAIL_1>",
+        "segundo"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "primero"
+  }
+}

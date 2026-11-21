@@ -1,0 +1,10 @@
+{
+  "name": "pii-empty-text",
+  "setup": {
+    "kind": "pii",
+    "text": ""
+  },
+  "expect": {
+    "findings": []
+  }
+}

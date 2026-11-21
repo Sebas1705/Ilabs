@@ -94,24 +94,42 @@ private fun appendFolded(out: StringBuilder, text: String, i: Int, width: Int, c
 }
 
 /**
- * Splits [text] into tokens: maximal runs of word code points, each folded (ASCII `A-Z` to `a-z`, then the Latin-1
- * table; every other code point kept as is). Every other code point separates. Used by BM25 and the hash embedder.
+ * One token of [tokenizeSpans]: the folded [token] and the code-point offsets `[start, end)` of its SOURCE run.
+ * Folding can lengthen a code point (`ß` becomes `ss`), so `end - start` is the length of the source run, not of [token].
  */
-fun tokenize(text: String): List<String> {
-    val tokens = ArrayList<String>()
+data class TokenSpan(val token: String, val start: Int, val end: Int)
+
+/**
+ * Splits [text] into tokens: maximal runs of word code points, each folded (ASCII `A-Z` to `a-z`, then the Latin-1
+ * table; every other code point kept as is), with the code-point offsets of each source run. Every other code point
+ * separates.
+ */
+fun tokenizeSpans(text: String): List<TokenSpan> {
+    val spans = ArrayList<TokenSpan>()
     val current = StringBuilder()
+    var runStart = 0
+    var offset = 0 // in code points
     var i = 0
     while (i < text.length) {
         val width = codePointWidth(text, i)
         val cp = codePointAt(text, i)
         if (isWordCodePoint(cp)) {
+            if (current.isEmpty()) runStart = offset
             appendFolded(current, text, i, width, cp)
         } else if (current.isNotEmpty()) {
-            tokens += current.toString()
+            spans += TokenSpan(current.toString(), runStart, offset)
             current.setLength(0)
         }
         i += width
+        offset++
     }
-    if (current.isNotEmpty()) tokens += current.toString()
-    return tokens
+    if (current.isNotEmpty()) spans += TokenSpan(current.toString(), runStart, offset)
+    return spans
 }
+
+/**
+ * Splits [text] into tokens: maximal runs of word code points, each folded (ASCII `A-Z` to `a-z`, then the Latin-1
+ * table; every other code point kept as is). Every other code point separates. Used by BM25 and the hash embedder.
+ * It is exactly the list of the `token` fields of [tokenizeSpans].
+ */
+fun tokenize(text: String): List<String> = tokenizeSpans(text).map { it.token }

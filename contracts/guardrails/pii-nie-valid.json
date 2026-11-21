@@ -1,0 +1,29 @@
+{
+  "name": "pii-nie-valid",
+  "setup": {
+    "kind": "pii",
+    "text": "NIE X1234567L y Y0000000Z, Z0000000M."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "spanish_id",
+        "start": 4,
+        "end": 13,
+        "text": "X1234567L"
+      },
+      {
+        "kind": "spanish_id",
+        "start": 16,
+        "end": 25,
+        "text": "Y0000000Z"
+      },
+      {
+        "kind": "spanish_id",
+        "start": 27,
+        "end": 36,
+        "text": "Z0000000M"
+      }
+    ]
+  }
+}

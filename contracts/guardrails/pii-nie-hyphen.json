@@ -1,0 +1,23 @@
+{
+  "name": "pii-nie-hyphen",
+  "setup": {
+    "kind": "pii",
+    "text": "NIE X1234567-L y DNI 87654321-X."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "spanish_id",
+        "start": 4,
+        "end": 14,
+        "text": "X1234567-L"
+      },
+      {
+        "kind": "spanish_id",
+        "start": 21,
+        "end": 31,
+        "text": "87654321-X"
+      }
+    ]
+  }
+}

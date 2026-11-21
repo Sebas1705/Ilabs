@@ -1,0 +1,107 @@
+{
+  "name": "guarded-blocked-output",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Dame un teléfono de contacto."
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ],
+      "output": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        },
+        {
+          "kind": "pii",
+          "action": "block",
+          "kinds": [
+            "phone"
+          ]
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Llámame al 612 345 678."
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "blocked_output",
+    "sent": [
+      {
+        "role": "user",
+        "content": "Dame un teléfono de contacto."
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "pii",
+          "action": "redact",
+          "fired": false,
+          "details": {
+            "findings": []
+          }
+        }
+      ]
+    ],
+    "output": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "phone",
+              "start": 11,
+              "end": 22,
+              "text": "612 345 678"
+            }
+          ]
+        }
+      },
+      {
+        "check": 1,
+        "kind": "pii",
+        "action": "block",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "phone",
+              "start": 11,
+              "end": 22,
+              "text": "612 345 678"
+            }
+          ]
+        }
+      }
+    ],
+    "calls": 1,
+    "mapping": [],
+    "outputMapping": [
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ]
+    ],
+    "reply": "Request blocked by guardrails."
+  }
+}

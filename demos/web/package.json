@@ -13,6 +13,7 @@
   "dependencies": {
     "@ilabs/context": "workspace:*",
     "@ilabs/evals": "workspace:*",
+    "@ilabs/guardrails": "workspace:*",
     "@ilabs/providers": "workspace:*",
     "@ilabs/rag": "workspace:*",
     "@ilabs/structured": "workspace:*",

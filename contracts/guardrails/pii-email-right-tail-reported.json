@@ -1,0 +1,17 @@
+{
+  "name": "pii-email-right-tail-reported",
+  "setup": {
+    "kind": "pii",
+    "text": "Escribe a x@example.org@example.com hoy."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "email",
+        "start": 10,
+        "end": 23,
+        "text": "x@example.org"
+      }
+    ]
+  }
+}

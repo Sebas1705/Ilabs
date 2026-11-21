@@ -1,0 +1,16 @@
+{
+  "name": "policy-invalid-unknown-top-level-key",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [],
+      "output": [],
+      "mode": "strict"
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

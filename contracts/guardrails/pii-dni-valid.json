@@ -1,0 +1,23 @@
+{
+  "name": "pii-dni-valid",
+  "setup": {
+    "kind": "pii",
+    "text": "Mi DNI es 12345678Z y el de mi padre 00000000T."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "spanish_id",
+        "start": 10,
+        "end": 19,
+        "text": "12345678Z"
+      },
+      {
+        "kind": "spanish_id",
+        "start": 37,
+        "end": 46,
+        "text": "00000000T"
+      }
+    ]
+  }
+}

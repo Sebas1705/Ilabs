@@ -1,0 +1,11 @@
+{
+  "name": "injection-delimiter-u2028-not-line-start",
+  "setup": {
+    "kind": "injection",
+    "text": "a system: x"
+  },
+  "expect": {
+    "score": 0,
+    "signals": []
+  }
+}

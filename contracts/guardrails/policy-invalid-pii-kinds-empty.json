@@ -1,0 +1,21 @@
+{
+  "name": "policy-invalid-pii-kinds-empty",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "flag",
+          "kinds": []
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

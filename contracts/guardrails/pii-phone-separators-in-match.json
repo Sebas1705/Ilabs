@@ -1,0 +1,23 @@
+{
+  "name": "pii-phone-separators-in-match",
+  "setup": {
+    "kind": "pii",
+    "text": "Teléfono: 612 345-678 o 600.000.000."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "phone",
+        "start": 10,
+        "end": 21,
+        "text": "612 345-678"
+      },
+      {
+        "kind": "phone",
+        "start": 24,
+        "end": 35,
+        "text": "600.000.000"
+      }
+    ]
+  }
+}

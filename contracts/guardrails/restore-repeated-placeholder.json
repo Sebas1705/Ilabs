@@ -1,0 +1,16 @@
+{
+  "name": "restore-repeated-placeholder",
+  "setup": {
+    "kind": "restore",
+    "text": "<EMAIL_1> y <EMAIL_1><EMAIL_1>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "ana@example.com y ana@example.comana@example.com"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "check-deny-terms-folded-source-end",
+  "setup": {
+    "kind": "check",
+    "text": "Calle Straße 5",
+    "checks": [
+      {
+        "kind": "denyTerms",
+        "action": "flag",
+        "terms": [
+          "STRASSE"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "Calle Straße 5",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "denyTerms",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "matches": [
+            {
+              "term": "STRASSE",
+              "start": 6,
+              "end": 12
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

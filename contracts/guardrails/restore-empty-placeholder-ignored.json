@@ -1,0 +1,20 @@
+{
+  "name": "restore-empty-placeholder-ignored",
+  "setup": {
+    "kind": "restore",
+    "text": "a<EMAIL_1>b",
+    "mapping": [
+      [
+        "",
+        "x"
+      ],
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "aana@example.comb"
+  }
+}

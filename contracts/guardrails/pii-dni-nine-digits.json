@@ -1,0 +1,10 @@
+{
+  "name": "pii-dni-nine-digits",
+  "setup": {
+    "kind": "pii",
+    "text": "DNI 112345678Z."
+  },
+  "expect": {
+    "findings": []
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "check-block-beats-redact",
+  "setup": {
+    "kind": "check",
+    "text": "El secreto es ana@example.com",
+    "checks": [
+      {
+        "kind": "pii",
+        "action": "redact"
+      },
+      {
+        "kind": "denyTerms",
+        "action": "block",
+        "terms": [
+          "secreto"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "block",
+    "text": "El secreto es <EMAIL_1>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "email",
+              "start": 14,
+              "end": 29,
+              "text": "ana@example.com"
+            }
+          ]
+        }
+      },
+      {
+        "check": 1,
+        "kind": "denyTerms",
+        "action": "block",
+        "fired": true,
+        "details": {
+          "matches": [
+            {
+              "term": "secreto",
+              "start": 3,
+              "end": 10
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

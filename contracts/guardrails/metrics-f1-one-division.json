@@ -1,0 +1,92 @@
+{
+  "name": "metrics-f1-one-division",
+  "setup": {
+    "kind": "metrics",
+    "expected": [
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      }
+    ],
+    "found": [
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      },
+      {
+        "kind": "phone",
+        "start": 20,
+        "end": 31
+      },
+      {
+        "kind": "card",
+        "start": 40,
+        "end": 59
+      },
+      {
+        "kind": "secret",
+        "start": 60,
+        "end": 80
+      },
+      {
+        "kind": "iban",
+        "start": 90,
+        "end": 120
+      }
+    ]
+  },
+  "expect": {
+    "precision": 0.2,
+    "recall": 1,
+    "f1": 0.3333333333333333,
+    "byKind": [
+      {
+        "kind": "email",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "expected": 1,
+        "found": 1,
+        "correct": 1
+      },
+      {
+        "kind": "phone",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      },
+      {
+        "kind": "iban",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      },
+      {
+        "kind": "card",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      },
+      {
+        "kind": "secret",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      }
+    ]
+  }
+}

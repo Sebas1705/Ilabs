@@ -1,0 +1,17 @@
+{
+  "name": "pii-phone-glue-is-ascii-only",
+  "setup": {
+    "kind": "pii",
+    "text": "Estoy aquí612345678 y en teléfono612345678."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "phone",
+        "start": 10,
+        "end": 19,
+        "text": "612345678"
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "pii-dni-glued-left-not-matched",
+  "setup": {
+    "kind": "pii",
+    "text": "DNI12345678Z"
+  },
+  "expect": {
+    "findings": []
+  }
+}

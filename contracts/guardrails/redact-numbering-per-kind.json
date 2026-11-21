@@ -1,0 +1,28 @@
+{
+  "name": "redact-numbering-per-kind",
+  "setup": {
+    "kind": "redact",
+    "text": "ana@example.com, 612 345 678, luis@example.org, 600 000 000"
+  },
+  "expect": {
+    "text": "<EMAIL_1>, <PHONE_1>, <EMAIL_2>, <PHONE_2>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ],
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ],
+      [
+        "<EMAIL_2>",
+        "luis@example.org"
+      ],
+      [
+        "<PHONE_2>",
+        "600 000 000"
+      ]
+    ]
+  }
+}

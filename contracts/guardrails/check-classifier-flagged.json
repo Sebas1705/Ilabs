@@ -1,0 +1,41 @@
+{
+  "name": "check-classifier-flagged",
+  "setup": {
+    "kind": "check",
+    "text": "Texto cualquiera.",
+    "checks": [
+      {
+        "kind": "classifier",
+        "action": "flag"
+      }
+    ],
+    "classifier": {
+      "script": [
+        {
+          "flagged": true,
+          "label": "toxic"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "Texto cualquiera.",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "classifier",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "flagged": true,
+          "label": "toxic"
+        }
+      }
+    ],
+    "classifierInputs": [
+      "Texto cualquiera."
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pii-nie-lowercase",
+  "setup": {
+    "kind": "pii",
+    "text": "nie x1234567l"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "spanish_id",
+        "start": 4,
+        "end": 13,
+        "text": "x1234567l"
+      }
+    ]
+  }
+}

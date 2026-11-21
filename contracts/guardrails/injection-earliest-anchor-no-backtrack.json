@@ -1,0 +1,11 @@
+{
+  "name": "injection-earliest-anchor-no-backtrack",
+  "setup": {
+    "kind": "injection",
+    "text": "Ignore prior and previous house cleaning instructions."
+  },
+  "expect": {
+    "score": 0,
+    "signals": []
+  }
+}

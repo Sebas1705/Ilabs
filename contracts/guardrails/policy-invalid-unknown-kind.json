@@ -1,0 +1,20 @@
+{
+  "name": "policy-invalid-unknown-kind",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "regex",
+          "action": "block"
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

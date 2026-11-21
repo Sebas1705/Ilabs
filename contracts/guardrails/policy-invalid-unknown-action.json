@@ -1,0 +1,20 @@
+{
+  "name": "policy-invalid-unknown-action",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "mask"
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

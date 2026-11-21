@@ -1,0 +1,33 @@
+{
+  "name": "guarded-exhausted-script",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hola"
+        }
+      ]
+    },
+    "policy": {
+      "input": [],
+      "output": []
+    },
+    "provider": {
+      "script": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "unavailable"
+    },
+    "calls": 1,
+    "sent": [
+      {
+        "role": "user",
+        "content": "Hola"
+      }
+    ]
+  }
+}

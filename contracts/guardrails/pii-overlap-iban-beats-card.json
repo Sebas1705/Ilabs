@@ -1,0 +1,17 @@
+{
+  "name": "pii-overlap-iban-beats-card",
+  "setup": {
+    "kind": "pii",
+    "text": "Cuenta GB31 TEST 4111 1111 1111 1111 activa."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "iban",
+        "start": 7,
+        "end": 36,
+        "text": "GB31 TEST 4111 1111 1111 1111"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "pii-overlap-rejected-does-not-block",
+  "setup": {
+    "kind": "pii",
+    "text": "Token sk-aaaaaaaaaaaaaaaa-GB31 TEST 4111 1111 1111 1111 fin."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "secret",
+        "start": 6,
+        "end": 30,
+        "text": "sk-aaaaaaaaaaaaaaaa-GB31"
+      },
+      {
+        "kind": "card",
+        "start": 36,
+        "end": 55,
+        "text": "4111 1111 1111 1111"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "redact-placeholder-shaped-text-not-special",
+  "setup": {
+    "kind": "redact",
+    "text": "Ya tengo <EMAIL_1> y ana@example.com"
+  },
+  "expect": {
+    "text": "Ya tengo <EMAIL_1> y <EMAIL_1>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  }
+}

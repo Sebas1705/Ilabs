@@ -1,0 +1,57 @@
+{
+  "name": "check-redact-uses-given-mapping",
+  "setup": {
+    "kind": "check",
+    "text": "Hola ana@example.com y luis@example.org",
+    "checks": [
+      {
+        "kind": "pii",
+        "action": "redact"
+      }
+    ],
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "Hola <EMAIL_1> y <EMAIL_2>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ],
+      [
+        "<EMAIL_2>",
+        "luis@example.org"
+      ]
+    ],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "email",
+              "start": 5,
+              "end": 20,
+              "text": "ana@example.com"
+            },
+            {
+              "kind": "email",
+              "start": 23,
+              "end": 39,
+              "text": "luis@example.org"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pii-dni-lowercase-letter",
+  "setup": {
+    "kind": "pii",
+    "text": "dni 12345678z"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "spanish_id",
+        "start": 4,
+        "end": 13,
+        "text": "12345678z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "guarded-custom-blocked-text-output",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Dame un teléfono de contacto."
+        }
+      ]
+    },
+    "policy": {
+      "input": [],
+      "output": [
+        {
+          "kind": "pii",
+          "action": "block"
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Llámame al 612 345 678."
+        }
+      ]
+    },
+    "blockedText": "Respuesta retenida."
+  },
+  "expect": {
+    "status": "blocked_output",
+    "sent": [
+      {
+        "role": "user",
+        "content": "Dame un teléfono de contacto."
+      }
+    ],
+    "input": [
+      []
+    ],
+    "output": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "block",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "phone",
+              "start": 11,
+              "end": 22,
+              "text": "612 345 678"
+            }
+          ]
+        }
+      }
+    ],
+    "calls": 1,
+    "mapping": [],
+    "outputMapping": [],
+    "reply": "Respuesta retenida."
+  }
+}

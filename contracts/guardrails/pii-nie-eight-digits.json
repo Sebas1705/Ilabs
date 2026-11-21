@@ -1,0 +1,10 @@
+{
+  "name": "pii-nie-eight-digits",
+  "setup": {
+    "kind": "pii",
+    "text": "NIE X12345678Z."
+  },
+  "expect": {
+    "findings": []
+  }
+}

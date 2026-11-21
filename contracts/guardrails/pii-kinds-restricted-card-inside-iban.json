@@ -1,0 +1,20 @@
+{
+  "name": "pii-kinds-restricted-card-inside-iban",
+  "setup": {
+    "kind": "pii",
+    "text": "Cuenta GB31 TEST 4111 1111 1111 1111 activa.",
+    "kinds": [
+      "card"
+    ]
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "card",
+        "start": 17,
+        "end": 36,
+        "text": "4111 1111 1111 1111"
+      }
+    ]
+  }
+}

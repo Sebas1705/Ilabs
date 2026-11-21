@@ -1,0 +1,17 @@
+{
+  "name": "pii-card-luhn-valid",
+  "setup": {
+    "kind": "pii",
+    "text": "Tarjeta 4111111111111111 caduca pronto."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "card",
+        "start": 8,
+        "end": 24,
+        "text": "4111111111111111"
+      }
+    ]
+  }
+}

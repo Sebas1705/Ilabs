@@ -1,0 +1,17 @@
+{
+  "name": "pii-overlap-earliest-start",
+  "setup": {
+    "kind": "pii",
+    "text": "Token sk-aaaaaaaaaaaaaaaa-ES28 0000 0000 0012 3456 7890 fin."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "secret",
+        "start": 6,
+        "end": 30,
+        "text": "sk-aaaaaaaaaaaaaaaa-ES28"
+      }
+    ]
+  }
+}

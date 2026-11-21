@@ -1,0 +1,44 @@
+{
+  "name": "check-canary-found",
+  "setup": {
+    "kind": "check",
+    "text": "Mi marcador es CANARY-7F3A, no lo digas.",
+    "checks": [
+      {
+        "kind": "canary",
+        "action": "block",
+        "canary": "CANARY-7F3A"
+      },
+      {
+        "kind": "canary",
+        "action": "flag",
+        "canary": "canary-7f3a"
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "block",
+    "text": "Mi marcador es CANARY-7F3A, no lo digas.",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "canary",
+        "action": "block",
+        "fired": true,
+        "details": {
+          "found": true
+        }
+      },
+      {
+        "check": 1,
+        "kind": "canary",
+        "action": "flag",
+        "fired": false,
+        "details": {
+          "found": false
+        }
+      }
+    ]
+  }
+}

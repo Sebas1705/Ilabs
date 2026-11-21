@@ -1,0 +1,23 @@
+{
+  "name": "pii-phone-spanish-nine-digits",
+  "setup": {
+    "kind": "pii",
+    "text": "Llámame al 612345678 o al 700000000."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "phone",
+        "start": 11,
+        "end": 20,
+        "text": "612345678"
+      },
+      {
+        "kind": "phone",
+        "start": 26,
+        "end": 35,
+        "text": "700000000"
+      }
+    ]
+  }
+}

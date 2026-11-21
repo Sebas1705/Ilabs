@@ -1,0 +1,21 @@
+{
+  "name": "policy-invalid-redact-on-injection",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "injection",
+          "action": "redact",
+          "threshold": 50
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

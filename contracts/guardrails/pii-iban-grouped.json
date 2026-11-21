@@ -1,0 +1,17 @@
+{
+  "name": "pii-iban-grouped",
+  "setup": {
+    "kind": "pii",
+    "text": "Paga a ES28 0000 0000 0012 3456 7890, gracias."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "iban",
+        "start": 7,
+        "end": 36,
+        "text": "ES28 0000 0000 0012 3456 7890"
+      }
+    ]
+  }
+}

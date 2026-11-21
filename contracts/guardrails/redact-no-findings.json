@@ -1,0 +1,22 @@
+{
+  "name": "redact-no-findings",
+  "setup": {
+    "kind": "redact",
+    "text": "Hola, ¿qué tal?",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "Hola, ¿qué tal?",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  }
+}

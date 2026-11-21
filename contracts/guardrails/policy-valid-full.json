@@ -1,0 +1,68 @@
+{
+  "name": "policy-valid-full",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "redact",
+          "kinds": [
+            "email",
+            "phone"
+          ]
+        },
+        {
+          "kind": "pii",
+          "action": "block"
+        },
+        {
+          "kind": "injection",
+          "action": "block",
+          "threshold": 1
+        },
+        {
+          "kind": "injection",
+          "action": "flag",
+          "threshold": 100
+        },
+        {
+          "kind": "denyTerms",
+          "action": "flag",
+          "terms": [
+            "tarjeta regalo",
+            "PIN"
+          ]
+        },
+        {
+          "kind": "maxLength",
+          "action": "block",
+          "max": 0
+        },
+        {
+          "kind": "classifier",
+          "action": "flag"
+        }
+      ],
+      "output": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        },
+        {
+          "kind": "canary",
+          "action": "block",
+          "canary": "CANARY-7F3A"
+        },
+        {
+          "kind": "classifier",
+          "action": "block",
+          "label": "toxic"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "valid": true
+  }
+}

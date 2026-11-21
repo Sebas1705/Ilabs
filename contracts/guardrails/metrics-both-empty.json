@@ -1,0 +1,14 @@
+{
+  "name": "metrics-both-empty",
+  "setup": {
+    "kind": "metrics",
+    "expected": [],
+    "found": []
+  },
+  "expect": {
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "byKind": []
+  }
+}

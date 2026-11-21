@@ -1,0 +1,10 @@
+{
+  "name": "pii-iban-lowercase-not-matched",
+  "setup": {
+    "kind": "pii",
+    "text": "iban es28 0000 0000 0012 3456 7890."
+  },
+  "expect": {
+    "findings": []
+  }
+}

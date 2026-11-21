@@ -1,0 +1,21 @@
+{
+  "name": "policy-invalid-null-option",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "flag",
+          "kinds": null
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

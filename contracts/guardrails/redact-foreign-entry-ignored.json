@@ -1,0 +1,38 @@
+{
+  "name": "redact-foreign-entry-ignored",
+  "setup": {
+    "kind": "redact",
+    "text": "luis@example.org llamó al 612 345 678",
+    "mapping": [
+      [
+        "<EMAIL_01>",
+        "luis@example.org"
+      ],
+      [
+        "[PHONE_1]",
+        "612 345 678"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "<EMAIL_1> llamó al <PHONE_1>",
+    "mapping": [
+      [
+        "<EMAIL_01>",
+        "luis@example.org"
+      ],
+      [
+        "[PHONE_1]",
+        "612 345 678"
+      ],
+      [
+        "<EMAIL_1>",
+        "luis@example.org"
+      ],
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ]
+    ]
+  }
+}

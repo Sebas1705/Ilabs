@@ -1,0 +1,23 @@
+{
+  "name": "pii-iban-length-bounds-valid",
+  "setup": {
+    "kind": "pii",
+    "text": "IBAN ES5500000000001 y ES55000000000000000000000000000001 ok"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "iban",
+        "start": 5,
+        "end": 20,
+        "text": "ES5500000000001"
+      },
+      {
+        "kind": "iban",
+        "start": 23,
+        "end": 57,
+        "text": "ES55000000000000000000000000000001"
+      }
+    ]
+  }
+}

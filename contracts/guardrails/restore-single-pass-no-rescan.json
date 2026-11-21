@@ -1,0 +1,20 @@
+{
+  "name": "restore-single-pass-no-rescan",
+  "setup": {
+    "kind": "restore",
+    "text": "A: <EMAIL_1>; B: <PHONE_1>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "<PHONE_1>"
+      ],
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "A: <PHONE_1>; B: 612 345 678"
+  }
+}

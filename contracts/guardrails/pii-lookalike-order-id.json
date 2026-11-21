@@ -1,0 +1,10 @@
+{
+  "name": "pii-lookalike-order-id",
+  "setup": {
+    "kind": "pii",
+    "text": "Pedido ORD-2024-0001-7788 y factura INV-000123456."
+  },
+  "expect": {
+    "findings": []
+  }
+}

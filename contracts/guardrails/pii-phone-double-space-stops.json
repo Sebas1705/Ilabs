@@ -1,0 +1,10 @@
+{
+  "name": "pii-phone-double-space-stops",
+  "setup": {
+    "kind": "pii",
+    "text": "Número 612  345 678 fin"
+  },
+  "expect": {
+    "findings": []
+  }
+}

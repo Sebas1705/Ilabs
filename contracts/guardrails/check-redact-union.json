@@ -1,0 +1,67 @@
+{
+  "name": "check-redact-union",
+  "setup": {
+    "kind": "check",
+    "text": "IBAN: GB31 TEST 4111 1111 1111 1111.",
+    "checks": [
+      {
+        "kind": "pii",
+        "action": "redact",
+        "kinds": [
+          "card"
+        ]
+      },
+      {
+        "kind": "pii",
+        "action": "redact",
+        "kinds": [
+          "iban"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "IBAN: <IBAN_1>.",
+    "mapping": [
+      [
+        "<IBAN_1>",
+        "GB31 TEST 4111 1111 1111 1111"
+      ]
+    ],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "card",
+              "start": 16,
+              "end": 35,
+              "text": "4111 1111 1111 1111"
+            }
+          ]
+        }
+      },
+      {
+        "check": 1,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "iban",
+              "start": 6,
+              "end": 35,
+              "text": "GB31 TEST 4111 1111 1111 1111"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

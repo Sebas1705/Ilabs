@@ -1,0 +1,42 @@
+{
+  "name": "check-classifier-label-match",
+  "setup": {
+    "kind": "check",
+    "text": "Texto cualquiera.",
+    "checks": [
+      {
+        "kind": "classifier",
+        "action": "block",
+        "label": "injection"
+      }
+    ],
+    "classifier": {
+      "script": [
+        {
+          "flagged": true,
+          "label": "injection"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "verdict": "block",
+    "text": "Texto cualquiera.",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "classifier",
+        "action": "block",
+        "fired": true,
+        "details": {
+          "flagged": true,
+          "label": "injection"
+        }
+      }
+    ],
+    "classifierInputs": [
+      "Texto cualquiera."
+    ]
+  }
+}

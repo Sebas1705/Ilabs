@@ -1,0 +1,20 @@
+{
+  "name": "policy-invalid-missing-canary",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [],
+      "output": [
+        {
+          "kind": "canary",
+          "action": "block"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "policy-invalid-canary-in-input",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "canary",
+          "action": "block",
+          "canary": "CANARY-7F3A"
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

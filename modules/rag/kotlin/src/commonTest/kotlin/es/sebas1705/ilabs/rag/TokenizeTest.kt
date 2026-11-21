@@ -74,4 +74,44 @@ class TokenizeTest {
         assertEquals(upper + lower, tokenize(text))
         assertEquals(62, tokenize(text).size)
     }
+
+    @Test
+    fun spansAreCodePointOffsetsOfTheSourceRun() {
+        assertEquals(listOf(TokenSpan("hello", 0, 5), TokenSpan("world", 7, 12)), tokenizeSpans("Hello, WORLD!"))
+        assertEquals(emptyList(), tokenizeSpans(""))
+        assertEquals(emptyList(), tokenizeSpans(" ¿¡!?… "))
+    }
+
+    @Test
+    fun spansAfterMultiLetterFoldingsUseSourceLengths() {
+        assertEquals(listOf(TokenSpan("strasse", 0, 6)), tokenizeSpans("Straße"))
+        assertEquals(listOf(TokenSpan("aesir", 0, 4), TokenSpan("thorr", 5, 9)), tokenizeSpans("Æsir Þorr"))
+        // the offset after a folded run is a source offset, not a token length
+        assertEquals(listOf(TokenSpan("ss", 0, 1), TokenSpan("x", 2, 3)), tokenizeSpans("ß x"))
+        assertEquals(listOf(TokenSpan("ae", 0, 1), TokenSpan("b", 2, 3)), tokenizeSpans("Æ b"))
+    }
+
+    @Test
+    fun spansCountAstralCodePointsAsOne() {
+        // an astral emoji is one code point (two UTF-16 units) and a word code point, so it glues to its neighbours
+        assertEquals(listOf(TokenSpan("a😀b", 0, 3)), tokenizeSpans("a😀b"))
+        assertEquals(listOf(TokenSpan("😀", 0, 1), TokenSpan("x", 2, 3)), tokenizeSpans("😀 x"))
+        assertEquals(listOf(TokenSpan("😀", 0, 1), TokenSpan("x", 4, 5)), tokenizeSpans("😀 ¿ x"))
+        assertEquals(listOf(TokenSpan("😀", 0, 1), TokenSpan("e", 2, 3), TokenSpan("😀", 4, 5)), tokenizeSpans("😀 é 😀"))
+    }
+
+    @Test
+    fun spansAfterLoneSurrogatesCountEachAsOne() {
+        // a lone low followed by a lone high is two code points; both are word code points and glue together
+        assertEquals(listOf(TokenSpan("\uDC00\uD800", 0, 2), TokenSpan("a", 3, 4)), tokenizeSpans("\uDC00\uD800 a"))
+        assertEquals(listOf(TokenSpan("x\uD83D", 0, 2), TokenSpan("b", 3, 4)), tokenizeSpans("x\uD83D b"))
+        assertEquals(listOf(TokenSpan("a\uD800b", 0, 3)), tokenizeSpans("a\uD800b"))
+    }
+
+    @Test
+    fun tokenizeIsTheProjectionOfTokenizeSpans() {
+        for (text in listOf("Straße Æsir æther Þorr ðe", "a😀b ¿Qué? x\uD83D \uDE00\uD83D", "", "1º 5µm x²a")) {
+            assertEquals(tokenizeSpans(text).map { it.token }, tokenize(text))
+        }
+    }
 }

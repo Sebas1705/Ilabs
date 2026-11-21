@@ -1,0 +1,11 @@
+{
+  "name": "injection-whole-tokens-only",
+  "setup": {
+    "kind": "injection",
+    "text": "He ignored the previously written instructions."
+  },
+  "expect": {
+    "score": 0,
+    "signals": []
+  }
+}

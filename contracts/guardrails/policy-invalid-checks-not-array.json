@@ -1,0 +1,15 @@
+{
+  "name": "policy-invalid-checks-not-array",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": {},
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

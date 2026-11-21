@@ -1,0 +1,16 @@
+{
+  "name": "redact-positional-not-replace-all",
+  "setup": {
+    "kind": "redact",
+    "text": "612 345 678 y 9612 345 678"
+  },
+  "expect": {
+    "text": "<PHONE_1> y 9612 345 678",
+    "mapping": [
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ]
+    ]
+  }
+}

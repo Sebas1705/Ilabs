@@ -1,0 +1,22 @@
+{
+  "name": "check-no-classifier-error",
+  "setup": {
+    "kind": "check",
+    "text": "Hola",
+    "checks": [
+      {
+        "kind": "pii",
+        "action": "flag"
+      },
+      {
+        "kind": "classifier",
+        "action": "flag"
+      }
+    ]
+  },
+  "expect": {
+    "error": {
+      "kind": "no_classifier"
+    }
+  }
+}

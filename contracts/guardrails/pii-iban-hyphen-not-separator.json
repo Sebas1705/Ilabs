@@ -1,0 +1,10 @@
+{
+  "name": "pii-iban-hyphen-not-separator",
+  "setup": {
+    "kind": "pii",
+    "text": "IBAN ES28-0000-0000-0012-3456-7890."
+  },
+  "expect": {
+    "findings": []
+  }
+}

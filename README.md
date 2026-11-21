@@ -2,7 +2,7 @@
 
 iLabs ("i" as in AI) is a collection of small, reusable AI modules written in Kotlin and TypeScript, each with a visible demo.
 
-**Status:** early. Five modules are done, each with a web demo page and an Android demo screen: providers, structured, context, evals and rag.
+**Status:** early. Six modules are done, each with a web demo page and an Android demo screen: providers, structured, context, evals, rag and guardrails.
 
 ## Modules
 
@@ -13,6 +13,7 @@ iLabs ("i" as in AI) is a collection of small, reusable AI modules written in Ko
 | [context](modules/context/README.md) | done | Context windows and token budgeting: sliding window and summarization of long conversations, identical in Kotlin and TypeScript |
 | [evals](modules/evals/README.md) | done | Deterministic evals: run a suite of cases against several providers, grade every reply (string, length, JSON and judge graders) and summarize, identical in Kotlin and TypeScript |
 | [rag](modules/rag/README.md) | done | Retrieval-augmented generation at teaching scale: chunk documents, retrieve with BM25, dense vectors or their fusion, compose a numbered-sources context, check citations and measure retrieval, identical in Kotlin and TypeScript |
+| [guardrails](modules/guardrails/README.md) | done | Guardrails around a model call: find personal data and secrets, redact them reversibly, score prompt-injection signals, apply a block/redact/flag policy on input and output, detect a leaked canary and measure the detectors, identical in Kotlin and TypeScript |
 
 ## Layout
 
@@ -43,6 +44,7 @@ corepack pnpm --filter @ilabs/demo-web dev      # web demo at http://localhost:5
 ./gradlew :modules:context-kotlin:jvmTest       # Kotlin tests against the shared context fixtures
 ./gradlew :modules:evals-kotlin:jvmTest         # Kotlin tests against the shared evals fixtures
 ./gradlew :modules:rag-kotlin:jvmTest           # Kotlin tests against the shared rag fixtures
+./gradlew :modules:guardrails-kotlin:jvmTest    # Kotlin tests against the shared guardrails fixtures
 ./gradlew jvmContractTests                      # run all Kotlin module tests
 ./gradlew :demos:android:installDebug           # Android demo on a connected device or emulator
 ```

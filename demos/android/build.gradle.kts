@@ -81,6 +81,7 @@ dependencies {
     implementation(project(":modules:context-kotlin"))
     implementation(project(":modules:evals-kotlin"))
     implementation(project(":modules:rag-kotlin"))
+    implementation(project(":modules:guardrails-kotlin"))
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.foundation)

@@ -1,0 +1,17 @@
+{
+  "name": "pii-offsets-after-emoji",
+  "setup": {
+    "kind": "pii",
+    "text": "😀😀 ana@example.com"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "email",
+        "start": 3,
+        "end": 18,
+        "text": "ana@example.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "name": "check-original-text-for-every-check",
+  "setup": {
+    "kind": "check",
+    "text": "Escribe a ana@example.com hoy.",
+    "checks": [
+      {
+        "kind": "pii",
+        "action": "redact",
+        "kinds": [
+          "email"
+        ]
+      },
+      {
+        "kind": "denyTerms",
+        "action": "flag",
+        "terms": [
+          "example com"
+        ]
+      },
+      {
+        "kind": "maxLength",
+        "action": "flag",
+        "max": 25
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "Escribe a <EMAIL_1> hoy.",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "email",
+              "start": 10,
+              "end": 25,
+              "text": "ana@example.com"
+            }
+          ]
+        }
+      },
+      {
+        "check": 1,
+        "kind": "denyTerms",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "matches": [
+            {
+              "term": "example com",
+              "start": 14,
+              "end": 25
+            }
+          ]
+        }
+      },
+      {
+        "check": 2,
+        "kind": "maxLength",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "length": 30
+        }
+      }
+    ]
+  }
+}

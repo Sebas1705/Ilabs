@@ -1,0 +1,64 @@
+{
+  "name": "check-classifier-sees-original",
+  "setup": {
+    "kind": "check",
+    "text": "Mi correo es ana@example.com",
+    "checks": [
+      {
+        "kind": "pii",
+        "action": "redact"
+      },
+      {
+        "kind": "classifier",
+        "action": "flag"
+      }
+    ],
+    "classifier": {
+      "script": [
+        {
+          "flagged": false
+        }
+      ]
+    }
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "Mi correo es <EMAIL_1>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "email",
+              "start": 13,
+              "end": 28,
+              "text": "ana@example.com"
+            }
+          ]
+        }
+      },
+      {
+        "check": 1,
+        "kind": "classifier",
+        "action": "flag",
+        "fired": false,
+        "details": {
+          "flagged": false
+        }
+      }
+    ],
+    "classifierInputs": [
+      "Mi correo es ana@example.com"
+    ]
+  }
+}

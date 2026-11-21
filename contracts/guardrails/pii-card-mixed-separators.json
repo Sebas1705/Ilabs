@@ -1,0 +1,17 @@
+{
+  "name": "pii-card-mixed-separators",
+  "setup": {
+    "kind": "pii",
+    "text": "Card 4111 1111-1111 1111."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "card",
+        "start": 5,
+        "end": 24,
+        "text": "4111 1111-1111 1111"
+      }
+    ]
+  }
+}

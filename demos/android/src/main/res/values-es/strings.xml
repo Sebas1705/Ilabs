@@ -63,6 +63,8 @@
     <string name="home_evals_description">Compara modelos con una batería de casos calificados.</string>
     <string name="home_rag_title">Recuperación (RAG)</string>
     <string name="home_rag_description">Busca en documentos con BM25, vectores o ambos y cita las fuentes.</string>
+    <string name="home_guardrails_title">Guardrails</string>
+    <string name="home_guardrails_description">Detecta datos personales e indicios de inyección, aplica una política y protege una llamada al modelo.</string>
     <string name="home_open_module">%1$s. %2$s Toca dos veces para abrir.</string>
     <string name="home_back">Módulos</string>
     <string name="home_back_description">Volver a la lista de módulos</string>
@@ -413,5 +415,193 @@
     <plurals name="rag_dropped">
         <item quantity="one">%1$d resultado descartado por el presupuesto</item>
         <item quantity="other">%1$d resultados descartados por el presupuesto</item>
+    </plurals>
+
+    <string name="guard_title">Guardrails</string>
+    <string name="guard_subtitle">Encuentra datos personales y secretos, puntúa indicios de inyección de prompts, aplica una política y protege una llamada al modelo. La biblioteca real se ejecuta sobre los escenarios compartidos del contrato; nada sale de tu dispositivo.</string>
+    <string name="guard_load_error">No se pudieron cargar los escenarios: %1$s</string>
+    <string name="guard_run_error">No se pudo ejecutar el ejemplo: %1$s</string>
+    <string name="guard_running">Ejecutando…</string>
+    <string name="guard_sample">Muestra</string>
+    <string name="guard_sample_picker">Ejemplo: %1$s. Toca dos veces para elegir otro.</string>
+    <string name="guard_group_pii">Datos personales (PII)</string>
+    <string name="guard_group_injection">Inyección</string>
+    <string name="guard_group_checks">Comprobaciones</string>
+    <string name="guard_section_playground">Zona de pruebas</string>
+    <string name="guard_section_guarded">Conversación protegida</string>
+    <string name="guard_section_measure">Medición</string>
+    <string name="guard_code_points">puntos de código %1$d a %2$d</string>
+    <string name="guard_label_code">%1$s (%2$s)</string>
+    <string name="guard_library_reason">Motivo de la biblioteca: %1$s</string>
+    <string name="guard_empty_text">(vacío)</string>
+
+    <string name="guard_text">Texto a analizar</string>
+    <string name="guard_text_hint">Cada cambio vuelve a ejecutar la biblioteca. Aquí no se valida nada: decide la biblioteca.</string>
+    <string name="guard_partial">Este ejemplo tiene comprobaciones que los interruptores no pueden mostrar (un clasificador, un canario, una segunda comprobación del mismo tipo, un mapeo dado u otro orden), así que el veredicto de aquí puede diferir del registrado.</string>
+    <string name="guard_highlights">Texto con hallazgos</string>
+    <string name="guard_highlights_none">No se encontraron datos personales ni secretos en este texto.</string>
+    <string name="guard_highlights_hint">Cada hallazgo y señal va subrayado, con un símbolo y su tipo al lado.</string>
+    <string name="guard_finding_spoken">%1$s “%2$s”, %3$s</string>
+    <string name="guard_redacted">Texto censurado</string>
+    <string name="guard_redacted_hint">Cada hallazgo sustituido por un marcador reversible, tal como lo escribe la biblioteca.</string>
+    <string name="guard_mapping">Mapeo, marcador a original</string>
+    <string name="guard_mapping_none">No se censuró nada.</string>
+    <string name="guard_mapping_row">%1$s → %2$s</string>
+    <string name="guard_mapping_spoken">%1$s representa “%2$s”</string>
+    <string name="guard_injection">Puntuación de inyección</string>
+    <string name="guard_injection_score">%1$d / 100</string>
+    <string name="guard_injection_spoken">Puntuación de inyección %1$d sobre 100</string>
+    <string name="guard_signals_none">No se activó ninguna señal.</string>
+    <string name="guard_policy_error">Error de política</string>
+    <string name="guard_status_invalid_policy">La política no es válida.</string>
+    <string name="guard_text_empty">El texto está vacío.</string>
+    <string name="guard_large_text">Este texto es muy largo o tiene muchísimos hallazgos, así que se muestra sin resaltados y cortado a sus primeros %1$d caracteres. Las listas muestran las primeras %2$d entradas.</string>
+    <string name="guard_more_findings">+%1$d más</string>
+    <string name="guard_signal_row">%1$s, %2$s</string>
+    <string name="guard_signal_spoken">Indicio %1$s, categoría %2$s, %3$s</string>
+    <string name="guard_policy">Política</string>
+    <string name="guard_policy_hint">Activa comprobaciones para construir una política. La biblioteca la valida y la ejecuta sobre el texto de arriba.</string>
+    <string name="guard_action">Acción</string>
+    <string name="guard_kinds">Tipos que buscar</string>
+    <string name="guard_threshold">Umbral (de 1 a 100)</string>
+    <string name="guard_terms">Términos, separados por comas</string>
+    <string name="guard_max">Longitud máxima en puntos de código</string>
+    <string name="guard_verdict">Veredicto</string>
+    <string name="guard_verdict_allow">Permitir</string>
+    <string name="guard_verdict_block">Bloquear</string>
+    <string name="guard_verdict_after">Texto tras la política</string>
+    <string name="guard_checks_results">Comprobaciones</string>
+    <string name="guard_checks_none">No hay ninguna comprobación activada.</string>
+    <string name="guard_check_fired">Disparada</string>
+    <string name="guard_check_quiet">No disparada</string>
+    <string name="guard_check_header">Comprobación %1$d: %2$s, %3$s</string>
+    <string name="guard_check_spoken">Comprobación %1$d, %2$s, acción %3$s, %4$s. %5$s</string>
+    <string name="guard_limits">La puntuación de inyección es una heurística léxica: puede pasar por alto una paráfrasis y marcar texto inofensivo. Los escáneres no encuentran nombres ni direcciones. Son indicios, no una defensa.</string>
+
+    <string name="guard_action_off">Apagada</string>
+    <string name="guard_action_flag">Marcar</string>
+    <string name="guard_action_redact">Censurar</string>
+    <string name="guard_action_block">Bloquear</string>
+    <string name="guard_check_pii">Datos personales (PII)</string>
+    <string name="guard_check_injection">Inyección de prompts</string>
+    <string name="guard_check_denyterms">Términos prohibidos</string>
+    <string name="guard_check_maxlength">Longitud máxima</string>
+    <string name="guard_check_canary">Canario</string>
+    <string name="guard_check_classifier">Clasificador</string>
+    <string name="guard_kind_email">Correo</string>
+    <string name="guard_kind_phone">Teléfono</string>
+    <string name="guard_kind_iban">IBAN</string>
+    <string name="guard_kind_card">Tarjeta</string>
+    <string name="guard_kind_spanish_id">DNI/NIE</string>
+    <string name="guard_kind_secret">Secreto</string>
+    <string name="guard_category_override">Anulación</string>
+    <string name="guard_category_role_hijack">Secuestro de rol</string>
+    <string name="guard_category_prompt_leak">Fuga del prompt</string>
+    <string name="guard_category_delimiter">Delimitador</string>
+
+    <string name="guard_detail_injection">Puntuación %1$d</string>
+    <string name="guard_detail_match">“%1$s”, %2$s</string>
+    <string name="guard_detail_canary_found">El canario aparece en el texto.</string>
+    <string name="guard_detail_canary_absent">El canario no aparece en el texto.</string>
+    <string name="guard_detail_classifier_flagged">El clasificador marcó el texto.</string>
+    <string name="guard_detail_classifier_clear">El clasificador no marcó el texto.</string>
+    <string name="guard_detail_label">Etiqueta: %1$s</string>
+
+    <string name="guard_guarded_hint">El modelo es guionizado y este ejemplo no se puede editar. Lo que ves es el resultado de la biblioteca para el escenario del contrato, tal como lo produjo el arnés.</string>
+    <string name="guard_guarded_request">Petición tal como se escribió</string>
+    <string name="guard_guarded_sent">Enviado al modelo</string>
+    <string name="guard_guarded_sent_hint">Los datos personales sustituidos por marcadores; los mensajes de sistema intactos.</string>
+    <string name="guard_guarded_sent_none">No se envió nada: la llamada no llegó a producirse.</string>
+    <string name="guard_guarded_reply">Respuesta guionizada del modelo</string>
+    <string name="guard_guarded_input">Comprobaciones de entrada</string>
+    <string name="guard_guarded_input_none">No se comprobó la entrada.</string>
+    <string name="guard_guarded_message">Mensaje %1$d (%2$s)</string>
+    <string name="guard_guarded_output">Comprobaciones de salida</string>
+    <string name="guard_guarded_output_none">No se comprobó la respuesta: la llamada no llegó tan lejos.</string>
+    <string name="guard_guarded_result">Resultado</string>
+    <string name="guard_guarded_final">Texto final, con los marcadores restaurados</string>
+    <string name="guard_guarded_blocked">No se devuelve texto: la llamada se bloqueó.</string>
+    <string name="guard_guarded_failed">La llamada falló antes de devolver un resultado.</string>
+    <string name="guard_guarded_mapping">Mapeo de entrada</string>
+    <string name="guard_guarded_output_mapping">Mapeo de salida, nunca se restaura</string>
+    <string name="guard_role_system">sistema</string>
+    <string name="guard_role_user">usuario</string>
+    <string name="guard_role_assistant">asistente</string>
+    <string name="guard_message_row">%1$s: %2$s</string>
+    <string name="guard_status_ok">Permitida</string>
+    <string name="guard_status_blocked_input">Bloqueada en la entrada</string>
+    <string name="guard_status_blocked_output">Bloqueada en la salida</string>
+    <string name="guard_status_line_blocked_input">Bloqueada: una comprobación de entrada bloqueó la petición.</string>
+    <string name="guard_status_line_blocked_output">Bloqueada: una comprobación de salida bloqueó la respuesta.</string>
+    <string name="guard_status_failed">La llamada falló: %1$s</string>
+    <string name="guard_error_invalid_policy">La política no es válida, así que no se calculó ningún veredicto.</string>
+    <string name="guard_error_invalid_options">Las opciones no son válidas.</string>
+    <string name="guard_error_no_classifier">Una comprobación de clasificador necesita un clasificador y no se dio ninguno.</string>
+    <string name="guard_error_rate_limit">El proveedor está limitando las peticiones.</string>
+    <string name="guard_error_timeout">El proveedor agotó el tiempo de espera.</string>
+    <string name="guard_error_invalid_output">El proveedor devolvió una respuesta no válida.</string>
+    <string name="guard_error_unavailable">El proveedor no está disponible.</string>
+
+    <string name="guard_measure_hint">Los detectores se ejecutan sobre cada muestra etiquetada; precisión, exhaustividad y F1 comparan los tramos esperados con los encontrados.</string>
+    <string name="guard_measure_note">El conjunto es pequeño y contiene a propósito fallos y falsos positivos, así que las cifras no son una referencia.</string>
+    <string name="guard_measure_pii">Detector de datos personales (PII)</string>
+    <string name="guard_measure_injection">Detector de inyección</string>
+    <string name="guard_measure_overall">Todos los tipos</string>
+    <string name="guard_precision">Precisión</string>
+    <string name="guard_recall">Exhaustividad</string>
+    <string name="guard_f1">F1</string>
+    <string name="guard_metric_cell">%1$s %2$s</string>
+    <string name="guard_metric_counts">esperados %1$d, encontrados %2$d, correctos %3$d</string>
+    <string name="guard_metric_spoken">%1$s: precisión %2$s, exhaustividad %3$s, F1 %4$s; esperados %5$d, encontrados %6$d, correctos %7$d</string>
+    <string name="guard_metric_overall_spoken">%1$s en todos los tipos: precisión %2$s, exhaustividad %3$s, F1 %4$s</string>
+    <string name="guard_measure_samples">Ejemplos etiquetados</string>
+    <string name="guard_measure_samples_hint">Cada tramo esperado o encontrado, marcado como correcto, omitido o sobrante.</string>
+    <string name="guard_measure_sample">Muestra %1$d</string>
+    <string name="guard_marks_none">Ningún tramo esperado ni encontrado.</string>
+    <string name="guard_mark_correct">Correcto</string>
+    <string name="guard_mark_miss">Omitido</string>
+    <string name="guard_mark_extra">Sobrante</string>
+    <string name="guard_mark_row">%1$s: %2$s “%3$s”, %4$s</string>
+    <string name="guard_footer">Los escenarios viven en contracts/guardrails y se comparten con la implementación en TypeScript. El modelo es guionizado y no se llama a ningún clasificador: nada sale de tu dispositivo.</string>
+
+    <plurals name="guard_status_allow">
+        <item quantity="one">%1$d hallazgo, veredicto permitir</item>
+        <item quantity="other">%1$d hallazgos, veredicto permitir</item>
+    </plurals>
+    <plurals name="guard_status_block">
+        <item quantity="one">%1$d hallazgo, veredicto bloquear</item>
+        <item quantity="other">%1$d hallazgos, veredicto bloquear</item>
+    </plurals>
+    <plurals name="guard_highlight_alt">
+        <item quantity="one">Texto con %1$d hallazgo: %2$s</item>
+        <item quantity="other">Texto con %1$d hallazgos: %2$s</item>
+    </plurals>
+    <plurals name="guard_detail_pii">
+        <item quantity="one">%1$d hallazgo</item>
+        <item quantity="other">%1$d hallazgos</item>
+    </plurals>
+    <plurals name="guard_detail_signals">
+        <item quantity="one">%1$d señal</item>
+        <item quantity="other">%1$d señales</item>
+    </plurals>
+    <plurals name="guard_detail_matches">
+        <item quantity="one">%1$d coincidencia</item>
+        <item quantity="other">%1$d coincidencias</item>
+    </plurals>
+    <plurals name="guard_detail_length">
+        <item quantity="one">%1$d punto de código</item>
+        <item quantity="other">%1$d puntos de código</item>
+    </plurals>
+    <plurals name="guard_calls">
+        <item quantity="one">%1$d llamada al proveedor</item>
+        <item quantity="other">%1$d llamadas al proveedor</item>
+    </plurals>
+    <plurals name="guard_status_ok_calls">
+        <item quantity="one">Completado, %1$d llamada al modelo</item>
+        <item quantity="other">Completado, %1$d llamadas al modelo</item>
+    </plurals>
+    <plurals name="guard_status_measure">
+        <item quantity="one">%1$d muestra; F1 de PII %2$s, F1 de inyección %3$s</item>
+        <item quantity="other">%1$d muestras; F1 de PII %2$s, F1 de inyección %3$s</item>
     </plurals>
 </resources>

@@ -1,0 +1,20 @@
+{
+  "name": "policy-invalid-kind-prototype-name",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "constructor",
+          "action": "flag"
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

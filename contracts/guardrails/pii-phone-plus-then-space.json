@@ -1,0 +1,17 @@
+{
+  "name": "pii-phone-plus-then-space",
+  "setup": {
+    "kind": "pii",
+    "text": "Tel + 34 600 000 000."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "phone",
+        "start": 9,
+        "end": 20,
+        "text": "600 000 000"
+      }
+    ]
+  }
+}

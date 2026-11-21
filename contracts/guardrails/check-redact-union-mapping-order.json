@@ -1,0 +1,71 @@
+{
+  "name": "check-redact-union-mapping-order",
+  "setup": {
+    "kind": "check",
+    "text": "ana@example.com o 612 345 678",
+    "checks": [
+      {
+        "kind": "pii",
+        "action": "redact",
+        "kinds": [
+          "phone"
+        ]
+      },
+      {
+        "kind": "pii",
+        "action": "redact",
+        "kinds": [
+          "email"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "<EMAIL_1> o <PHONE_1>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ],
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ]
+    ],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "phone",
+              "start": 18,
+              "end": 29,
+              "text": "612 345 678"
+            }
+          ]
+        }
+      },
+      {
+        "check": 1,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "email",
+              "start": 0,
+              "end": 15,
+              "text": "ana@example.com"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

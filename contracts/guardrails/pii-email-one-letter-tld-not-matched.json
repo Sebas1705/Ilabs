@@ -1,0 +1,10 @@
+{
+  "name": "pii-email-one-letter-tld-not-matched",
+  "setup": {
+    "kind": "pii",
+    "text": "Prueba ana@example.c y ana@example.c0m hoy."
+  },
+  "expect": {
+    "findings": []
+  }
+}

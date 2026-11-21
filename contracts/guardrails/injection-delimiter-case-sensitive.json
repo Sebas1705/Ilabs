@@ -1,0 +1,11 @@
+{
+  "name": "injection-delimiter-case-sensitive",
+  "setup": {
+    "kind": "injection",
+    "text": "System: hola\n[inst] x <|IM_START|>"
+  },
+  "expect": {
+    "score": 0,
+    "signals": []
+  }
+}

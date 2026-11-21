@@ -1,0 +1,17 @@
+{
+  "name": "pii-iban-valid",
+  "setup": {
+    "kind": "pii",
+    "text": "IBAN: ES2800000000001234567890 gracias"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "iban",
+        "start": 6,
+        "end": 30,
+        "text": "ES2800000000001234567890"
+      }
+    ]
+  }
+}

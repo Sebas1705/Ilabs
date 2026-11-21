@@ -1,0 +1,10 @@
+{
+  "name": "pii-phone-plus-glued-left",
+  "setup": {
+    "kind": "pii",
+    "text": "tel+34600000000"
+  },
+  "expect": {
+    "findings": []
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "name": "guarded-output-same-value-not-reused",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Guarda mi correo ana@example.com."
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ],
+      "output": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Tu correo ana@example.com está guardado como <EMAIL_1>."
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Tu correo <EMAIL_2> está guardado como ana@example.com.",
+    "sent": [
+      {
+        "role": "user",
+        "content": "Guarda mi correo <EMAIL_1>."
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "pii",
+          "action": "redact",
+          "fired": true,
+          "details": {
+            "findings": [
+              {
+                "kind": "email",
+                "start": 17,
+                "end": 32,
+                "text": "ana@example.com"
+              }
+            ]
+          }
+        }
+      ]
+    ],
+    "output": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "email",
+              "start": 10,
+              "end": 25,
+              "text": "ana@example.com"
+            }
+          ]
+        }
+      }
+    ],
+    "calls": 1,
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "outputMapping": [
+      [
+        "<EMAIL_2>",
+        "ana@example.com"
+      ]
+    ],
+    "reply": "Tu correo <EMAIL_2> está guardado como ana@example.com."
+  }
+}

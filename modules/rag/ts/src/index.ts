@@ -13,7 +13,7 @@ export type {
   Source,
 } from "./types.js";
 export { RagError, type RagErrorKind } from "./errors.js";
-export { tokenize } from "./tokenize.js";
+export { tokenize, tokenizeSpans, type TokenSpan } from "./tokenize.js";
 export { chunkDocument } from "./chunk.js";
 export { hashEmbed, hashEmbedder } from "./embed.js";
 export { buildIndex } from "./index-build.js";

@@ -1,0 +1,16 @@
+{
+  "name": "restore-unknown-placeholder-kept",
+  "setup": {
+    "kind": "restore",
+    "text": "Hola <EMAIL_1> y <EMAIL_2>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "Hola ana@example.com y <EMAIL_2>"
+  }
+}

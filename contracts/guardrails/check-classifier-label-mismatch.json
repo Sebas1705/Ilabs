@@ -1,0 +1,60 @@
+{
+  "name": "check-classifier-label-mismatch",
+  "setup": {
+    "kind": "check",
+    "text": "Texto cualquiera.",
+    "checks": [
+      {
+        "kind": "classifier",
+        "action": "block",
+        "label": "injection"
+      },
+      {
+        "kind": "classifier",
+        "action": "block",
+        "label": "injection"
+      }
+    ],
+    "classifier": {
+      "script": [
+        {
+          "flagged": true,
+          "label": "toxic"
+        },
+        {
+          "flagged": true
+        }
+      ]
+    }
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "Texto cualquiera.",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "classifier",
+        "action": "block",
+        "fired": false,
+        "details": {
+          "flagged": true,
+          "label": "toxic"
+        }
+      },
+      {
+        "check": 1,
+        "kind": "classifier",
+        "action": "block",
+        "fired": false,
+        "details": {
+          "flagged": true
+        }
+      }
+    ],
+    "classifierInputs": [
+      "Texto cualquiera.",
+      "Texto cualquiera."
+    ]
+  }
+}

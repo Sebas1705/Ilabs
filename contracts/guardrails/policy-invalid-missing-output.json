@@ -1,0 +1,14 @@
+{
+  "name": "policy-invalid-missing-output",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

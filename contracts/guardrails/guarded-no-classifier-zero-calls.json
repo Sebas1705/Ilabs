@@ -1,0 +1,41 @@
+{
+  "name": "guarded-no-classifier-zero-calls",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hola"
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "flag"
+        }
+      ],
+      "output": [
+        {
+          "kind": "classifier",
+          "action": "flag"
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "unused"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "no_classifier"
+    },
+    "calls": 0
+  }
+}

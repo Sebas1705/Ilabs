@@ -1,0 +1,39 @@
+{
+  "name": "guarded-provider-error",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hola"
+        }
+      ]
+    },
+    "policy": {
+      "input": [],
+      "output": []
+    },
+    "provider": {
+      "script": [
+        {
+          "error": {
+            "kind": "timeout"
+          }
+        }
+      ]
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "timeout"
+    },
+    "calls": 1,
+    "sent": [
+      {
+        "role": "user",
+        "content": "Hola"
+      }
+    ]
+  }
+}

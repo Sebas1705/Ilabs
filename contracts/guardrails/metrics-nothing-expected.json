@@ -1,0 +1,30 @@
+{
+  "name": "metrics-nothing-expected",
+  "setup": {
+    "kind": "metrics",
+    "expected": [],
+    "found": [
+      {
+        "kind": "secret",
+        "start": 5,
+        "end": 30
+      }
+    ]
+  },
+  "expect": {
+    "precision": 0,
+    "recall": 1,
+    "f1": 0,
+    "byKind": [
+      {
+        "kind": "secret",
+        "precision": 0,
+        "recall": 1,
+        "f1": 0,
+        "expected": 0,
+        "found": 1,
+        "correct": 0
+      }
+    ]
+  }
+}

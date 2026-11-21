@@ -1,0 +1,24 @@
+{
+  "name": "policy-invalid-pii-duplicate-kind",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "flag",
+          "kinds": [
+            "card",
+            "card"
+          ]
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

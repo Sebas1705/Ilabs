@@ -1,0 +1,93 @@
+{
+  "name": "guarded-ok-redact-and-restore",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "Eres un asistente de una biblioteca."
+        },
+        {
+          "role": "user",
+          "content": "Mi correo es ana@example.com, confírmalo."
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ],
+      "output": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Confirmado: <EMAIL_1>."
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Confirmado: ana@example.com.",
+    "sent": [
+      {
+        "role": "system",
+        "content": "Eres un asistente de una biblioteca."
+      },
+      {
+        "role": "user",
+        "content": "Mi correo es <EMAIL_1>, confírmalo."
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "pii",
+          "action": "redact",
+          "fired": true,
+          "details": {
+            "findings": [
+              {
+                "kind": "email",
+                "start": 13,
+                "end": 28,
+                "text": "ana@example.com"
+              }
+            ]
+          }
+        }
+      ]
+    ],
+    "output": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": false,
+        "details": {
+          "findings": []
+        }
+      }
+    ],
+    "calls": 1,
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "outputMapping": [],
+    "reply": "Confirmado: ana@example.com."
+  }
+}

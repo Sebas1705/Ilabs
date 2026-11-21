@@ -1,0 +1,10 @@
+{
+  "name": "pii-lookalike-date",
+  "setup": {
+    "kind": "pii",
+    "text": "Fechas: 12/05/2024, 2024-05-12 y 12.05.2024."
+  },
+  "expect": {
+    "findings": []
+  }
+}

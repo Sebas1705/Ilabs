@@ -1,0 +1,21 @@
+{
+  "name": "policy-invalid-max-negative",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "maxLength",
+          "action": "block",
+          "max": -1
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

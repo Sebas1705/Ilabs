@@ -1,0 +1,28 @@
+{
+  "name": "redact-placeholder-names",
+  "setup": {
+    "kind": "redact",
+    "text": "DNI 12345678Z, clave sk-aaaaaaaaaaaaaaaa, IBAN ES28 0000 0000 0012 3456 7890, tarjeta 4111 1111 1111 1111."
+  },
+  "expect": {
+    "text": "DNI <SPANISH_ID_1>, clave <SECRET_1>, IBAN <IBAN_1>, tarjeta <CARD_1>.",
+    "mapping": [
+      [
+        "<SPANISH_ID_1>",
+        "12345678Z"
+      ],
+      [
+        "<SECRET_1>",
+        "sk-aaaaaaaaaaaaaaaa"
+      ],
+      [
+        "<IBAN_1>",
+        "ES28 0000 0000 0012 3456 7890"
+      ],
+      [
+        "<CARD_1>",
+        "4111 1111 1111 1111"
+      ]
+    ]
+  }
+}

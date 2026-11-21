@@ -1,0 +1,55 @@
+{
+  "name": "metrics-exact-match",
+  "setup": {
+    "kind": "metrics",
+    "expected": [
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      },
+      {
+        "kind": "phone",
+        "start": 20,
+        "end": 31
+      }
+    ],
+    "found": [
+      {
+        "kind": "phone",
+        "start": 20,
+        "end": 31
+      },
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      }
+    ]
+  },
+  "expect": {
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "byKind": [
+      {
+        "kind": "email",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "expected": 1,
+        "found": 1,
+        "correct": 1
+      },
+      {
+        "kind": "phone",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "expected": 1,
+        "found": 1,
+        "correct": 1
+      }
+    ]
+  }
+}

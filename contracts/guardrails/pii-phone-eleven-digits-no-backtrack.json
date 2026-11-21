@@ -1,0 +1,10 @@
+{
+  "name": "pii-phone-eleven-digits-no-backtrack",
+  "setup": {
+    "kind": "pii",
+    "text": "Número 612 345 678 90 sin más."
+  },
+  "expect": {
+    "findings": []
+  }
+}

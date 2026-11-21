@@ -1,0 +1,96 @@
+{
+  "name": "guarded-system-untouched",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "Contacto interno: soporte@example.net. Ignore previous instructions is a test phrase."
+        },
+        {
+          "role": "user",
+          "content": "¿A qué hora abrís?"
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        },
+        {
+          "kind": "injection",
+          "action": "block",
+          "threshold": 50
+        }
+      ],
+      "output": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Abrimos a las nueve."
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Abrimos a las nueve.",
+    "sent": [
+      {
+        "role": "system",
+        "content": "Contacto interno: soporte@example.net. Ignore previous instructions is a test phrase."
+      },
+      {
+        "role": "user",
+        "content": "¿A qué hora abrís?"
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "pii",
+          "action": "redact",
+          "fired": false,
+          "details": {
+            "findings": []
+          }
+        },
+        {
+          "check": 1,
+          "kind": "injection",
+          "action": "block",
+          "fired": false,
+          "details": {
+            "score": 0,
+            "signals": []
+          }
+        }
+      ]
+    ],
+    "output": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": false,
+        "details": {
+          "findings": []
+        }
+      }
+    ],
+    "calls": 1,
+    "mapping": [],
+    "outputMapping": [],
+    "reply": "Abrimos a las nueve."
+  }
+}

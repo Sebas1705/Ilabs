@@ -1,0 +1,20 @@
+{
+  "name": "policy-invalid-missing-terms",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "denyTerms",
+          "action": "block"
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

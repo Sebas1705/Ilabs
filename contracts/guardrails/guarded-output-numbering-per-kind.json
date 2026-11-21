@@ -1,0 +1,97 @@
+{
+  "name": "guarded-output-numbering-per-kind",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Soy ana@example.com."
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ],
+      "output": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Te llamo al 612 345 678."
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Te llamo al <PHONE_1>.",
+    "sent": [
+      {
+        "role": "user",
+        "content": "Soy <EMAIL_1>."
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "pii",
+          "action": "redact",
+          "fired": true,
+          "details": {
+            "findings": [
+              {
+                "kind": "email",
+                "start": 4,
+                "end": 19,
+                "text": "ana@example.com"
+              }
+            ]
+          }
+        }
+      ]
+    ],
+    "output": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "phone",
+              "start": 12,
+              "end": 23,
+              "text": "612 345 678"
+            }
+          ]
+        }
+      }
+    ],
+    "calls": 1,
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "outputMapping": [
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ]
+    ],
+    "reply": "Te llamo al <PHONE_1>."
+  }
+}

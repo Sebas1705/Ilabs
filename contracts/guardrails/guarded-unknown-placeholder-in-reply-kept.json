@@ -1,0 +1,70 @@
+{
+  "name": "guarded-unknown-placeholder-in-reply-kept",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Soy ana@example.com."
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ],
+      "output": []
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Hola <EMAIL_1>, tu número es <PHONE_1>."
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Hola ana@example.com, tu número es <PHONE_1>.",
+    "sent": [
+      {
+        "role": "user",
+        "content": "Soy <EMAIL_1>."
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "pii",
+          "action": "redact",
+          "fired": true,
+          "details": {
+            "findings": [
+              {
+                "kind": "email",
+                "start": 4,
+                "end": 19,
+                "text": "ana@example.com"
+              }
+            ]
+          }
+        }
+      ]
+    ],
+    "output": [],
+    "calls": 1,
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "outputMapping": [],
+    "reply": "Hola ana@example.com, tu número es <PHONE_1>."
+  }
+}

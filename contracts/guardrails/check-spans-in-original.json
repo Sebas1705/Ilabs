@@ -1,0 +1,67 @@
+{
+  "name": "check-spans-in-original",
+  "setup": {
+    "kind": "check",
+    "text": "ana@example.com y 612 345 678",
+    "checks": [
+      {
+        "kind": "pii",
+        "action": "redact",
+        "kinds": [
+          "email"
+        ]
+      },
+      {
+        "kind": "pii",
+        "action": "flag",
+        "kinds": [
+          "phone"
+        ]
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "allow",
+    "text": "<EMAIL_1> y 612 345 678",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "email",
+              "start": 0,
+              "end": 15,
+              "text": "ana@example.com"
+            }
+          ]
+        }
+      },
+      {
+        "check": 1,
+        "kind": "pii",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "phone",
+              "start": 18,
+              "end": 29,
+              "text": "612 345 678"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

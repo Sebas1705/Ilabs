@@ -1,0 +1,10 @@
+{
+  "name": "pii-dni-space-before-letter",
+  "setup": {
+    "kind": "pii",
+    "text": "DNI 12345678 Z."
+  },
+  "expect": {
+    "findings": []
+  }
+}

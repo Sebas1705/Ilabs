@@ -1,0 +1,46 @@
+{
+  "name": "eval-spans-kept-apart",
+  "setup": {
+    "kind": "eval",
+    "samples": [
+      {
+        "text": "ana@example.com",
+        "expected": [
+          {
+            "kind": "email",
+            "start": 0,
+            "end": 15
+          }
+        ]
+      },
+      {
+        "text": "ana@example.com",
+        "expected": []
+      }
+    ]
+  },
+  "expect": {
+    "pii": {
+      "precision": 0.5,
+      "recall": 1,
+      "f1": 0.6666666666666666,
+      "byKind": [
+        {
+          "kind": "email",
+          "precision": 0.5,
+          "recall": 1,
+          "f1": 0.6666666666666666,
+          "expected": 1,
+          "found": 2,
+          "correct": 1
+        }
+      ]
+    },
+    "injection": {
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "byKind": []
+    }
+  }
+}

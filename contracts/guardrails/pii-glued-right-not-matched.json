@@ -1,0 +1,10 @@
+{
+  "name": "pii-glued-right-not-matched",
+  "setup": {
+    "kind": "pii",
+    "text": "Llama al 612345678abc o 4111111111111111x."
+  },
+  "expect": {
+    "findings": []
+  }
+}

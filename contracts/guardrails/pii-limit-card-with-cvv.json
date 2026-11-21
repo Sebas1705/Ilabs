@@ -1,0 +1,10 @@
+{
+  "name": "pii-limit-card-with-cvv",
+  "setup": {
+    "kind": "pii",
+    "text": "Tarjeta 4111 1111 1111 1111 123"
+  },
+  "expect": {
+    "findings": []
+  }
+}

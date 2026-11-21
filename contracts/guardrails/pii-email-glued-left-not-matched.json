@@ -1,0 +1,10 @@
+{
+  "name": "pii-email-glued-left-not-matched",
+  "setup": {
+    "kind": "pii",
+    "text": "Escribe a x@ana@example.com o a ..ana@example.org hoy."
+  },
+  "expect": {
+    "findings": []
+  }
+}

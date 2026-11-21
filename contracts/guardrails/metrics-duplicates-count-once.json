@@ -1,0 +1,51 @@
+{
+  "name": "metrics-duplicates-count-once",
+  "setup": {
+    "kind": "metrics",
+    "expected": [
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      },
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      }
+    ],
+    "found": [
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      },
+      {
+        "kind": "email",
+        "start": 0,
+        "end": 15
+      },
+      {
+        "kind": "email",
+        "start": 20,
+        "end": 35
+      }
+    ]
+  },
+  "expect": {
+    "precision": 0.5,
+    "recall": 1,
+    "f1": 0.6666666666666666,
+    "byKind": [
+      {
+        "kind": "email",
+        "precision": 0.5,
+        "recall": 1,
+        "f1": 0.6666666666666666,
+        "expected": 1,
+        "found": 2,
+        "correct": 1
+      }
+    ]
+  }
+}

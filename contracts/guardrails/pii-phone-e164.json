@@ -1,0 +1,17 @@
+{
+  "name": "pii-phone-e164",
+  "setup": {
+    "kind": "pii",
+    "text": "Call +1 202 555 0143 today."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "phone",
+        "start": 5,
+        "end": 20,
+        "text": "+1 202 555 0143"
+      }
+    ]
+  }
+}

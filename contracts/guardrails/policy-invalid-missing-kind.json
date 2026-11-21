@@ -1,0 +1,19 @@
+{
+  "name": "policy-invalid-missing-kind",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "action": "flag"
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pii-email-local-dot-rules",
+  "setup": {
+    "kind": "pii",
+    "text": "Mal: ana.@example.com, a..b@example.com, .ana@example.com; bien: j.doe+test@example.net."
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "email",
+        "start": 65,
+        "end": 87,
+        "text": "j.doe+test@example.net"
+      }
+    ]
+  }
+}

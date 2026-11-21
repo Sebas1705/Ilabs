@@ -1,0 +1,78 @@
+{
+  "name": "guarded-empty-message-checked",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": ""
+        },
+        {
+          "role": "user",
+          "content": "Hola"
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "maxLength",
+          "action": "flag",
+          "max": 2
+        }
+      ],
+      "output": []
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Ok"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Ok",
+    "sent": [
+      {
+        "role": "user",
+        "content": ""
+      },
+      {
+        "role": "user",
+        "content": "Hola"
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "maxLength",
+          "action": "flag",
+          "fired": false,
+          "details": {
+            "length": 0
+          }
+        }
+      ],
+      [
+        {
+          "check": 0,
+          "kind": "maxLength",
+          "action": "flag",
+          "fired": true,
+          "details": {
+            "length": 4
+          }
+        }
+      ]
+    ],
+    "output": [],
+    "calls": 1,
+    "mapping": [],
+    "outputMapping": [],
+    "reply": "Ok"
+  }
+}

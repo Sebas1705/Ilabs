@@ -1,0 +1,191 @@
+{
+  "name": "guarded-classifier-call-order",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "Instrucciones."
+        },
+        {
+          "role": "user",
+          "content": "Primera pregunta"
+        },
+        {
+          "role": "assistant",
+          "content": "Respuesta previa"
+        },
+        {
+          "role": "user",
+          "content": "Segunda pregunta"
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "classifier",
+          "action": "flag"
+        },
+        {
+          "kind": "classifier",
+          "action": "block",
+          "label": "injection"
+        }
+      ],
+      "output": [
+        {
+          "kind": "classifier",
+          "action": "flag"
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Respuesta final"
+        }
+      ]
+    },
+    "classifier": {
+      "script": [
+        {
+          "flagged": false
+        },
+        {
+          "flagged": false
+        },
+        {
+          "flagged": true,
+          "label": "spam"
+        },
+        {
+          "flagged": true,
+          "label": "spam"
+        },
+        {
+          "flagged": false
+        },
+        {
+          "flagged": false
+        },
+        {
+          "flagged": true,
+          "label": "spam"
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Respuesta final",
+    "sent": [
+      {
+        "role": "system",
+        "content": "Instrucciones."
+      },
+      {
+        "role": "user",
+        "content": "Primera pregunta"
+      },
+      {
+        "role": "assistant",
+        "content": "Respuesta previa"
+      },
+      {
+        "role": "user",
+        "content": "Segunda pregunta"
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "classifier",
+          "action": "flag",
+          "fired": false,
+          "details": {
+            "flagged": false
+          }
+        },
+        {
+          "check": 1,
+          "kind": "classifier",
+          "action": "block",
+          "fired": false,
+          "details": {
+            "flagged": false
+          }
+        }
+      ],
+      [
+        {
+          "check": 0,
+          "kind": "classifier",
+          "action": "flag",
+          "fired": true,
+          "details": {
+            "flagged": true,
+            "label": "spam"
+          }
+        },
+        {
+          "check": 1,
+          "kind": "classifier",
+          "action": "block",
+          "fired": false,
+          "details": {
+            "flagged": true,
+            "label": "spam"
+          }
+        }
+      ],
+      [
+        {
+          "check": 0,
+          "kind": "classifier",
+          "action": "flag",
+          "fired": false,
+          "details": {
+            "flagged": false
+          }
+        },
+        {
+          "check": 1,
+          "kind": "classifier",
+          "action": "block",
+          "fired": false,
+          "details": {
+            "flagged": false
+          }
+        }
+      ]
+    ],
+    "output": [
+      {
+        "check": 0,
+        "kind": "classifier",
+        "action": "flag",
+        "fired": true,
+        "details": {
+          "flagged": true,
+          "label": "spam"
+        }
+      }
+    ],
+    "calls": 1,
+    "mapping": [],
+    "outputMapping": [],
+    "reply": "Respuesta final",
+    "classifierInputs": [
+      "Primera pregunta",
+      "Primera pregunta",
+      "Respuesta previa",
+      "Respuesta previa",
+      "Segunda pregunta",
+      "Segunda pregunta",
+      "Respuesta final"
+    ]
+  }
+}

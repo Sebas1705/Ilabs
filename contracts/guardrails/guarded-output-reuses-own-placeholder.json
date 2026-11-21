@@ -1,0 +1,103 @@
+{
+  "name": "guarded-output-reuses-own-placeholder",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Escribe a ana@example.com."
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ],
+      "output": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Avisé a luis@example.org; luis@example.org confirmó."
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Avisé a <EMAIL_2>; <EMAIL_2> confirmó.",
+    "sent": [
+      {
+        "role": "user",
+        "content": "Escribe a <EMAIL_1>."
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "pii",
+          "action": "redact",
+          "fired": true,
+          "details": {
+            "findings": [
+              {
+                "kind": "email",
+                "start": 10,
+                "end": 25,
+                "text": "ana@example.com"
+              }
+            ]
+          }
+        }
+      ]
+    ],
+    "output": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "email",
+              "start": 8,
+              "end": 24,
+              "text": "luis@example.org"
+            },
+            {
+              "kind": "email",
+              "start": 26,
+              "end": 42,
+              "text": "luis@example.org"
+            }
+          ]
+        }
+      }
+    ],
+    "calls": 1,
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "outputMapping": [
+      [
+        "<EMAIL_2>",
+        "luis@example.org"
+      ]
+    ],
+    "reply": "Avisé a <EMAIL_2>; <EMAIL_2> confirmó."
+  }
+}

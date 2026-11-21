@@ -43,6 +43,41 @@ export interface Token {
   codePoints: number[];
 }
 
+/** A token with the code-point span `[start, end)` of its SOURCE run (`end - start` can be shorter than `token`). */
+export interface TokenSpan {
+  token: string;
+  start: number;
+  end: number;
+}
+
+/**
+ * Tokens of `text` with their source spans, in code points. Same runs and folding as `tokenize`; because folding can
+ * lengthen a code point (`ß` to `ss`), `end - start` is the length of the source run, not of `token`.
+ */
+export function tokenizeSpans(text: string): TokenSpan[] {
+  const out: TokenSpan[] = [];
+  let curText = "";
+  let start = -1;
+  let offset = 0;
+  for (const ch of text) {
+    const cp = ch.codePointAt(0)!;
+    if (isSeparator(cp)) {
+      if (start >= 0) {
+        out.push({ token: curText, start, end: offset });
+        curText = "";
+        start = -1;
+      }
+    } else {
+      if (start < 0) start = offset;
+      if (cp >= 0x41 && cp <= 0x5a) curText += String.fromCharCode(cp + 0x20);
+      else curText += FOLD.get(cp) ?? ch;
+    }
+    offset++;
+  }
+  if (start >= 0) out.push({ token: curText, start, end: offset });
+  return out;
+}
+
 /**
  * Tokens of `text`: maximal runs of word code points, each folded independently (ASCII A-Z to a-z, then the table).
  * Iterates code points with `for...of` (a valid surrogate pair is one code point; any other surrogate is one on its own).
@@ -81,5 +116,5 @@ export function tokenizeDetailed(text: string): Token[] {
 
 /** Tokenization shared by BM25, the hash embedder and the "query without tokens" rule. */
 export function tokenize(text: string): string[] {
-  return tokenizeDetailed(text).map((t) => t.text);
+  return tokenizeSpans(text).map((t) => t.token);
 }

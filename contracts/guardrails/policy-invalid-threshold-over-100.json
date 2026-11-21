@@ -1,0 +1,21 @@
+{
+  "name": "policy-invalid-threshold-over-100",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "injection",
+          "action": "block",
+          "threshold": 101
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

@@ -18,6 +18,7 @@ describe("public API", () => {
         "runFixture",
         "search",
         "tokenize",
+        "tokenizeSpans",
       ].sort(),
     );
   });

@@ -1,0 +1,17 @@
+{
+  "name": "pii-phone-trailing-separator-excluded",
+  "setup": {
+    "kind": "pii",
+    "text": "Mi móvil es 612 345 678. Gracias"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "phone",
+        "start": 12,
+        "end": 23,
+        "text": "612 345 678"
+      }
+    ]
+  }
+}

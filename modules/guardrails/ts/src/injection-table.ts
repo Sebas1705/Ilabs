@@ -1,0 +1,59 @@
+import type { InjectionCategory } from "./types.js";
+
+/** One token entry: anchors are sets of folded tokens; at most `maxGap` tokens may separate consecutive anchors. */
+export interface TokenEntry {
+  id: string;
+  category: InjectionCategory;
+  weight: number;
+  maxGap: number;
+  anchors: readonly (readonly string[])[];
+}
+
+/** One delimiter entry: a literal ASCII string matched on the raw text (case-sensitive). */
+export interface DelimiterEntry {
+  id: string;
+  category: InjectionCategory;
+  weight: number;
+  literal: string;
+  lineStart: boolean;
+}
+
+export type InjectionEntry = TokenEntry | DelimiterEntry;
+
+/** The pinned phrase table of contracts/guardrails/README.md, in table order (copied verbatim). */
+export const INJECTION_TABLE: readonly InjectionEntry[] = Object.freeze([
+  {"id":"en-ignore-previous","category":"override","weight":50,"maxGap":3,"anchors":[["ignore","disregard","forget","skip"],["previous","prior","earlier","preceding"],["instructions","instruction","rules","directions","prompts"]]},
+  {"id":"en-ignore-the-above","category":"override","weight":40,"maxGap":2,"anchors":[["ignore","disregard","forget","skip"],["above"]]},
+  {"id":"en-override-rules","category":"override","weight":40,"maxGap":2,"anchors":[["override","bypass","circumvent"],["rules","restrictions","guidelines","safeguards","filters"]]},
+  {"id":"en-do-anything-now","category":"override","weight":35,"maxGap":0,"anchors":[["do"],["anything"],["now"]]},
+  {"id":"en-from-now-on","category":"override","weight":15,"maxGap":0,"anchors":[["from"],["now"],["on"]]},
+  {"id":"es-ignora-anteriores","category":"override","weight":50,"maxGap":3,"anchors":[["ignora","ignore","ignorar","olvida","olvide","olvidar","omite","omitir"],["instrucciones","indicaciones","reglas","ordenes"],["anteriores","previas","precedentes"]]},
+  {"id":"es-olvida-lo-anterior","category":"override","weight":40,"maxGap":2,"anchors":[["ignora","ignore","olvida","olvide","omite"],["anterior"]]},
+  {"id":"es-salta-restricciones","category":"override","weight":40,"maxGap":2,"anchors":[["salta","saltate","evita","elude","desactiva","quita"],["restricciones","reglas","filtros","normas","limitaciones"]]},
+  {"id":"es-cualquier-cosa-ahora","category":"override","weight":35,"maxGap":0,"anchors":[["cualquier"],["cosa"],["ahora"]]},
+  {"id":"es-a-partir-de-ahora","category":"override","weight":15,"maxGap":0,"anchors":[["a"],["partir"],["de"],["ahora"]]},
+  {"id":"en-you-are-now","category":"role_hijack","weight":25,"maxGap":0,"anchors":[["you"],["are"],["now"]]},
+  {"id":"en-act-as","category":"role_hijack","weight":20,"maxGap":0,"anchors":[["act"],["as"]]},
+  {"id":"en-pretend-to-be","category":"role_hijack","weight":30,"maxGap":0,"anchors":[["pretend"],["to","you"],["be","are"]]},
+  {"id":"en-developer-mode","category":"role_hijack","weight":40,"maxGap":0,"anchors":[["developer","god","jailbreak","unrestricted"],["mode"]]},
+  {"id":"en-no-restrictions","category":"role_hijack","weight":25,"maxGap":1,"anchors":[["without","no"],["restrictions","limits","filters","censorship"]]},
+  {"id":"es-ahora-eres","category":"role_hijack","weight":25,"maxGap":0,"anchors":[["ahora"],["eres"]]},
+  {"id":"es-actua-como","category":"role_hijack","weight":20,"maxGap":0,"anchors":[["actua","actue","actuar"],["como"]]},
+  {"id":"es-finge-ser","category":"role_hijack","weight":30,"maxGap":0,"anchors":[["finge","finja","fingir"],["ser","que"]]},
+  {"id":"es-modo-desarrollador","category":"role_hijack","weight":40,"maxGap":0,"anchors":[["modo"],["desarrollador","dios","jailbreak","ilimitado"]]},
+  {"id":"es-sin-restricciones","category":"role_hijack","weight":25,"maxGap":1,"anchors":[["sin"],["restricciones","limites","filtros","censura"]]},
+  {"id":"en-reveal-system-prompt","category":"prompt_leak","weight":45,"maxGap":3,"anchors":[["reveal","show","print","repeat","display","output"],["system"],["prompt","instructions"]]},
+  {"id":"en-what-are-your-instructions","category":"prompt_leak","weight":30,"maxGap":0,"anchors":[["what"],["are","were"],["your"],["instructions","rules"]]},
+  {"id":"en-repeat-words-above","category":"prompt_leak","weight":40,"maxGap":2,"anchors":[["repeat","print","output","copy"],["words","text","everything"],["above"]]},
+  {"id":"en-hidden-prompt","category":"prompt_leak","weight":30,"maxGap":1,"anchors":[["hidden","secret","initial","original"],["prompt","instructions"]]},
+  {"id":"es-revela-prompt-sistema","category":"prompt_leak","weight":45,"maxGap":3,"anchors":[["revela","muestra","muestrame","imprime","repite","dime","ensename"],["prompt","instrucciones"],["sistema"]]},
+  {"id":"es-cuales-son-tus-instrucciones","category":"prompt_leak","weight":30,"maxGap":0,"anchors":[["cuales"],["son","eran"],["tus"],["instrucciones","reglas","indicaciones"]]},
+  {"id":"es-repite-texto-anterior","category":"prompt_leak","weight":40,"maxGap":2,"anchors":[["repite","imprime","copia","escribe"],["texto","palabras","todo"],["anterior","arriba"]]},
+  {"id":"es-prompt-oculto","category":"prompt_leak","weight":30,"maxGap":1,"anchors":[["prompt","instrucciones"],["oculto","oculta","ocultas","secreto","secretas","originales","iniciales"]]},
+  {"id":"delim-system-colon","category":"delimiter","weight":30,"literal":"system:","lineStart":true},
+  {"id":"delim-sistema-colon","category":"delimiter","weight":30,"literal":"sistema:","lineStart":true},
+  {"id":"delim-hash-system","category":"delimiter","weight":25,"literal":"### system","lineStart":false},
+  {"id":"delim-im-start","category":"delimiter","weight":35,"literal":"<|im_start|>","lineStart":false},
+  {"id":"delim-inst","category":"delimiter","weight":30,"literal":"[INST]","lineStart":false},
+  {"id":"delim-endoftext","category":"delimiter","weight":35,"literal":"<|endoftext|>","lineStart":false},
+]);

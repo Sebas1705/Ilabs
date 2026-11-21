@@ -63,6 +63,8 @@
     <string name="home_evals_description">Compare models on a suite of graded cases.</string>
     <string name="home_rag_title">Retrieval (RAG)</string>
     <string name="home_rag_description">Search documents with BM25, vectors or both, then cite the sources.</string>
+    <string name="home_guardrails_title">Guardrails</string>
+    <string name="home_guardrails_description">Find personal data and injection signals, apply a policy, guard a model call.</string>
     <string name="home_open_module">%1$s. %2$s Double tap to open.</string>
     <string name="home_back">Modules</string>
     <string name="home_back_description">Back to the module list</string>
@@ -413,5 +415,193 @@
     <plurals name="rag_dropped">
         <item quantity="one">%1$d hit dropped by the budget</item>
         <item quantity="other">%1$d hits dropped by the budget</item>
+    </plurals>
+
+    <string name="guard_title">Guardrails</string>
+    <string name="guard_subtitle">Find personal data and secrets, score prompt-injection signals, run a policy and guard a model call. The real library runs over the shared contract fixtures; nothing leaves your device.</string>
+    <string name="guard_load_error">Could not load the fixtures: %1$s</string>
+    <string name="guard_run_error">Could not run the sample: %1$s</string>
+    <string name="guard_running">Running…</string>
+    <string name="guard_sample">Sample</string>
+    <string name="guard_sample_picker">Sample: %1$s. Double tap to choose another.</string>
+    <string name="guard_group_pii">PII</string>
+    <string name="guard_group_injection">Injection</string>
+    <string name="guard_group_checks">Checks</string>
+    <string name="guard_section_playground">Playground</string>
+    <string name="guard_section_guarded">Guarded conversation</string>
+    <string name="guard_section_measure">Measure</string>
+    <string name="guard_code_points">code points %1$d to %2$d</string>
+    <string name="guard_label_code">%1$s (%2$s)</string>
+    <string name="guard_library_reason">Reason from the library: %1$s</string>
+    <string name="guard_empty_text">(empty)</string>
+
+    <string name="guard_text">Text to analyse</string>
+    <string name="guard_text_hint">Every change runs the library again. Nothing is validated here: the library decides.</string>
+    <string name="guard_partial">This sample has checks the toggles cannot show (a classifier, a canary, a second check of one kind, a given mapping or another order), so the verdict here can differ from its recorded one.</string>
+    <string name="guard_highlights">Text with findings</string>
+    <string name="guard_highlights_none">No personal data or secrets found in this text.</string>
+    <string name="guard_highlights_hint">Each finding and signal is underlined, with a glyph and its kind beside it.</string>
+    <string name="guard_finding_spoken">%1$s “%2$s”, %3$s</string>
+    <string name="guard_redacted">Redacted text</string>
+    <string name="guard_redacted_hint">Each finding replaced by a reversible placeholder, as the library writes it.</string>
+    <string name="guard_mapping">Mapping, placeholder to original</string>
+    <string name="guard_mapping_none">Nothing was redacted.</string>
+    <string name="guard_mapping_row">%1$s → %2$s</string>
+    <string name="guard_mapping_spoken">%1$s stands for “%2$s”</string>
+    <string name="guard_injection">Injection score</string>
+    <string name="guard_injection_score">%1$d / 100</string>
+    <string name="guard_injection_spoken">Injection score %1$d out of 100</string>
+    <string name="guard_signals_none">No injection signal fired.</string>
+    <string name="guard_policy_error">Policy error</string>
+    <string name="guard_status_invalid_policy">The policy is not valid.</string>
+    <string name="guard_text_empty">The text is empty.</string>
+    <string name="guard_large_text">This text is very long or has very many findings, so it is shown without highlights, cut to its first %1$d characters. The lists show the first %2$d entries.</string>
+    <string name="guard_more_findings">+%1$d more</string>
+    <string name="guard_signal_row">%1$s, %2$s</string>
+    <string name="guard_signal_spoken">Signal %1$s, category %2$s, %3$s</string>
+    <string name="guard_policy">Policy</string>
+    <string name="guard_policy_hint">Switch checks on to build a policy. The library validates it and runs it on the text above.</string>
+    <string name="guard_action">Action</string>
+    <string name="guard_kinds">Kinds to look for</string>
+    <string name="guard_threshold">Threshold (1 to 100)</string>
+    <string name="guard_terms">Terms, separated by commas</string>
+    <string name="guard_max">Maximum length in code points</string>
+    <string name="guard_verdict">Verdict</string>
+    <string name="guard_verdict_allow">Allow</string>
+    <string name="guard_verdict_block">Block</string>
+    <string name="guard_verdict_after">Text after the policy</string>
+    <string name="guard_checks_results">Checks</string>
+    <string name="guard_checks_none">No check is switched on.</string>
+    <string name="guard_check_fired">Fired</string>
+    <string name="guard_check_quiet">Not fired</string>
+    <string name="guard_check_header">Check %1$d: %2$s, %3$s</string>
+    <string name="guard_check_spoken">Check %1$d, %2$s, action %3$s, %4$s. %5$s</string>
+    <string name="guard_limits">Injection scoring is a lexical heuristic: it can miss a paraphrase and flag harmless text. The scanners miss names and addresses. These are signals, not a defence.</string>
+
+    <string name="guard_action_off">Off</string>
+    <string name="guard_action_flag">Flag</string>
+    <string name="guard_action_redact">Redact</string>
+    <string name="guard_action_block">Block</string>
+    <string name="guard_check_pii">Personal data (PII)</string>
+    <string name="guard_check_injection">Prompt injection</string>
+    <string name="guard_check_denyterms">Deny terms</string>
+    <string name="guard_check_maxlength">Maximum length</string>
+    <string name="guard_check_canary">Canary</string>
+    <string name="guard_check_classifier">Classifier</string>
+    <string name="guard_kind_email">Email</string>
+    <string name="guard_kind_phone">Phone</string>
+    <string name="guard_kind_iban">IBAN</string>
+    <string name="guard_kind_card">Card</string>
+    <string name="guard_kind_spanish_id">Spanish ID</string>
+    <string name="guard_kind_secret">Secret</string>
+    <string name="guard_category_override">Override</string>
+    <string name="guard_category_role_hijack">Role hijack</string>
+    <string name="guard_category_prompt_leak">Prompt leak</string>
+    <string name="guard_category_delimiter">Delimiter</string>
+
+    <string name="guard_detail_injection">Score %1$d</string>
+    <string name="guard_detail_match">“%1$s”, %2$s</string>
+    <string name="guard_detail_canary_found">The canary appears in the text.</string>
+    <string name="guard_detail_canary_absent">The canary does not appear in the text.</string>
+    <string name="guard_detail_classifier_flagged">The classifier flagged the text.</string>
+    <string name="guard_detail_classifier_clear">The classifier did not flag the text.</string>
+    <string name="guard_detail_label">Label: %1$s</string>
+
+    <string name="guard_guarded_hint">The model is scripted and this sample cannot be edited. What you see is the library result for the contract fixture, as the harness produced it.</string>
+    <string name="guard_guarded_request">Request as written</string>
+    <string name="guard_guarded_sent">Sent to the model</string>
+    <string name="guard_guarded_sent_hint">Personal data replaced by placeholders; system messages untouched.</string>
+    <string name="guard_guarded_sent_none">Nothing was sent: the call never happened.</string>
+    <string name="guard_guarded_reply">Scripted model reply</string>
+    <string name="guard_guarded_input">Input checks</string>
+    <string name="guard_guarded_input_none">The input was not checked.</string>
+    <string name="guard_guarded_message">Message %1$d (%2$s)</string>
+    <string name="guard_guarded_output">Output checks</string>
+    <string name="guard_guarded_output_none">The reply was not checked: the call did not get that far.</string>
+    <string name="guard_guarded_result">Result</string>
+    <string name="guard_guarded_final">Final text, placeholders restored</string>
+    <string name="guard_guarded_blocked">No text is returned: the call was blocked.</string>
+    <string name="guard_guarded_failed">The call failed before it returned a result.</string>
+    <string name="guard_guarded_mapping">Input mapping</string>
+    <string name="guard_guarded_output_mapping">Output mapping, never restored</string>
+    <string name="guard_role_system">system</string>
+    <string name="guard_role_user">user</string>
+    <string name="guard_role_assistant">assistant</string>
+    <string name="guard_message_row">%1$s: %2$s</string>
+    <string name="guard_status_ok">Allowed</string>
+    <string name="guard_status_blocked_input">Blocked on input</string>
+    <string name="guard_status_blocked_output">Blocked on output</string>
+    <string name="guard_status_line_blocked_input">Blocked: an input check blocked the request.</string>
+    <string name="guard_status_line_blocked_output">Blocked: an output check blocked the reply.</string>
+    <string name="guard_status_failed">The call failed: %1$s</string>
+    <string name="guard_error_invalid_policy">The policy is not valid, so no verdict was computed.</string>
+    <string name="guard_error_invalid_options">The options are not valid.</string>
+    <string name="guard_error_no_classifier">A classifier check needs a classifier and none was given.</string>
+    <string name="guard_error_rate_limit">The provider is rate limiting.</string>
+    <string name="guard_error_timeout">The provider timed out.</string>
+    <string name="guard_error_invalid_output">The provider returned an invalid reply.</string>
+    <string name="guard_error_unavailable">The provider is unavailable.</string>
+
+    <string name="guard_measure_hint">The detectors run on each labelled sample; precision, recall and F1 compare the spans that were expected with the ones that were found.</string>
+    <string name="guard_measure_note">The set is small and deliberately contains misses and false positives, so the figures are not a benchmark.</string>
+    <string name="guard_measure_pii">Personal data (PII) detector</string>
+    <string name="guard_measure_injection">Injection detector</string>
+    <string name="guard_measure_overall">Over all kinds</string>
+    <string name="guard_precision">Precision</string>
+    <string name="guard_recall">Recall</string>
+    <string name="guard_f1">F1</string>
+    <string name="guard_metric_cell">%1$s %2$s</string>
+    <string name="guard_metric_counts">expected %1$d, found %2$d, correct %3$d</string>
+    <string name="guard_metric_spoken">%1$s: precision %2$s, recall %3$s, F1 %4$s; expected %5$d, found %6$d, correct %7$d</string>
+    <string name="guard_metric_overall_spoken">%1$s over all kinds: precision %2$s, recall %3$s, F1 %4$s</string>
+    <string name="guard_measure_samples">Labelled samples</string>
+    <string name="guard_measure_samples_hint">Every expected or found span, marked correct, missed or extra.</string>
+    <string name="guard_measure_sample">Sample %1$d</string>
+    <string name="guard_marks_none">No expected or found span.</string>
+    <string name="guard_mark_correct">Correct</string>
+    <string name="guard_mark_miss">Missed</string>
+    <string name="guard_mark_extra">Extra</string>
+    <string name="guard_mark_row">%1$s: %2$s “%3$s”, %4$s</string>
+    <string name="guard_footer">Fixtures live in contracts/guardrails and are shared with the TypeScript implementation. The model is scripted and no classifier is called: nothing leaves your device.</string>
+
+    <plurals name="guard_status_allow">
+        <item quantity="one">%1$d finding, verdict allow</item>
+        <item quantity="other">%1$d findings, verdict allow</item>
+    </plurals>
+    <plurals name="guard_status_block">
+        <item quantity="one">%1$d finding, verdict block</item>
+        <item quantity="other">%1$d findings, verdict block</item>
+    </plurals>
+    <plurals name="guard_highlight_alt">
+        <item quantity="one">Text with %1$d finding: %2$s</item>
+        <item quantity="other">Text with %1$d findings: %2$s</item>
+    </plurals>
+    <plurals name="guard_detail_pii">
+        <item quantity="one">%1$d finding</item>
+        <item quantity="other">%1$d findings</item>
+    </plurals>
+    <plurals name="guard_detail_signals">
+        <item quantity="one">%1$d signal</item>
+        <item quantity="other">%1$d signals</item>
+    </plurals>
+    <plurals name="guard_detail_matches">
+        <item quantity="one">%1$d match</item>
+        <item quantity="other">%1$d matches</item>
+    </plurals>
+    <plurals name="guard_detail_length">
+        <item quantity="one">%1$d code point</item>
+        <item quantity="other">%1$d code points</item>
+    </plurals>
+    <plurals name="guard_calls">
+        <item quantity="one">%1$d provider call</item>
+        <item quantity="other">%1$d provider calls</item>
+    </plurals>
+    <plurals name="guard_status_ok_calls">
+        <item quantity="one">Completed, %1$d model call</item>
+        <item quantity="other">Completed, %1$d model calls</item>
+    </plurals>
+    <plurals name="guard_status_measure">
+        <item quantity="one">%1$d sample; PII F1 %2$s, injection F1 %3$s</item>
+        <item quantity="other">%1$d samples; PII F1 %2$s, injection F1 %3$s</item>
     </plurals>
 </resources>

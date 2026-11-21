@@ -1,0 +1,20 @@
+{
+  "name": "redact-different-spelling-new-placeholder",
+  "setup": {
+    "kind": "redact",
+    "text": "612 345 678 o 612345678"
+  },
+  "expect": {
+    "text": "<PHONE_1> o <PHONE_2>",
+    "mapping": [
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ],
+      [
+        "<PHONE_2>",
+        "612345678"
+      ]
+    ]
+  }
+}

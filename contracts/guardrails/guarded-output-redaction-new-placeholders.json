@@ -1,0 +1,97 @@
+{
+  "name": "guarded-output-redaction-new-placeholders",
+  "setup": {
+    "kind": "guarded",
+    "request": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Escribe a ana@example.com."
+        }
+      ]
+    },
+    "policy": {
+      "input": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ],
+      "output": [
+        {
+          "kind": "pii",
+          "action": "redact"
+        }
+      ]
+    },
+    "provider": {
+      "script": [
+        {
+          "response": "Hecho, también avisé a luis@example.org y a <EMAIL_1>."
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok",
+    "text": "Hecho, también avisé a <EMAIL_2> y a ana@example.com.",
+    "sent": [
+      {
+        "role": "user",
+        "content": "Escribe a <EMAIL_1>."
+      }
+    ],
+    "input": [
+      [
+        {
+          "check": 0,
+          "kind": "pii",
+          "action": "redact",
+          "fired": true,
+          "details": {
+            "findings": [
+              {
+                "kind": "email",
+                "start": 10,
+                "end": 25,
+                "text": "ana@example.com"
+              }
+            ]
+          }
+        }
+      ]
+    ],
+    "output": [
+      {
+        "check": 0,
+        "kind": "pii",
+        "action": "redact",
+        "fired": true,
+        "details": {
+          "findings": [
+            {
+              "kind": "email",
+              "start": 23,
+              "end": 39,
+              "text": "luis@example.org"
+            }
+          ]
+        }
+      }
+    ],
+    "calls": 1,
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "ana@example.com"
+      ]
+    ],
+    "outputMapping": [
+      [
+        "<EMAIL_2>",
+        "luis@example.org"
+      ]
+    ],
+    "reply": "Hecho, también avisé a <EMAIL_2> y a ana@example.com."
+  }
+}

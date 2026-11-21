@@ -1,0 +1,20 @@
+{
+  "name": "restore-swap-single-pass",
+  "setup": {
+    "kind": "restore",
+    "text": "<EMAIL_1> <PHONE_1>",
+    "mapping": [
+      [
+        "<EMAIL_1>",
+        "<PHONE_1>"
+      ],
+      [
+        "<PHONE_1>",
+        "<EMAIL_1>"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "<PHONE_1> <EMAIL_1>"
+  }
+}

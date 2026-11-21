@@ -1,0 +1,10 @@
+{
+  "name": "pii-card-dot-separator-not-card",
+  "setup": {
+    "kind": "pii",
+    "text": "Card 4111.1111.1111.1111 end"
+  },
+  "expect": {
+    "findings": []
+  }
+}

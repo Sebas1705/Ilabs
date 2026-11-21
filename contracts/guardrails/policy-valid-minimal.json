@@ -1,0 +1,13 @@
+{
+  "name": "policy-valid-minimal",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [],
+      "output": []
+    }
+  },
+  "expect": {
+    "valid": true
+  }
+}

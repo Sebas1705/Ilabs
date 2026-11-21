@@ -1,0 +1,17 @@
+{
+  "name": "policy-invalid-check-not-object",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        "pii"
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

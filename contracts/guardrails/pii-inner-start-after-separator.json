@@ -1,0 +1,17 @@
+{
+  "name": "pii-inner-start-after-separator",
+  "setup": {
+    "kind": "pii",
+    "text": "Tel 91 612 345 678 ya"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "phone",
+        "start": 7,
+        "end": 18,
+        "text": "612 345 678"
+      }
+    ]
+  }
+}

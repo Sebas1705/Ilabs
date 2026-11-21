@@ -1,0 +1,44 @@
+{
+  "name": "check-max-length-code-points",
+  "setup": {
+    "kind": "check",
+    "text": "😀😀😀",
+    "checks": [
+      {
+        "kind": "maxLength",
+        "action": "flag",
+        "max": 3
+      },
+      {
+        "kind": "maxLength",
+        "action": "block",
+        "max": 2
+      }
+    ]
+  },
+  "expect": {
+    "verdict": "block",
+    "text": "😀😀😀",
+    "mapping": [],
+    "findings": [
+      {
+        "check": 0,
+        "kind": "maxLength",
+        "action": "flag",
+        "fired": false,
+        "details": {
+          "length": 3
+        }
+      },
+      {
+        "check": 1,
+        "kind": "maxLength",
+        "action": "block",
+        "fired": true,
+        "details": {
+          "length": 3
+        }
+      }
+    ]
+  }
+}

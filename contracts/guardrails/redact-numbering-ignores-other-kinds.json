@@ -1,0 +1,26 @@
+{
+  "name": "redact-numbering-ignores-other-kinds",
+  "setup": {
+    "kind": "redact",
+    "text": "612 345 678",
+    "mapping": [
+      [
+        "<EMAIL_3>",
+        "ana@example.com"
+      ]
+    ]
+  },
+  "expect": {
+    "text": "<PHONE_1>",
+    "mapping": [
+      [
+        "<EMAIL_3>",
+        "ana@example.com"
+      ],
+      [
+        "<PHONE_1>",
+        "612 345 678"
+      ]
+    ]
+  }
+}

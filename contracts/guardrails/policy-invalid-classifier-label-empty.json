@@ -1,0 +1,21 @@
+{
+  "name": "policy-invalid-classifier-label-empty",
+  "setup": {
+    "kind": "policy",
+    "policy": {
+      "input": [
+        {
+          "kind": "classifier",
+          "action": "flag",
+          "label": ""
+        }
+      ],
+      "output": []
+    }
+  },
+  "expect": {
+    "error": {
+      "kind": "invalid_policy"
+    }
+  }
+}

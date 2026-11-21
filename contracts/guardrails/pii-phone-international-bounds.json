@@ -1,0 +1,23 @@
+{
+  "name": "pii-phone-international-bounds",
+  "setup": {
+    "kind": "pii",
+    "text": "A +1111 1111 B +111 1111 1111 1111 C +111 1111 D +1111 1111 1111 1111 E"
+  },
+  "expect": {
+    "findings": [
+      {
+        "kind": "phone",
+        "start": 2,
+        "end": 12,
+        "text": "+1111 1111"
+      },
+      {
+        "kind": "phone",
+        "start": 15,
+        "end": 34,
+        "text": "+111 1111 1111 1111"
+      }
+    ]
+  }
+}
