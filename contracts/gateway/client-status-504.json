@@ -1,0 +1,48 @@
+{
+  "kind": "client",
+  "name": "client-status-504",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 504,
+      "body": {
+        "error": {
+          "kind": "timeout"
+        }
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "timeout"
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

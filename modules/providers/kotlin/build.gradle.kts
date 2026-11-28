@@ -34,4 +34,7 @@ tasks.withType<Test>().configureEach {
     inputs.files(rootProject.fileTree("contracts/providers") { include("*.json") })
         .withPropertyName("contractFixtures")
         .withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.files(rootProject.fileTree("contracts/gateway") { include("client-*.json") })
+        .withPropertyName("gatewayClientFixtures")
+        .withPathSensitivity(PathSensitivity.RELATIVE)
 }

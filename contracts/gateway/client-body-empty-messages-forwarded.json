@@ -1,0 +1,36 @@
+{
+  "kind": "client",
+  "name": "client-body-empty-messages-forwarded",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": []
+  },
+  "transport": [
+    {
+      "status": 200,
+      "body": {
+        "text": "Hi",
+        "provider": "gateway"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "text": "Hi",
+      "provider": "gateway"
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": []
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

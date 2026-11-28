@@ -1,0 +1,48 @@
+{
+  "kind": "client",
+  "name": "client-retry-after-header-upper-case-name",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 429,
+      "body": "{\"error\":{\"kind\":\"rate_limit\"}}",
+      "headers": {
+        "RETRY-AFTER": "3"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "rate_limit",
+        "retryAfterMs": 3000
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

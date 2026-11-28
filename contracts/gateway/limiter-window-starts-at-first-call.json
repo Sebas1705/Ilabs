@@ -1,0 +1,46 @@
+{
+  "kind": "limiter",
+  "name": "limiter-window-starts-at-first-call",
+  "limit": 2,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "a",
+      "now": 5000
+    },
+    {
+      "key": "a",
+      "now": 5999
+    },
+    {
+      "key": "a",
+      "now": 6000
+    },
+    {
+      "key": "a",
+      "now": 6500
+    },
+    {
+      "key": "a",
+      "now": 6501
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 499
+    }
+  ]
+}

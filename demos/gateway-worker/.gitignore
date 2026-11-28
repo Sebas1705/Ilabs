@@ -1,0 +1,5 @@
+# Wrangler local state and bundles
+.wrangler/
+# Local secrets for `wrangler dev`: never committed
+.dev.vars
+.dev.vars.*

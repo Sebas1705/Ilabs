@@ -1,0 +1,48 @@
+{
+  "kind": "client",
+  "name": "client-body-bogus-role-and-empty-content-forwarded",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "bogus",
+        "content": ""
+      }
+    ],
+    "maxTokens": 0
+  },
+  "transport": [
+    {
+      "status": 200,
+      "body": {
+        "text": "Hi",
+        "provider": "gateway"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "text": "Hi",
+      "provider": "gateway"
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "bogus",
+              "content": ""
+            }
+          ],
+          "maxTokens": 0
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "kind": "limiter",
+  "name": "limiter-full-count-after-reset",
+  "limit": 5,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 1000
+    },
+    {
+      "key": "a",
+      "now": 1000
+    },
+    {
+      "key": "a",
+      "now": 1000
+    },
+    {
+      "key": "a",
+      "now": 1000
+    },
+    {
+      "key": "a",
+      "now": 1000
+    },
+    {
+      "key": "a",
+      "now": 1000
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 1000
+    }
+  ]
+}

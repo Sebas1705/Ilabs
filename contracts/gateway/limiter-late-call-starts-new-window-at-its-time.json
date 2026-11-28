@@ -1,0 +1,39 @@
+{
+  "kind": "limiter",
+  "name": "limiter-late-call-starts-new-window-at-its-time",
+  "limit": 1,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 2500
+    },
+    {
+      "key": "a",
+      "now": 3400
+    },
+    {
+      "key": "a",
+      "now": 3500
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 100
+    },
+    {
+      "allowed": true
+    }
+  ]
+}

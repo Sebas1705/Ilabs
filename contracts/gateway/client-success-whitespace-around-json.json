@@ -1,0 +1,43 @@
+{
+  "kind": "client",
+  "name": "client-success-whitespace-around-json",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 200,
+      "body": " \n\t\r{\"text\":\"Hi\"}\r\n "
+    }
+  ],
+  "expect": {
+    "result": {
+      "text": "Hi",
+      "provider": "gateway"
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "limiter",
+  "name": "limiter-first-call-at-time-zero-opens-window",
+  "limit": 1,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 1000
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 1000
+    },
+    {
+      "allowed": true
+    }
+  ]
+}

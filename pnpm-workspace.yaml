@@ -1,5 +1,6 @@
 packages:
   - "modules/*/ts"
   - "demos/web"
+  - "demos/gateway-worker"
 allowBuilds:
   protobufjs: false

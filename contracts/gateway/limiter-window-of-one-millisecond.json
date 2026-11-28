@@ -1,0 +1,40 @@
+{
+  "kind": "limiter",
+  "name": "limiter-window-of-one-millisecond",
+  "limit": 1,
+  "windowMs": 1,
+  "calls": [
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 1
+    },
+    {
+      "key": "a",
+      "now": 1
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 1
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 1
+    }
+  ]
+}

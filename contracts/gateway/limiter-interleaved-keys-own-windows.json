@@ -1,0 +1,62 @@
+{
+  "kind": "limiter",
+  "name": "limiter-interleaved-keys-own-windows",
+  "limit": 1,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "b",
+      "now": 600
+    },
+    {
+      "key": "a",
+      "now": 900
+    },
+    {
+      "key": "b",
+      "now": 999
+    },
+    {
+      "key": "a",
+      "now": 1000
+    },
+    {
+      "key": "b",
+      "now": 1000
+    },
+    {
+      "key": "b",
+      "now": 1600
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 100
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 601
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 600
+    },
+    {
+      "allowed": true
+    }
+  ]
+}

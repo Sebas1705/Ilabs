@@ -1,0 +1,115 @@
+{
+  "kind": "limiter",
+  "name": "limiter-prototype-property-names-are-plain-keys",
+  "limit": 1,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "__proto__",
+      "now": 0
+    },
+    {
+      "key": "constructor",
+      "now": 0
+    },
+    {
+      "key": "toString",
+      "now": 0
+    },
+    {
+      "key": "hasOwnProperty",
+      "now": 0
+    },
+    {
+      "key": "valueOf",
+      "now": 0
+    },
+    {
+      "key": "",
+      "now": 0
+    },
+    {
+      "key": "prototype",
+      "now": 0
+    },
+    {
+      "key": "__proto__",
+      "now": 1
+    },
+    {
+      "key": "constructor",
+      "now": 1
+    },
+    {
+      "key": "toString",
+      "now": 1
+    },
+    {
+      "key": "hasOwnProperty",
+      "now": 1
+    },
+    {
+      "key": "valueOf",
+      "now": 1
+    },
+    {
+      "key": "",
+      "now": 1
+    },
+    {
+      "key": "prototype",
+      "now": 1
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 999
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 999
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 999
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 999
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 999
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 999
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 999
+    }
+  ]
+}

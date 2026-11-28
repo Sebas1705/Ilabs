@@ -1,0 +1,32 @@
+{
+  "kind": "limiter",
+  "name": "limiter-keys-are-case-sensitive",
+  "limit": 1,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "A",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "A",
+      "now": 1
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 999
+    }
+  ]
+}

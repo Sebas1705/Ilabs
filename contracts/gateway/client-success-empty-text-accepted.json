@@ -1,0 +1,46 @@
+{
+  "kind": "client",
+  "name": "client-success-empty-text-accepted",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 200,
+      "body": {
+        "text": "",
+        "provider": "gateway"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "text": "",
+      "provider": "gateway"
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

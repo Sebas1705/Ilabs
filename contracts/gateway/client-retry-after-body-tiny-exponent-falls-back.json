@@ -1,0 +1,48 @@
+{
+  "kind": "client",
+  "name": "client-retry-after-body-tiny-exponent-falls-back",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 429,
+      "body": "{\"error\":{\"kind\":\"rate_limit\",\"retryAfterMs\":1e-400}}",
+      "headers": {
+        "retry-after": "2"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "rate_limit",
+        "retryAfterMs": 2000
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

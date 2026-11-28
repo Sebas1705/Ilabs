@@ -1,0 +1,39 @@
+{
+  "kind": "limiter",
+  "name": "limiter-deny-after-limit",
+  "limit": 3,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 1000
+    }
+  ]
+}

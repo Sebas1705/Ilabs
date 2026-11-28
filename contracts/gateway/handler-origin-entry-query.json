@@ -1,0 +1,39 @@
+{
+  "kind": "handler",
+  "name": "handler-origin-entry-query",
+  "env": {
+    "GEMINI_API_KEY": "FIXTURE_SERVER_KEY",
+    "GEMINI_MODEL": "fixture-model-1",
+    "ALLOWED_ORIGINS": "https://app.example.test?x=1"
+  },
+  "request": {
+    "method": "POST",
+    "path": "/v1/complete",
+    "headers": {
+      "content-type": "application/json",
+      "cf-connecting-ip": "203.0.113.7",
+      "origin": "https://app.example.test?x=1"
+    },
+    "body": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "hello"
+        }
+      ]
+    }
+  },
+  "upstream": [],
+  "expect": {
+    "status": 403,
+    "body": {
+      "error": {
+        "kind": "unavailable"
+      }
+    },
+    "headers": {
+      "access-control-allow-origin": null
+    },
+    "upstreamCalls": 0
+  }
+}

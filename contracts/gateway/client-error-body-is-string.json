@@ -1,0 +1,44 @@
+{
+  "kind": "client",
+  "name": "client-error-body-is-string",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 500,
+      "body": "\"rate_limit\""
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "unavailable"
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

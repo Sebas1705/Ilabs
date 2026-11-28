@@ -1,0 +1,44 @@
+{
+  "kind": "client",
+  "name": "client-success-bom-prefix",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 200,
+      "body": "﻿{\"text\":\"Hi\"}"
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "invalid_output"
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

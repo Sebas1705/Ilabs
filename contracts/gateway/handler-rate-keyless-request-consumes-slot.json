@@ -1,0 +1,54 @@
+{
+  "kind": "handler",
+  "name": "handler-rate-keyless-request-consumes-slot",
+  "env": {
+    "GEMINI_MODEL": "fixture-model-1",
+    "ALLOWED_ORIGINS": "https://app.example.test"
+  },
+  "request": {
+    "method": "POST",
+    "path": "/v1/complete",
+    "headers": {
+      "content-type": "application/json",
+      "cf-connecting-ip": "203.0.113.7"
+    },
+    "body": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "hello"
+        }
+      ]
+    }
+  },
+  "before": [
+    {
+      "method": "POST",
+      "path": "/v1/complete",
+      "headers": {
+        "content-type": "application/json",
+        "cf-connecting-ip": "203.0.113.7"
+      },
+      "body": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "hello"
+          }
+        ]
+      }
+    }
+  ],
+  "limiterPreload": 9,
+  "upstream": [],
+  "expect": {
+    "status": 429,
+    "body": {
+      "error": {
+        "kind": "rate_limit",
+        "retryAfterMs": 60000
+      }
+    },
+    "upstreamCalls": 0
+  }
+}

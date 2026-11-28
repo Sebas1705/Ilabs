@@ -6,10 +6,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.Dispatchers
@@ -80,6 +82,17 @@ class MainActivity : ComponentActivity() {
                         val vm: VisionViewModel = viewModel(factory = VisionViewModel.factory(visionAssets, visionPlatform))
                         val state by vm.uiState.collectAsStateWithLifecycle()
                         VisionScreen(state, VisionActions.of(vm, visionImages), onBack = { module = null })
+                    }
+                    DemoModule.ASSISTANT -> {
+                        // Plain strings read from the current configuration: the view model outlives the Activity and must not keep it.
+                        val replies = listOf(
+                            stringResource(R.string.assistant_mock_reply_1), stringResource(R.string.assistant_mock_reply_2),
+                            stringResource(R.string.assistant_mock_reply_3), stringResource(R.string.assistant_mock_reply_4),
+                        )
+                        val vm: AssistantViewModel = viewModel(factory = AssistantViewModel.factory(replies))
+                        LaunchedEffect(replies) { vm.setReplies(replies) }
+                        val state by vm.uiState.collectAsStateWithLifecycle()
+                        AssistantScreen(state, AssistantActions.of(vm), onBack = { module = null })
                     }
                 }
             }

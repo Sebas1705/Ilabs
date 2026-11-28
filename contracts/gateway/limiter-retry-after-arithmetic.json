@@ -1,0 +1,47 @@
+{
+  "kind": "limiter",
+  "name": "limiter-retry-after-arithmetic",
+  "limit": 3,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 100
+    },
+    {
+      "key": "a",
+      "now": 200
+    },
+    {
+      "key": "a",
+      "now": 300
+    },
+    {
+      "key": "a",
+      "now": 650
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 700
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 350
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  // No secret lives in this file. The Gemini key is a Worker secret set with
+  // `wrangler secret put GEMINI_API_KEY` (see README.md); the two variables below are
+  // placeholders that the owner replaces before deploying. Both fail closed while unedited.
+  "name": "ilabs-gateway",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-15",
+  "vars": {
+    // The Gemini model used for every call (never taken from a request). Empty on purpose: an
+    // unedited deploy answers 503 without calling Gemini. Set a Gemini model name before deploying.
+    "GEMINI_MODEL": "",
+    // Comma-separated exact origins, no wildcards, no trailing slash, for example
+    // "https://example.test,http://localhost:5173". Until replaced, no browser origin is allowed.
+    "ALLOWED_ORIGINS": "REPLACE_WITH_ALLOWED_ORIGINS"
+  }
+}

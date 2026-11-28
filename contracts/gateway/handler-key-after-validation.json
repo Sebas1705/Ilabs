@@ -1,0 +1,27 @@
+{
+  "kind": "handler",
+  "name": "handler-key-after-validation",
+  "env": {
+    "GEMINI_MODEL": "fixture-model-1",
+    "ALLOWED_ORIGINS": "https://app.example.test"
+  },
+  "request": {
+    "method": "POST",
+    "path": "/v1/complete",
+    "headers": {
+      "content-type": "application/json",
+      "cf-connecting-ip": "203.0.113.7"
+    },
+    "body": "not json"
+  },
+  "upstream": [],
+  "expect": {
+    "status": 400,
+    "body": {
+      "error": {
+        "kind": "invalid_output"
+      }
+    },
+    "upstreamCalls": 0
+  }
+}

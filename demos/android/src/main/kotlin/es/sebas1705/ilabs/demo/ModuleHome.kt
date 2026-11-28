@@ -47,6 +47,7 @@ enum class DemoModule(@StringRes val title: Int, @StringRes val description: Int
     RAG(R.string.home_rag_title, R.string.home_rag_description),
     GUARDRAILS(R.string.home_guardrails_title, R.string.home_guardrails_description),
     VISION(R.string.home_vision_title, R.string.home_vision_description),
+    ASSISTANT(R.string.home_assistant_title, R.string.home_assistant_description),
 }
 
 /** A text button for the top bar that returns to the module list; the system back gesture does the same. */

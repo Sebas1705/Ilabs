@@ -1,0 +1,53 @@
+{
+  "kind": "handler",
+  "name": "handler-upstream-content-null",
+  "env": {
+    "GEMINI_API_KEY": "FIXTURE_SERVER_KEY",
+    "GEMINI_MODEL": "fixture-model-1",
+    "ALLOWED_ORIGINS": "https://app.example.test,http://localhost:5173"
+  },
+  "request": {
+    "method": "POST",
+    "path": "/v1/complete",
+    "headers": {
+      "content-type": "application/json",
+      "cf-connecting-ip": "203.0.113.7"
+    },
+    "body": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "hello"
+        }
+      ]
+    }
+  },
+  "upstream": [
+    {
+      "status": 200,
+      "body": {
+        "candidates": [
+          {
+            "content": null,
+            "finishReason": "STOP"
+          }
+        ]
+      }
+    }
+  ],
+  "expect": {
+    "status": 502,
+    "body": {
+      "error": {
+        "kind": "invalid_output"
+      }
+    },
+    "upstreamCalls": 1,
+    "upstream": {
+      "model": "fixture-model-1",
+      "key": "FIXTURE_SERVER_KEY",
+      "maxOutputTokens": 256,
+      "contentsCount": 1
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "client",
+  "name": "client-error-kind-comes-from-body",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 500,
+      "body": {
+        "error": {
+          "kind": "rate_limit"
+        }
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "rate_limit"
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

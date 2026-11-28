@@ -1,0 +1,44 @@
+{
+  "kind": "client",
+  "name": "client-success-error-object-only",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 200,
+      "body": "{\"error\":{\"kind\":\"rate_limit\",\"retryAfterMs\":5}}"
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "invalid_output"
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

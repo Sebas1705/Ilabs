@@ -1,0 +1,48 @@
+{
+  "kind": "client",
+  "name": "client-status-403",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 403,
+      "body": {
+        "error": {
+          "kind": "unavailable"
+        }
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "unavailable"
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

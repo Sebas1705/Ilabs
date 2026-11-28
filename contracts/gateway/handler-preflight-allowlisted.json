@@ -1,0 +1,33 @@
+{
+  "kind": "handler",
+  "name": "handler-preflight-allowlisted",
+  "env": {
+    "GEMINI_API_KEY": "FIXTURE_SERVER_KEY",
+    "GEMINI_MODEL": "fixture-model-1",
+    "ALLOWED_ORIGINS": "https://app.example.test,http://localhost:5173"
+  },
+  "request": {
+    "method": "OPTIONS",
+    "path": "/v1/complete",
+    "headers": {
+      "content-type": "application/json",
+      "cf-connecting-ip": "203.0.113.7",
+      "origin": "https://app.example.test",
+      "access-control-request-method": "POST"
+    },
+    "body": null
+  },
+  "upstream": [],
+  "expect": {
+    "status": 204,
+    "headers": {
+      "access-control-allow-methods": "POST, OPTIONS",
+      "access-control-allow-headers": "content-type, x-ilabs-api-key",
+      "access-control-max-age": "600",
+      "vary": "Origin",
+      "access-control-allow-origin": "https://app.example.test",
+      "content-type": null
+    },
+    "upstreamCalls": 0
+  }
+}

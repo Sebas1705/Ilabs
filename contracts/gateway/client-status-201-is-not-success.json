@@ -1,0 +1,47 @@
+{
+  "kind": "client",
+  "name": "client-status-201-is-not-success",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 201,
+      "body": {
+        "text": "Hi",
+        "provider": "gateway"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "unavailable"
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

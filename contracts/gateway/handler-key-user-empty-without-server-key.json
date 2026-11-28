@@ -1,0 +1,35 @@
+{
+  "kind": "handler",
+  "name": "handler-key-user-empty-without-server-key",
+  "env": {
+    "GEMINI_MODEL": "fixture-model-1",
+    "ALLOWED_ORIGINS": "https://app.example.test"
+  },
+  "request": {
+    "method": "POST",
+    "path": "/v1/complete",
+    "headers": {
+      "content-type": "application/json",
+      "cf-connecting-ip": "203.0.113.7",
+      "x-ilabs-api-key": ""
+    },
+    "body": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "hello"
+        }
+      ]
+    }
+  },
+  "upstream": [],
+  "expect": {
+    "status": 503,
+    "body": {
+      "error": {
+        "kind": "unavailable"
+      }
+    },
+    "upstreamCalls": 0
+  }
+}

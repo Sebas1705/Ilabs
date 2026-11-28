@@ -1,0 +1,47 @@
+{
+  "kind": "client",
+  "name": "client-retry-after-header-plus-sign-ignored",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 429,
+      "body": "{\"error\":{\"kind\":\"rate_limit\"}}",
+      "headers": {
+        "retry-after": "+3"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "rate_limit"
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "kind": "limiter",
+  "name": "limiter-large-epoch-times",
+  "limit": 2,
+  "windowMs": 60000,
+  "calls": [
+    {
+      "key": "a",
+      "now": 1700000000000
+    },
+    {
+      "key": "a",
+      "now": 1700000000001
+    },
+    {
+      "key": "a",
+      "now": 1700000059999
+    },
+    {
+      "key": "a",
+      "now": 1700000060000
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 1
+    },
+    {
+      "allowed": true
+    }
+  ]
+}

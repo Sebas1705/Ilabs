@@ -1,0 +1,43 @@
+{
+  "kind": "client",
+  "name": "client-success-duplicate-text-key-last-wins",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 200,
+      "body": "{\"text\":\"a\",\"text\":\"b\"}"
+    }
+  ],
+  "expect": {
+    "result": {
+      "text": "b",
+      "provider": "gateway"
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

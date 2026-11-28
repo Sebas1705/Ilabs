@@ -1,0 +1,54 @@
+{
+  "kind": "limiter",
+  "name": "limiter-new-window-resets-count",
+  "limit": 2,
+  "windowMs": 100,
+  "calls": [
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "a",
+      "now": 100
+    },
+    {
+      "key": "a",
+      "now": 100
+    },
+    {
+      "key": "a",
+      "now": 100
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 100
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 100
+    }
+  ]
+}

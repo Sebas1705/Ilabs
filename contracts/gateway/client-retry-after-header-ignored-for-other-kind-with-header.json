@@ -1,0 +1,47 @@
+{
+  "kind": "client",
+  "name": "client-retry-after-header-ignored-for-other-kind-with-header",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 429,
+      "body": "{\"error\":{\"kind\":\"unavailable\"}}",
+      "headers": {
+        "retry-after": "3"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "unavailable"
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

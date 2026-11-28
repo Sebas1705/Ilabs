@@ -1,0 +1,46 @@
+{
+  "kind": "client",
+  "name": "client-url-trailing-slash",
+  "endpoint": "https://gateway.example.test/",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 200,
+      "body": {
+        "text": "Hi",
+        "provider": "gateway"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "text": "Hi",
+      "provider": "gateway"
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

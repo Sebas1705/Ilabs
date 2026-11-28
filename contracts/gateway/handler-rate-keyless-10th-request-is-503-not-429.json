@@ -1,0 +1,35 @@
+{
+  "kind": "handler",
+  "name": "handler-rate-keyless-10th-request-is-503-not-429",
+  "env": {
+    "GEMINI_MODEL": "fixture-model-1",
+    "ALLOWED_ORIGINS": "https://app.example.test"
+  },
+  "request": {
+    "method": "POST",
+    "path": "/v1/complete",
+    "headers": {
+      "content-type": "application/json",
+      "cf-connecting-ip": "203.0.113.7"
+    },
+    "body": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "hello"
+        }
+      ]
+    }
+  },
+  "limiterPreload": 9,
+  "upstream": [],
+  "expect": {
+    "status": 503,
+    "body": {
+      "error": {
+        "kind": "unavailable"
+      }
+    },
+    "upstreamCalls": 0
+  }
+}

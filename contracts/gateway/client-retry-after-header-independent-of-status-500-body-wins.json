@@ -1,0 +1,48 @@
+{
+  "kind": "client",
+  "name": "client-retry-after-header-independent-of-status-500-body-wins",
+  "endpoint": "https://gateway.example.test",
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ]
+  },
+  "transport": [
+    {
+      "status": 500,
+      "body": "{\"error\":{\"kind\":\"rate_limit\",\"retryAfterMs\":5}}",
+      "headers": {
+        "retry-after": "3"
+      }
+    }
+  ],
+  "expect": {
+    "result": {
+      "error": {
+        "kind": "rate_limit",
+        "retryAfterMs": 5
+      }
+    },
+    "requests": [
+      {
+        "url": "https://gateway.example.test/v1/complete",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "messages": [
+            {
+              "role": "user",
+              "content": "hello"
+            }
+          ]
+        },
+        "timeoutMs": 25000
+      }
+    ]
+  }
+}

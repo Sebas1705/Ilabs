@@ -1,0 +1,82 @@
+{
+  "kind": "limiter",
+  "name": "limiter-expired-key-after-many-others",
+  "limit": 1,
+  "windowMs": 100,
+  "calls": [
+    {
+      "key": "a",
+      "now": 0
+    },
+    {
+      "key": "k1",
+      "now": 10
+    },
+    {
+      "key": "k2",
+      "now": 11
+    },
+    {
+      "key": "k3",
+      "now": 12
+    },
+    {
+      "key": "k4",
+      "now": 13
+    },
+    {
+      "key": "k5",
+      "now": 14
+    },
+    {
+      "key": "a",
+      "now": 99
+    },
+    {
+      "key": "a",
+      "now": 100
+    },
+    {
+      "key": "k1",
+      "now": 109
+    },
+    {
+      "key": "k1",
+      "now": 110
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 1
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 1
+    },
+    {
+      "allowed": true
+    }
+  ]
+}

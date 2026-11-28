@@ -1,0 +1,370 @@
+{
+  "kind": "limiter",
+  "name": "limiter-live-windows-are-never-evicted",
+  "limit": 1,
+  "windowMs": 1000,
+  "calls": [
+    {
+      "key": "k0",
+      "now": 0
+    },
+    {
+      "key": "k1",
+      "now": 1
+    },
+    {
+      "key": "k2",
+      "now": 2
+    },
+    {
+      "key": "k3",
+      "now": 3
+    },
+    {
+      "key": "k4",
+      "now": 4
+    },
+    {
+      "key": "k5",
+      "now": 5
+    },
+    {
+      "key": "k6",
+      "now": 6
+    },
+    {
+      "key": "k7",
+      "now": 7
+    },
+    {
+      "key": "k8",
+      "now": 8
+    },
+    {
+      "key": "k9",
+      "now": 9
+    },
+    {
+      "key": "k10",
+      "now": 10
+    },
+    {
+      "key": "k11",
+      "now": 11
+    },
+    {
+      "key": "k12",
+      "now": 12
+    },
+    {
+      "key": "k13",
+      "now": 13
+    },
+    {
+      "key": "k14",
+      "now": 14
+    },
+    {
+      "key": "k15",
+      "now": 15
+    },
+    {
+      "key": "k16",
+      "now": 16
+    },
+    {
+      "key": "k17",
+      "now": 17
+    },
+    {
+      "key": "k18",
+      "now": 18
+    },
+    {
+      "key": "k19",
+      "now": 19
+    },
+    {
+      "key": "k20",
+      "now": 20
+    },
+    {
+      "key": "k21",
+      "now": 21
+    },
+    {
+      "key": "k22",
+      "now": 22
+    },
+    {
+      "key": "k23",
+      "now": 23
+    },
+    {
+      "key": "k0",
+      "now": 500
+    },
+    {
+      "key": "k1",
+      "now": 501
+    },
+    {
+      "key": "k2",
+      "now": 502
+    },
+    {
+      "key": "k3",
+      "now": 503
+    },
+    {
+      "key": "k4",
+      "now": 504
+    },
+    {
+      "key": "k5",
+      "now": 505
+    },
+    {
+      "key": "k6",
+      "now": 506
+    },
+    {
+      "key": "k7",
+      "now": 507
+    },
+    {
+      "key": "k8",
+      "now": 508
+    },
+    {
+      "key": "k9",
+      "now": 509
+    },
+    {
+      "key": "k10",
+      "now": 510
+    },
+    {
+      "key": "k11",
+      "now": 511
+    },
+    {
+      "key": "k12",
+      "now": 512
+    },
+    {
+      "key": "k13",
+      "now": 513
+    },
+    {
+      "key": "k14",
+      "now": 514
+    },
+    {
+      "key": "k15",
+      "now": 515
+    },
+    {
+      "key": "k16",
+      "now": 516
+    },
+    {
+      "key": "k17",
+      "now": 517
+    },
+    {
+      "key": "k18",
+      "now": 518
+    },
+    {
+      "key": "k19",
+      "now": 519
+    },
+    {
+      "key": "k20",
+      "now": 520
+    },
+    {
+      "key": "k21",
+      "now": 521
+    },
+    {
+      "key": "k22",
+      "now": 522
+    },
+    {
+      "key": "k23",
+      "now": 523
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 500
+    }
+  ]
+}

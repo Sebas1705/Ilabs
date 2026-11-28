@@ -1,0 +1,103 @@
+{
+  "kind": "limiter",
+  "name": "limiter-ten-per-minute",
+  "limit": 10,
+  "windowMs": 60000,
+  "calls": [
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 1000
+    },
+    {
+      "key": "ip",
+      "now": 31000
+    },
+    {
+      "key": "ip",
+      "now": 60999
+    },
+    {
+      "key": "ip",
+      "now": 61000
+    }
+  ],
+  "expect": [
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": true
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 30000
+    },
+    {
+      "allowed": false,
+      "retryAfterMs": 1
+    },
+    {
+      "allowed": true
+    }
+  ]
+}
